@@ -3,7 +3,7 @@ import {allAuthors, allDocs} from "contentlayer/generated";
 import {notFound} from "next/navigation";
 import Image from 'next/image';
 import React from "react";
-import {Mdx} from "@/components/Mdx";
+import {Mdx} from "@/components/mdx-components";
 import Link from "next/link";
 import "@/styles/mdx.css"
 import {cn, formatDate} from "@/lib/utils"

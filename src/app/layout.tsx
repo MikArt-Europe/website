@@ -28,7 +28,7 @@ export const metadata = {
     default: "MikArt Europe",
     template: `%s | MikArt`,
   },
-  description: "ig",
+  description: "MikArt Europe is designed to be a place for all things we do. We are a group of people who are passionate about technology and design.",
   keywords: [
     "Next.js",
     "React",
@@ -39,7 +39,7 @@ export const metadata = {
       url: "https://github.com/ArikSquad",
     },
   ],
-  creator: "shadcn",
+  creator: "ariksquad",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "white" },
     { media: "(prefers-color-scheme: dark)", color: "black" },
@@ -49,13 +49,13 @@ export const metadata = {
     locale: "en_US",
     url: "https://mikart.eu",
     title: "MikArt",
-    description: "ig",
+    description: "MikArt Europe is designed to be a place for all things we do. We are a group of people who are passionate about technology and design.",
     siteName: "MikArt Europe",
   },
   twitter: {
     card: "summary_large_image",
     title: "MikArt Europe",
-    description: "ig",
+    description: "MikArt Europe is designed to be a place for all things we do. We are a group of people who are passionate about technology and design.",
     images: [`https://mikart.eu/og.jpg`],
     creator: "@ArikSquad",
   },

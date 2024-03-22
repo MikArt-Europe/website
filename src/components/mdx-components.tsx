@@ -35,28 +35,52 @@ const components = {
         />
     ),
     h4: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-        <h4 className={`mt-8 scroll-m-20 text-xl font-semibold tracking-tight ${className}`} {...props} />
+        <h4
+            className={cn(
+                "mt-8 scroll-m-20 text-xl font-semibold tracking-tight",
+                className
+            )}
+            {...props}
+        />
     ),
     h5: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-        <h5 className={`mt-8 scroll-m-20 text-lg font-semibold tracking-tight ${className}`} {...props} />
+        <h5
+            className={cn(
+                "mt-8 scroll-m-20 text-lg font-semibold tracking-tight",
+                className
+            )}
+            {...props}
+        />
     ),
     h6: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-        <h6 className={`mt-8 scroll-m-20 text-base font-semibold tracking-tight ${className}`} {...props} />
+        <h6
+            className={cn(
+                "mt-8 scroll-m-20 text-base font-semibold tracking-tight",
+                className
+            )}
+            {...props}
+        />
     ),
     a: ({ className, ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (
-        <a className={`font-medium underline underline-offset-4 ${className}`} {...props} />
+        <a
+            className={cn("font-medium underline underline-offset-4", className)}
+            {...props}
+        />
     ),
     p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
-        <p className={`leading-7 [&:not(:first-child)]:mt-6 ${className}`} {...props} />
+        <p
+            className={cn("leading-7 [&:not(:first-child)]:mt-6", className)}
+            {...props}
+        />
     ),
     ul: ({ className, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
-        <ul className={`my-6 ml-6 list-disc ${className}`} {...props} />
+        <ul className={cn("my-6 ml-6 list-disc", className)} {...props} />
     ),
     ol: ({ className, ...props }: React.HTMLAttributes<HTMLOListElement>) => (
-        <ol className={`my-6 ml-6 list-decimal ${className}`} {...props} />
+        <ol className={cn("my-6 ml-6 list-decimal", className)} {...props} />
     ),
     li: ({ className, ...props }: React.HTMLAttributes<HTMLLIElement>) => (
-        <li className={`mt-2 ${className}`} {...props} />
+        <li className={cn("mt-2", className)} {...props} />
     ),
     blockquote: ({ className, ...props }: React.HTMLAttributes<HTMLQuoteElement>) => (
         <blockquote
