@@ -5,7 +5,7 @@ import Link from "next/link"
 import {useSelectedLayoutSegment} from "next/navigation"
 import {Icons} from "@/components/taxomony/icons";
 
-import {MainNavItem} from "src/types"
+import {MainNavItem} from "@/types"
 import {cn} from "@/lib/utils"
 import {MobileNav} from "./mobile-nav";
 import Image from "next/image";
