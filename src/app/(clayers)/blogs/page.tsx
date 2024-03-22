@@ -24,7 +24,7 @@ export default async function BlogPage() {
                         Blog
                     </h1>
                     <p className="text-xl text-muted-foreground">
-                        The description. Should I make a description... I don't care nobody reads these.
+                        The description. Should I make a description... I don&apos;t care nobody reads these.
                     </p>
                 </div>
             </div>

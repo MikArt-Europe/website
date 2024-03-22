@@ -2,13 +2,9 @@
 import {allAuthors, allDocs} from "contentlayer/generated";
 import {notFound} from "next/navigation";
 import Image from 'next/image';
-import {useMDXComponent} from 'next-contentlayer/hooks';
 import React from "react";
 import {Mdx} from "@/components/Mdx";
 import Link from "next/link";
-import styles from "@/style";
-import Footer from "@/components/footer";
-import {getTableOfContents} from "@/lib/toc"
 import "@/styles/mdx.css"
 import {cn, formatDate} from "@/lib/utils"
 import {buttonVariants} from "@/components/taxomony/button"
@@ -17,7 +13,6 @@ import {Metadata} from "next";
 
 // TODO: add a proper loading screen
 // TODO: and switching themess
-
 // TODO: https://www.youtube.com/watch?v=n2CV6f0vFr4
 
 
@@ -86,7 +81,7 @@ export default async function PostPage({params}: PostPageProps) {
     }
 
     const authors = post.authors.map((author) =>
-        allAuthors.find(({ slug }) => slug === `/authors/${author}`)
+        allAuthors.find(({slug}) => slug === `/authors/${author}`)
     )
 
     return (
