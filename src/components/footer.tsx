@@ -4,12 +4,8 @@ import styles from "@/style";
 
 const footer = [
     {
-        title: "Products",
+        title: "Services",
         links: [
-            {
-                name: "Teskallo ArBM",
-                link: "https://www.www.mikart.eu/content/arbm",
-            },
             {
                 name: "EnSave",
                 link: "https://www.mikart.eu/content/ensave",
@@ -19,7 +15,7 @@ const footer = [
                 link: "https://www.mikart.eu/content/animvanish",
             },
             {
-                name: "NeverLäksyt",
+                name: "GroupSecurity",
                 link: "https://www.mikart.eu/content/neverlaksyt",
             },
             {
@@ -36,18 +32,14 @@ const footer = [
                 link: "https://www.mikart.eu/help-center/",
             },
             {
-                name: "Resources",
-                link: "https://www.mikart.eu/resources/",
+                name: "Blogs",
+                link: "https://www.mikart.eu/blogs/",
             }
         ],
     },
     {
         title: "New Stuff",
         links: [
-            {
-                name: "OneChannel",
-                link: "https://www.mikart.eu/onechannel/",
-            },
             {
                 name: "YouTube",
                 link: "https://www.youtube.com/@ArikSquad",
@@ -111,7 +103,7 @@ export default function Footer () {
 
             <div className="w-full flex justify-between items-center md:flex-row flex-col pt-6 border-t-[1px] border-t-[#3F3E45]">
                 <p className="font-poppins font-normal text-center text-[18px] leading-[27px] text-white">
-                    Copyright Ⓒ 2022-2023 MikArt Europe. All Rights Reserved.
+                    Copyright Ⓒ 2022-2024 MikArt Europe. All Rights Reserved.
                 </p>
 
                 <div className="flex flex-row md:mt-0 mt-6">
