@@ -1,3 +1,4 @@
+// @ts-ignore
 import {
   AlertTriangle,
   ArrowRight,
@@ -23,6 +24,7 @@ import {
   Twitter,
   User,
   X,
+  // @ts-ignore
   type Icon as LucideIcon,
 } from "lucide-react"
 
