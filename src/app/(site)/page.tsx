@@ -1,3 +1,4 @@
+"use client";
 import Navbar from "@/components/navbar";
 import styles, {layout} from "@/style";
 import {Button} from "@/components/defbutton";
@@ -5,7 +6,7 @@ import Footer from "@/components/footer";
 import './index.css';
 import Image from "next/image";
 import {MainNav} from "@/components/taxomony/main-nav";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {cn} from "@/lib/utils";
 import {buttonVariants} from "@/components/taxomony/button";
 import Link from "next/link";
@@ -43,8 +44,20 @@ const ComingSoon = () => {
     );
 };
 
+const messages = ["love", "code", "hax", "dedication", "passion"];
+
 function Home() {
-    const messages = ["love", "code", "hax"];
+    const [currentMessage, setCurrentMessage] = useState(messages[Math.floor(Math.random() * messages.length)]);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            const randomIndex = Math.floor(Math.random() * messages.length);
+            setCurrentMessage(messages[randomIndex]);
+        }, 3500);
+
+        return () => clearInterval(interval);
+    }, []); // Empty dependency array ensures the effect runs only once after initial render
+
     return (
         <div className='bg-background w-full overflow-hidden'>
             <header className="container z-40 bg-background">
@@ -79,13 +92,12 @@ function Home() {
 
             <div className={`bg-background ${styles.flexCenter}`}>
                 <div className={`${styles.boxWidth}`}>
-
                     <section id="home" className={`flex md:flex-row flex-col ${styles.paddingY}`}>
                         <div className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6`}>
                             <div className="flex flex-col justify-center items-center w-full">
                                 <div className="flex flex-row items-center py-[6px] px-4 bg-hero-gradient rounded-[10px] mb-2">
                                     <p className={`${styles.paragraph} ml-2`}>
-                                        <span className='text-white'>Made</span> with <span className='text-white'>{messages[Math.floor(Math.random() * messages.length)]}</span> by <span className='text-gradient'>ArikSquad</span>
+                                        <span className='text-white'>Made</span> with <span className='text-white'>{currentMessage}</span> by <span className='text-gradient'>ArikSquad</span>
                                     </p>
                                 </div>
                                 <h1 className='font-poppins font-semibold ss:text-[72px] text-[52px] text-white ss:leading-[100.8px] leading-[75px] text-center'>
@@ -97,7 +109,6 @@ function Home() {
                             </div>
                         </div>
                     </section>
-
                 </div>
             </div>
 
