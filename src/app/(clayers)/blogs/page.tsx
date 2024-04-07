@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { allDocs } from "contentlayer/generated";
+import { allBlogs } from "contentlayer/generated";
 import { compareDesc } from "date-fns";
 
 import { formatDate } from "@/lib/utils"
@@ -10,7 +10,7 @@ export const metadata = {
 }
 
 export default async function BlogPage() {
-    const posts = allDocs
+    const posts = allBlogs
         .filter((post) => post.published)
         .sort((a, b) => {
             return compareDesc(new Date(a.date), new Date(b.date))

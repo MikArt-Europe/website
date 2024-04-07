@@ -1,5 +1,5 @@
 // import './resource.css';
-import {allAuthors, allDocs} from "contentlayer/generated";
+import {allAuthors, allBlogs} from "contentlayer/generated";
 import {notFound} from "next/navigation";
 import Image from 'next/image';
 import React from "react";
@@ -23,7 +23,7 @@ interface PostPageProps {
 }
 
 async function getDocFromParams(slug: string) {
-    const doc = allDocs.find((doc) => doc.slugAsParams === slug);
+    const doc = allBlogs.find((doc) => doc.slugAsParams === slug);
 
     if (!doc) notFound()
 

@@ -7,20 +7,20 @@ const footer = [
         title: "Services",
         links: [
             {
-                name: "EnSave",
-                link: "https://www.mikart.eu/content/ensave",
-            },
-            {
                 name: "AnimVanish",
-                link: "https://www.mikart.eu/content/animvanish",
+                link: "https://animvanish.mikart.eu/",
             },
             {
                 name: "GroupSecurity",
-                link: "https://www.mikart.eu/content/neverlaksyt",
+                link: "https://groupsecurity.mikart.eu/",
             },
             {
                 name: "TOS",
-                link: "https://www.mikart.eu/terms-of-service/",
+                link: "/terms-of-service/",
+            },
+            {
+                name: "Privacy Policy",
+                link: "/privacy-policy/",
             },
         ],
     },
@@ -29,11 +29,11 @@ const footer = [
         links: [
             {
                 name: "Help Center",
-                link: "https://www.mikart.eu/help-center/",
+                link: "/help-center/",
             },
             {
                 name: "Blogs",
-                link: "https://www.mikart.eu/blogs/",
+                link: "/blogs/",
             }
         ],
     },
