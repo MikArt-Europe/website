@@ -4,6 +4,7 @@ import { Help } from "contentlayer/generated"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/taxomony/button"
 import { Icons } from "@/components/taxomony/icons"
+import {helpConfig} from "@/config/help";
 
 interface DocsPagerProps {
   doc: Help
@@ -41,36 +42,7 @@ export function DocsPager({ doc }: DocsPagerProps) {
 }
 
 export function getPagerForDoc(doc: Help) {
-  const flattenedLinks = [null, ...flatten([
-        {
-          title: "Getting Started",
-          items: [
-            {
-              title: "Introduction",
-              href: "/help-center",
-            },
-          ],
-        },
-    {
-      title: "Minecraft",
-      items: [
-        {
-          title: "Server Information",
-          href: "/help-center/minecraft",
-        },
-        {
-          title: "Server Rules",
-          href: "/help-center/minecraft/rules",
-          disabled: false,
-        },
-        {
-          title: "Allowed Modifications",
-          href: "/help-center/in-progress",
-          disabled: true,
-        },
-      ],
-    },
-  ]), null]
+  const flattenedLinks = [null, ...flatten(helpConfig.sidebarNav), null]
   const activeIndex = flattenedLinks.findIndex(
     (link) => doc.slug === link?.href
   )
