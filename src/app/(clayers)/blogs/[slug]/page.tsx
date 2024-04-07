@@ -10,6 +10,7 @@ import {cn, formatDate} from "@/lib/utils"
 import {buttonVariants} from "@/components/taxomony/button"
 import {Icons} from "@/components/taxomony/icons"
 import {Metadata} from "next";
+import { Badge } from "@/components/ui/badge"
 
 // TODO: add a proper loading screen
 // TODO: and switching themess
@@ -108,6 +109,13 @@ export default async function PostPage({params}: PostPageProps) {
                 <h1 className="mt-2 inline-block font-heading text-4xl leading-tight lg:text-5xl">
                     {post.title}
                 </h1>
+                <div>
+                    {post.tags?.map((tag, index) => (
+                        <Badge key={tag} className="mr-2 mt-2" variant={index === 0 ? "default" : "outline"}>
+                            {tag}
+                        </Badge>
+                    ))}
+                </div>
                 {authors?.length ? (
                     <div className="mt-4 flex space-x-4">
                         {authors.map((author) =>
