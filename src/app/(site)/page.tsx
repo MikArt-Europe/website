@@ -145,6 +145,7 @@ function Home() {
                             <Button styles="mt-10" text='Try it out!'
                                     destination='https://www.spigotmc.org/resources/animvanish-1-19-animated-vanishing.102183/'/>
                         </div>
+                        {/* TODO: I love this: <BackgroundBeams />*/}
                     </section>
 
                     <Footer/>

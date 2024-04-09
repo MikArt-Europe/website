@@ -11,6 +11,7 @@ import {Icons} from "@/components/taxomony/icons"
 import {Metadata} from "next";
 import {Badge} from "@/components/ui/badge"
 import {TracingBeam} from "@/components/ui/tracing-beam"; // from aceternity ui
+
 /*import {HoverCard, HoverCardContent, HoverCardTrigger} from "@/components/ui/hover-card";
 import {
     Avatar,
