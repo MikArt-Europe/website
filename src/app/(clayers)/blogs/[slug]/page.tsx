@@ -1,4 +1,3 @@
-// import './resource.css';
 import {allAuthors, allBlogs} from "contentlayer/generated";
 import {notFound} from "next/navigation";
 import Image from 'next/image';
@@ -10,13 +9,15 @@ import {cn, formatDate} from "@/lib/utils"
 import {buttonVariants} from "@/components/taxomony/button"
 import {Icons} from "@/components/taxomony/icons"
 import {Metadata} from "next";
-import { Badge } from "@/components/ui/badge"
-
-// TODO: add a proper loading screen
-// TODO: and switching themess
-// TODO: https://www.youtube.com/watch?v=n2CV6f0vFr4
-
-
+import {Badge} from "@/components/ui/badge"
+import {TracingBeam} from "@/components/ui/tracing-beam"; // from aceternity ui
+/*import {HoverCard, HoverCardContent, HoverCardTrigger} from "@/components/ui/hover-card";
+import {
+    Avatar,
+    AvatarFallback,
+    AvatarImage,
+} from "@/components/ui/avatar";
+import {CalendarDays} from "lucide-react"*/
 interface PostPageProps {
     params: {
         slug: string
@@ -82,7 +83,7 @@ export default async function PostPage({params}: PostPageProps) {
     }
 
     const authors = post.authors.map((author) =>
-        allAuthors.find(({slug}) => slug === `/authors/${author}`)
+        allAuthors.find(({slug}) => slug === "/authors/" + author)
     )
 
     return (
@@ -109,37 +110,63 @@ export default async function PostPage({params}: PostPageProps) {
                 <h1 className="mt-2 inline-block font-heading text-4xl leading-tight lg:text-5xl">
                     {post.title}
                 </h1>
-                <div>
-                    {post.tags?.map((tag, index) => (
-                        <Badge key={tag} className="mr-2 mt-2" variant={index === 0 ? "default" : "outline"}>
-                            {tag}
-                        </Badge>
-                    ))}
-                </div>
+                {post.tags?.length ? (
+                    <div>
+                        {post.tags?.map((tag, index) => (
+                            <Badge key={tag} className="mr-2 mt-2" variant={index === 0 ? "default" : "outline"}>
+                                {tag}
+                            </Badge>
+                        ))}
+                    </div>
+                ) : null}
                 {authors?.length ? (
                     <div className="mt-4 flex space-x-4">
                         {authors.map((author) =>
-                            author ? (
-                                <Link
-                                    key={author._id}
-                                    href={`https://twitter.com/${author.twitter}`}
-                                    className="flex items-center space-x-2 text-sm"
-                                >
-                                    <Image
-                                        src={author.avatar}
-                                        alt={author.title}
-                                        width={42}
-                                        height={42}
-                                        className="rounded-full bg-white"
-                                    />
-                                    <div className="flex-1 text-left leading-tight">
-                                        <p className="font-medium">{author.title}</p>
-                                        <p className="text-[12px] text-muted-foreground">
-                                            @{author.twitter}
-                                        </p>
-                                    </div>
-                                </Link>
-                            ) : null
+                                author ? (
+                                    /*<HoverCard>
+                                        <HoverCardTrigger>*/
+                                            <Link
+                                                key={author._id}
+                                                href={`https://twitter.com/${author.twitter}`}
+                                                className="flex items-center space-x-2 text-sm"
+                                            >
+                                                <Image
+                                                    src={author.avatar}
+                                                    alt={author.title}
+                                                    width={42}
+                                                    height={42}
+                                                    className="rounded-full bg-white"
+                                                />
+                                                <div className="flex-1 text-left leading-tight">
+                                                    <p className="font-medium">{author.title}</p>
+                                                    <p className="text-[12px] text-muted-foreground">
+                                                        @{author.twitter}
+                                                    </p>
+                                                </div>
+                                            </Link>
+                                        /*</HoverCardTrigger>
+
+
+                                        <HoverCardContent>
+                                            <div className="flex justify-between space-x-4">
+                                                <Avatar>
+                                                    <AvatarImage src={author.avatar} />
+                                                    <AvatarFallback>me</AvatarFallback>
+                                                </Avatar>
+                                                <div className="space-y-1">
+                                                    <h4 className="text-sm font-semibold">@{author.title}</h4>
+                                                    <p className="text-sm">
+                                                        This is a placeholder text...
+                                                    </p>
+                                                    <div className="flex items-center pt-2">
+                                                        <CalendarDays className="mr-2 h-4 w-4 opacity-70"/>{" "}
+                                                        <span className="text-xs text-muted-foreground">Developing since {author.title}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </HoverCardContent>
+                                    </HoverCard>*/
+                                ) : null
                         )}
                     </div>
                 ) : null}
@@ -155,7 +182,9 @@ export default async function PostPage({params}: PostPageProps) {
                 />
             )
             }
-            <Mdx code={post.body.code}/>
+            <TracingBeam className="px-6">
+                <Mdx code={post.body.code}/>
+            </TracingBeam>
             <hr className="mt-12"/>
             <div className="flex justify-center py-6 lg:py-10">
                 <Link href="/blogs" className={cn(buttonVariants({variant: "ghost"}))}>
@@ -163,6 +192,7 @@ export default async function PostPage({params}: PostPageProps) {
                     See all posts
                 </Link>
             </div>
+
         </article>
     )
 }
