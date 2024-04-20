@@ -65,8 +65,8 @@ export const helpConfig: DocsConfig = {
                 },
                 {
                     title: "Allowed Modifications",
-                    href: "/help-center/in-progress",
-                    disabled: true,
+                    href: "/help-center/minecraft/allowed-modifications",
+                    disabled: false,
                 },
             ],
         },
