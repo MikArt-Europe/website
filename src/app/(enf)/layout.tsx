@@ -6,6 +6,7 @@ import { DocsSearch } from "@/components/taxomony/search"
 import { DocsSidebarNav } from "@/components/taxomony/sidebar-nav"
 import Footer from "@/components/footer";
 import {helpConfig} from "@/config/help";
+import styles from "@/style";
 
 interface DocsLayoutProps {
     children: React.ReactNode
@@ -36,7 +37,11 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
                 </div>
             </header>
             <div className="container flex-1">{children}</div>
-            <Footer />
+            <div className={`bg-background ${styles.paddingX} ${styles.flexCenter}`}>
+                <div className={`${styles.boxWidth}`}>
+                    <Footer />
+                </div>
+            </div>
         </div>
     )
 }

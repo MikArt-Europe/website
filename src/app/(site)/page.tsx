@@ -1,7 +1,6 @@
 "use client";
 import Navbar from "@/components/navbar";
 import styles, {layout} from "@/style";
-import {Button} from "@/components/defbutton";
 import Footer from "@/components/footer";
 import './index.css';
 import Image from "next/image";
@@ -123,7 +122,7 @@ function Home() {
 
                             <button type="button"
                                     className={`py-4 px-6 font-poppins font-medium text-[18px] text-mprimary bg-purple-gradient rounded-[10px] outline-none mt-10`}>
-                                <a href="">Blogs</a></button>
+                                <a href="/blogs">Blogs</a></button>
                         </div>
                     </section>
 
@@ -142,8 +141,9 @@ function Home() {
                                 AnimVanish offers a wide range of effects to make your server more fun while in vanish
                                 and make enjoyable.
                             </p>
-                            <Button styles="mt-10" text='Try it out!'
-                                    destination='https://www.spigotmc.org/resources/animvanish-1-19-animated-vanishing.102183/'/>
+                            <button type="button"
+                                    className={`py-4 px-6 font-poppins font-medium text-[18px] text-mprimary bg-blue-gradient rounded-[10px] outline-none mt-10`}>
+                                <a href="https://www.spigotmc.org/resources/animvanish-1-19-animated-vanishing.102183/">Try it out!</a></button>
                         </div>
                         {/* TODO: I love this: <BackgroundBeams />*/}
                     </section>
