@@ -1,8 +1,13 @@
 'use client';
 import React from 'react';
-import { useRouter } from 'next/navigation';
+import {useRouter} from 'next/navigation';
+import {AppRouterInstance} from "next/dist/shared/lib/app-router-context.shared-runtime";
 
-class AdCodeWithoutRouter extends React.Component {
+interface AdCodeWithoutRouterProps {
+    router?: AppRouterInstance
+}
+
+class AdCodeWithoutRouter extends React.Component<AdCodeWithoutRouterProps> {
     renderAds() {
         const w: any = window; // TODO: make this not anytype
         (w.adsbygoogle = w.adsbygoogle || []).push({});
@@ -24,13 +29,14 @@ class AdCodeWithoutRouter extends React.Component {
             <div className="container mx-auto text-center" aria-hidden={true}>
                 <ins
                     className="adsbygoogle"
-                    style={{ display: 'block', width: '100%' }}
+                    style={{display: 'block', width: '100%'}}
                     data-ad-client="ca-pub-1234567890"
                     data-ad-slot="123456"
                     data-ad-format="auto"
                     data-full-width-responsive="true"
                 ></ins>
-                <script dangerouslySetInnerHTML={{ __html: '(window.adsbygoogle = window.adsbygoogle || []).push({});' }}></script>
+                <script
+                    dangerouslySetInnerHTML={{__html: '(window.adsbygoogle = window.adsbygoogle || []).push({});'}}></script>
             </div>
         );
     }
@@ -38,7 +44,7 @@ class AdCodeWithoutRouter extends React.Component {
 
 const AdCode = () => {
     const router = useRouter();
-    return <AdCodeWithoutRouter router={router} />;
+    return <AdCodeWithoutRouter router={router}/>;
 };
 
 export default AdCode;
