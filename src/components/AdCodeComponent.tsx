@@ -4,15 +4,17 @@ import { useRouter } from 'next/navigation';
 
 class AdCodeWithoutRouter extends React.Component {
     renderAds() {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
+        const w: any = window; // TODO: make this not anytype
+        (w.adsbygoogle = w.adsbygoogle || []).push({});
     }
 
     componentDidMount() {
         this.renderAds();
     }
 
-    componentDidUpdate(prevProps) {
-        if (this.props.router.asPath !== prevProps.router.asPath) {
+    componentDidUpdate(prevProps: any) {
+        const p: any = this.props; // TODO: make this not anytype
+        if (p.router.asPath !== prevProps.router.asPath) {
             this.renderAds();
         }
     }
