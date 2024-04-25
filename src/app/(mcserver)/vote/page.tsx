@@ -7,7 +7,7 @@ import {cn} from "@/lib/utils";
 import {buttonVariants} from "@/components/taxomony/button";
 import styles from "@/style";
 import Footer from "@/components/footer";
-import {CanvasRevealEffect} from "@/components/ui/NaaahComponent";
+import {CanvasRevealEffect} from "@/components/ui/canvas-reveal";
 import {AnimatePresence, motion} from "framer-motion";
 
 export default function Home() {

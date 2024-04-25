@@ -4,7 +4,7 @@ import {useRouter} from 'next/navigation';
 import {AppRouterInstance} from "next/dist/shared/lib/app-router-context.shared-runtime";
 
 interface AdCodeWithoutRouterProps {
-    router?: AppRouterInstance
+    router: AppRouterInstance
 }
 
 class AdCodeWithoutRouter extends React.Component<AdCodeWithoutRouterProps> {
