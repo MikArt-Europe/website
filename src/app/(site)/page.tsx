@@ -1,61 +1,26 @@
-"use client";
-import Navbar from "@/components/navbar";
 import styles, {layout} from "@/style";
 import Footer from "@/components/footer";
 import './index.css';
 import Image from "next/image";
 import {MainNav} from "@/components/taxomony/main-nav";
-import React, {useEffect, useState} from "react";
 import {cn} from "@/lib/utils";
 import {buttonVariants} from "@/components/taxomony/button";
 import Link from "next/link";
 
-const ComingSoon = () => {
-    return (
-        <div className='bg-mprimary w-full overflow-hidden'>
-            <div className={`${styles.paddingX} ${styles.flexCenter}`}>
-                <div className={`${styles.boxWidth}`}>
-                    <Navbar/>
-                </div>
-            </div>
-
-            <div className={`bg-mprimary ${styles.flexStart}`}>
-                <div className={`${styles.boxWidth}`}>
-                    <section id="dhome" className={`flex md:flex-row flex-col ${styles.paddingY}`}>
-                        <div className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6`}>
-                            <div className="flex flex-row justify-between items-center w-full">
-                                <h1 className='flex-1 font-poppins font-semibold ss:text-[72px] text-[52px] text-white ss:leading-[100.8px] leading-[75px]'>
-                                    Is something <br className="sm:block hidden"/>{" "} coming <br
-                                    className="sm:block hidden"/>{" "}
-                                    <span className="text-gradient">Soon?</span>{" "}
-                                </h1>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-            </div>
-            <div className={`bg-mprimary ${styles.paddingX} ${styles.flexCenter} mt-[300px]`}>
-                <div className={`${styles.boxWidth}`}>
-                    <Footer/>
-                </div>
-            </div>
-        </div>
-    );
-};
+export async function generateStaticParams() {
+    const randomIndex = Math.floor(Math.random() * messages.length);
+    const initialMessage = messages[randomIndex];
+    return {
+        props: {
+            initialMessage
+        }
+    };
+}
 
 const messages = ["love", "code", "hax", "dedication", "passion"];
 
 function Home() {
-    const [currentMessage, setCurrentMessage] = useState(messages[Math.floor(Math.random() * messages.length)]);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            const randomIndex = Math.floor(Math.random() * messages.length);
-            setCurrentMessage(messages[randomIndex]);
-        }, 3500);
-
-        return () => clearInterval(interval);
-    }, []); // Empty dependency array ensures the effect runs only once after initial render
+    const currentMessage = messages[Math.floor(Math.random() * messages.length)];
 
     return (
         <div className='bg-background w-full overflow-hidden'>
@@ -89,7 +54,7 @@ function Home() {
                 </div>
             </header>
 
-            <div className={`bg-background ${styles.flexCenter}`}>
+            <div className={styles.flexCenter}>
                 <div className={`${styles.boxWidth}`}>
                     <section id="home" className={`flex md:flex-row flex-col ${styles.paddingY}`}>
                         <div className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6`}>
@@ -111,7 +76,7 @@ function Home() {
                 </div>
             </div>
 
-            <div className={`bg-background ${styles.paddingX} ${styles.flexCenter}`}>
+            <div className={`${styles.paddingX} ${styles.flexCenter}`}>
                 <div className={`${styles.boxWidth}`}>
                     <section id='' className={layout.section}>
                         <div className={layout.sectionInfo}>
