@@ -7,16 +7,6 @@ import {cn} from "@/lib/utils";
 import {buttonVariants} from "@/components/taxomony/button";
 import Link from "next/link";
 
-export async function generateStaticParams() {
-    const randomIndex = Math.floor(Math.random() * messages.length);
-    const initialMessage = messages[randomIndex];
-    return {
-        props: {
-            initialMessage
-        }
-    };
-}
-
 const messages = ["love", "code", "hax", "dedication", "passion"];
 
 function Home() {
