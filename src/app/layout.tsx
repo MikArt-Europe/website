@@ -4,16 +4,17 @@ import localFont from "next/font/local"
 import "@/styles/globals.css"
 import { cn } from "@/lib/utils"
 import { Toaster } from "@/components/taxomony/toaster"
-// import { Analytics } from "@/components/taxomony/analytics"
 import { TailwindIndicator } from "@/components/taxomony/tailwind-indicator"
 import { ThemeProvider } from "@/components/taxomony/theme-provider"
+import type { Viewport } from 'next'
+
 
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
 })
 
-// Font files can be colocated inside of `pages`
+// Font files can be colocated inside `pages`
 const fontHeading = localFont({
   src: "../assets/fonts/CalSans-SemiBold.woff2",
   variable: "--font-heading",
@@ -21,6 +22,12 @@ const fontHeading = localFont({
 
 interface RootLayoutProps {
   children: React.ReactNode
+}
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ],
 }
 
 export const metadata = {
@@ -40,10 +47,6 @@ export const metadata = {
     },
   ],
   creator: "ariksquad",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
-  ],
   openGraph: {
     type: "website",
     locale: "en_US",
