@@ -7,6 +7,7 @@ import { DocsSidebarNav } from "@/components/taxomony/sidebar-nav"
 import Footer from "@/components/footer";
 import {helpConfig} from "@/config/help";
 import styles from "@/style";
+import React from "react";
 
 interface DocsLayoutProps {
     children: React.ReactNode

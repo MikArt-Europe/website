@@ -1,11 +1,7 @@
-
-// import { marketingConfig } from "@/config/marketing"
-import { cn } from "@/lib/utils"
 import Footer from "@/components/footer";
-import Link from "next/link";
 import {MainNav} from "@/components/taxomony/main-nav";
-import {buttonVariants} from "@/components/taxomony/button";
 import styles from "@/style";
+import React from "react";
 
 interface MarketingLayoutProps {
     children: React.ReactNode

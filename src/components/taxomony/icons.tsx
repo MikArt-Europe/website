@@ -21,7 +21,6 @@ import {
   Settings,
   SunMedium,
   Trash,
-  Twitter,
   User,
   X,
   // @ts-ignore
@@ -69,6 +68,5 @@ export const Icons = {
       ></path>
     </svg>
   ),
-  twitter: Twitter,
   check: Check,
 }

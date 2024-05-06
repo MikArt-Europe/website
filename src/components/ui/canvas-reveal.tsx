@@ -208,6 +208,7 @@ const ShaderMaterial = ({
         timeLocation.value = timestamp;
     });
 
+    // TODO: make ide not complain about this
     const getUniforms = () => { /* no idea how to fix this bro */
         const preparedUniforms: any = {};
 
