@@ -1,5 +1,6 @@
 import { DocsSidebarNav } from "@/components/taxomony/sidebar-nav"
 import {helpConfig} from "@/config/help";
+import React from "react";
 
 interface DocsLayoutProps {
   children: React.ReactNode

@@ -4,9 +4,9 @@ import localFont from "next/font/local"
 import "@/styles/globals.css"
 import { cn } from "@/lib/utils"
 import { Toaster } from "@/components/taxomony/toaster"
-// import { Analytics } from "@/components/taxomony/analytics"
 import { TailwindIndicator } from "@/components/taxomony/tailwind-indicator"
 import { ThemeProvider } from "@/components/taxomony/theme-provider"
+import React from "react";
 
 const fontSans = FontSans({
   subsets: ["latin"],
