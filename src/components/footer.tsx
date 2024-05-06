@@ -1,6 +1,7 @@
-"use client";
 import Image from 'next/image'
 import styles from "@/style";
+import {cn} from "@/lib/utils";
+import Link from "next/link";
 
 const footer = [
     {
@@ -62,7 +63,7 @@ const social_medias = [
 ];
 
 
-export default function Footer () {
+export default function Footer() {
     return (
         <section className={`${styles.flexCenter} ${styles.paddingY} flex-col`}>
             <div className={`${styles.flexStart} md:flex-row flex-col mb-8 w-full`}>
@@ -74,7 +75,8 @@ export default function Footer () {
                         width={266} height={72.14}
                     />
                     <p className={`${styles.paragraph} mt-4 max-w-[312px]`}>
-                        MikArt Europe is designed to be a place where you can find the best Minecraft modifications there is.
+                        MikArt Europe is designed to be a place where you can find the best Minecraft modifications
+                        there is.
                     </p>
                 </div>
 
@@ -86,14 +88,23 @@ export default function Footer () {
                             </h4>
                             <ul className="list-none mt-4">
                                 {_footer.links.map((link, index) => (
-                                    <li
-                                        key={link.name}
-                                        className={`font-poppins font-normal text-[16px] leading-[24px] text-dimWhite hover:text-secondary cursor-pointer ${
-                                            index !== _footer.links.length - 1 ? "mb-4" : "mb-0"
-                                        }`}
+                                    <Link
+                                        key={index}
+                                        href={link.link}
+                                        className={cn(
+                                            "flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm"
+                                        )}
                                     >
-                                        <a href={link.link}>{link.name}</a>
-                                    </li>
+                                        <li
+                                            key={link.name}
+                                            className={`font-poppins font-normal text-[16px] leading-[24px] text-dimWhite hover:text-secondary cursor-pointer ${
+                                                index !== _footer.links.length - 1 ? "mb-4" : "mb-0"
+                                            }`}
+                                        >
+                                            {link.name}
+                                        </li>
+                                    </Link>
+
                                 ))}
                             </ul>
                         </div>
@@ -101,23 +112,25 @@ export default function Footer () {
                 </div>
             </div>
 
-            <div className="w-full flex justify-between items-center md:flex-row flex-col pt-6 border-t-[1px] border-t-[#3F3E45]">
+            <div
+                className="w-full flex justify-between items-center md:flex-row flex-col pt-6 border-t-[1px] border-t-[#3F3E45]">
                 <p className="font-poppins font-normal text-center text-[18px] leading-[27px] text-white">
                     Copyright Ⓒ 2022-2024 MikArt Europe. All Rights Reserved.
                 </p>
 
                 <div className="flex flex-row md:mt-0 mt-6">
                     {social_medias.map((social, index) => (
-                        <Image
-                            key={social.id}
-                            src={social.icon}
-                            alt={social.id}
-                            className={`w-[21px] h-[21px] object-contain cursor-pointer ${
-                                index !== social_medias.length - 1 ? "mr-6" : "mr-0"
-                            }`}
-                            width={21} height={21}
-                            onClick={() => window.open(social.link)}
-                        />
+                        <Link href={social.link} key={social.id}>
+                            <Image
+                                key={social.id}
+                                src={social.icon}
+                                alt={social.id}
+                                className={`w-[21px] h-[21px] object-contain cursor-pointer ${
+                                    index !== social_medias.length - 1 ? "mr-6" : "mr-0"
+                                }`}
+                                width={21} height={21}
+                            />
+                        </Link>
                     ))}
                 </div>
             </div>
