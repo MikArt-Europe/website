@@ -1,7 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['yt3.ggpht.com', "www.mikart.eu", "mikart.eu"],
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: '"www.mikart.eu',
+                pathname: '**',
+            },
+        ],
     },
     reactStrictMode: true,
     experimental: {
