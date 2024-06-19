@@ -3,7 +3,6 @@ import localFont from "next/font/local"
 
 import "@/styles/globals.css"
 import {cn} from "@/lib/utils"
-import {Toaster} from "@/components/taxomony/toaster"
 import {TailwindIndicator} from "@/components/taxomony/tailwind-indicator"
 import {ThemeProvider} from "@/components/taxomony/theme-provider"
 import React from "react";
@@ -48,10 +47,6 @@ export const metadata = {
         },
     ],
     creator: "ariksquad",
-    themeColor: [
-        {media: "(prefers-color-scheme: light)", color: "white"},
-        {media: "(prefers-color-scheme: dark)", color: "black"},
-    ],
     openGraph: {
         type: "website",
         locale: "en_US",
@@ -89,7 +84,7 @@ export default function RootLayout({children}: RootLayoutProps) {
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
             {children}
 
-            <Toaster/>
+            {/*<Toaster/>*/}
             <TailwindIndicator/>
         </ThemeProvider>
         </body>
