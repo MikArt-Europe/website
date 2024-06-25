@@ -48,10 +48,6 @@ export const metadata = {
         },
     ],
     creator: "ariksquad",
-    themeColor: [
-        {media: "(prefers-color-scheme: light)", color: "white"},
-        {media: "(prefers-color-scheme: dark)", color: "black"},
-    ],
     openGraph: {
         type: "website",
         locale: "en_US",

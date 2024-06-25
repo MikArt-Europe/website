@@ -58,26 +58,6 @@ export const Blog = defineDocumentType(() => ({
     computedFields,
 }))
 
-export const Help = defineDocumentType(() => ({
-    name: "Help",
-    filePathPattern: `help/**/*.mdx`,
-    contentType: "mdx",
-    fields: {
-        title: {
-            type: "string",
-            required: true,
-        },
-        description: {
-            type: "string",
-        },
-        published: {
-            type: "boolean",
-            default: true,
-        },
-    },
-    computedFields,
-}))
-
 export const Page = defineDocumentType(() => ({
     name: "Page",
     filePathPattern: `pages/**/*.mdx`,
@@ -120,7 +100,7 @@ export const Author = defineDocumentType(() => ({
 
 export default makeSource({
     contentDirPath: 'src/content',
-    documentTypes: [Blog, Author, Help, Page],
+    documentTypes: [Blog, Author, Page],
     mdx: {
         remarkPlugins: [remarkGfm],
         rehypePlugins: [

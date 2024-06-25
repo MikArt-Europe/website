@@ -1,5 +1,9 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const withNextra = require('nextra')({
+    theme: 'nextra-theme-docs',
+    themeConfig: './theme.config.jsx'
+})
+
+module.exports = withNextra({
     images: {
         remotePatterns: [
             {
@@ -10,9 +14,9 @@ const nextConfig = {
         ],
     },
     reactStrictMode: true,
-    experimental: {
-        serverComponentsExternalPackages: ["@prisma/client"],
-    },
-}
-
-module.exports = nextConfig
+    i18n: {
+        locales: ['en-US', 'fi-FI'],
+        defaultLocale: 'en-US',
+        localeDetection: false,
+    }
+});

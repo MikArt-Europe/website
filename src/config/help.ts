@@ -34,7 +34,7 @@ export const helpConfig: DocsConfig = {
     mainNav: [
         {
             title: "Help Center",
-            href: "/docs",
+            href: "/help-center",
         },
         /*{
             title: "Guides",
