@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@react-three/fiber": "^8.16.2",
     "@tailwindcss/typography": "^0.5.10",
     "@types/node": "18.17.1",
     "@types/react": "^18.2.14",
