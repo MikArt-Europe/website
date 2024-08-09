@@ -7,10 +7,6 @@ export default {
     project: {
         link: 'https://github.com/mikart-europe/website'
     },
-    i18n: [
-        { locale: 'en-US', text: 'English' },
-        { locale: 'fi-FI', text: 'Suomeksi' }
-    ],
     // ... other theme options
     useNextSeoProps() {
         const { asPath } = useRouter()
