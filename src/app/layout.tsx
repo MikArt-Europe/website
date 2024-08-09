@@ -38,8 +38,9 @@ export const metadata = {
     },
     description: "MikArt Europe is designed to be a place for all things we do. We are a group of people who are passionate about technology and design.",
     keywords: [
-        "Next.js",
-        "React",
+        "MikArt",
+        "Software Development",
+        "MikArt Europe"
     ],
     authors: [
         {
