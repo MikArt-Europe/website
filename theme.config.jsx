@@ -7,12 +7,12 @@ export default {
     project: {
         link: 'https://github.com/mikart-europe/website'
     },
-    // ... other theme options
     useNextSeoProps() {
         const { asPath } = useRouter()
         if (asPath !== '/') {
             return {
-                titleTemplate: '%s – Help Center'
+                titleTemplate: '%s – Help Center',
+                description: 'MikArt Europe Help Center',
             }
         }
     },
