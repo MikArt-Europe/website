@@ -4,7 +4,7 @@ import './index.css';
 import Image from "next/image";
 import {MainNav} from "@/components/taxomony/main-nav";
 import {cn} from "@/lib/utils";
-import {buttonVariants} from "@/components/taxomony/button";
+import {buttonVariants} from "@/components/ui/button";
 import Link from "next/link";
 
 const messages = ["love", "code", "hax", "dedication", "passion"];
@@ -13,7 +13,7 @@ function Home() {
     const currentMessage = messages[Math.floor(Math.random() * messages.length)];
 
     return (
-        <div className='bg-background w-full overflow-hidden'>
+        <div className='bg-background w-full overflow-hidden dark'>
             <header className="container z-40 bg-background">
                 <div className="flex h-20 items-center justify-between py-6">
                     <MainNav items={[

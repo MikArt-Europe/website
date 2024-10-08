@@ -3,10 +3,10 @@ import localFont from "next/font/local"
 
 import "@/styles/globals.css"
 import {cn} from "@/lib/utils"
-import {Toaster} from "@/components/taxomony/toaster"
 import {TailwindIndicator} from "@/components/taxomony/tailwind-indicator"
 import {ThemeProvider} from "@/components/taxomony/theme-provider"
 import React from "react";
+import {Toaster} from "@/components/ui/toaster"
 import type {Viewport} from 'next'
 
 const fontSans = FontSans({
@@ -34,7 +34,7 @@ export const viewport: Viewport = {
 export const metadata = {
     title: {
         default: "MikArt Europe",
-        template: `%s | MikArt`,
+        template: `%s | MikArt Europe`,
     },
     description: "MikArt Europe is designed to be a place for all things we do. We are a group of people who are passionate about technology and design.",
     keywords: [
@@ -69,7 +69,7 @@ export const metadata = {
         shortcut: "/favicon-16x16.png",
         apple: "/apple-touch-icon.png",
     },
-    manifest: `https://mikart.eu/site.webmanifest`,
+    manifest: `https://www.mikart.eu/site.webmanifest`,
 }
 
 export default function RootLayout({children}: RootLayoutProps) {

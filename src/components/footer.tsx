@@ -62,7 +62,6 @@ const social_medias = [
     }
 ];
 
-
 export default function Footer() {
     return (
         <section className={`${styles.flexCenter} ${styles.paddingY} flex-col`}>
@@ -74,7 +73,7 @@ export default function Footer() {
                         className="w-[266px] h-[72.14px] object-contain"
                         width={266} height={72.14}
                     />
-                    <p className={`${styles.paragraph} mt-4 max-w-[312px]`}>
+                    <p className={`font-poppins font-normal text-[18px] leading-[30.8px] mt-4 max-w-[312px] dark:text-dimWhite`}>
                         MikArt Europe is designed to be a place where you can find the best Minecraft modifications
                         there is.
                     </p>
@@ -83,7 +82,7 @@ export default function Footer() {
                 <div className="flex-[1.5] w-full flex flex-row justify-between flex-wrap md:mt-0 mt-10">
                     {footer.map((_footer) => (
                         <div key={_footer.title} className={`flex flex-col ss:my-0 my-4 min-w-[150px]`}>
-                            <h4 className="font-poppins font-medium text-[18px] leading-[27px] text-white">
+                            <h4 className="font-poppins font-medium text-[18px] leading-[27px] dark:text-white text-black">
                                 {_footer.title}
                             </h4>
                             <ul className="list-none mt-4">
@@ -97,7 +96,7 @@ export default function Footer() {
                                     >
                                         <li
                                             key={link.name}
-                                            className={`font-poppins font-normal text-[16px] leading-[24px] text-dimWhite hover:text-secondary cursor-pointer ${
+                                            className={`font-poppins font-normal text-[16px] leading-[24px] dark:text-dimWhite text-black hover:text-secondary cursor-pointer ${
                                                 index !== _footer.links.length - 1 ? "mb-4" : "mb-0"
                                             }`}
                                         >
@@ -113,8 +112,8 @@ export default function Footer() {
             </div>
 
             <div
-                className="w-full flex justify-between items-center md:flex-row flex-col pt-6 border-t-[1px] border-t-[#3F3E45]">
-                <p className="font-poppins font-normal text-center text-[18px] leading-[27px] text-white">
+                className="w-full flex justify-between items-center md:flex-row flex-col pt-6 border-t-[1px] dark:border-t-[#3F3E45] border-t-gray-300">
+                <p className="font-poppins font-normal text-center text-[18px] leading-[27px] dark:text-white text-black">
                     Copyright Ⓒ 2022-2024 MikArt Europe. All Rights Reserved.
                 </p>
 

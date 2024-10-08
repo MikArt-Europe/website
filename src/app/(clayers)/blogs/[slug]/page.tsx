@@ -6,19 +6,12 @@ import {Mdx} from "@/components/mdx-components";
 import Link from "next/link";
 import "@/styles/mdx.css"
 import {cn, formatDate} from "@/lib/utils"
-import {buttonVariants} from "@/components/taxomony/button"
+import {buttonVariants} from "@/components/ui/button"
 import {Icons} from "@/components/taxomony/icons"
 import {Metadata} from "next";
 import {Badge} from "@/components/ui/badge"
-import {TracingBeam} from "@/components/ui/tracing-beam"; // from aceternity ui
+import {TracingBeam} from "@/components/ui/tracing-beam";
 
-/*import {HoverCard, HoverCardContent, HoverCardTrigger} from "@/components/ui/hover-card";
-import {
-    Avatar,
-    AvatarFallback,
-    AvatarImage,
-} from "@/components/ui/avatar";
-import {CalendarDays} from "lucide-react"*/
 interface PostPageProps {
     params: {
         slug: string
@@ -145,28 +138,6 @@ export default async function PostPage({params}: PostPageProps) {
                                                     </p>
                                                 </div>
                                             </Link>
-                                        /*</HoverCardTrigger>
-
-
-                                        <HoverCardContent>
-                                            <div className="flex justify-between space-x-4">
-                                                <Avatar>
-                                                    <AvatarImage src={author.avatar} />
-                                                    <AvatarFallback>me</AvatarFallback>
-                                                </Avatar>
-                                                <div className="space-y-1">
-                                                    <h4 className="text-sm font-semibold">@{author.title}</h4>
-                                                    <p className="text-sm">
-                                                        This is a placeholder text...
-                                                    </p>
-                                                    <div className="flex items-center pt-2">
-                                                        <CalendarDays className="mr-2 h-4 w-4 opacity-70"/>{" "}
-                                                        <span className="text-xs text-muted-foreground">Developing since {author.title}</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </HoverCardContent>
-                                    </HoverCard>*/
                                 ) : null
                         )}
                     </div>
@@ -197,69 +168,3 @@ export default async function PostPage({params}: PostPageProps) {
         </article>
     )
 }
-
-/*interface PageProps {
-    params: {
-        slug: string
-    }
-}
-
-async function getDocFromParams(slug: string) {
-    const doc = allDocs.find((doc) => doc.slugAsParams === slug)
-
-    if (!doc) notFound()
-
-    return doc
-}
-
-const page = async ({ params }: PageProps) => {
-    const doc = await getDocFromParams(params.slug)
-
-    return (
-        <div className={'dark bg-gray-800 w-full overflow-hidden transition-all duration-500'}>
-            <nav className='w-full flex py-6 justify-between items-center navbar'>
-                <Link href="/">
-                    <Image src="/assets/logo.png" alt='mikart'
-                           className='ml-5 w-[64px] h-[64px] rounded hover:animate-bounce' width={64} height={64}/>
-                </Link>
-            </nav>
-
-            <div className={`${styles.paddingX} ${styles.flexCenter} text-red-200 transition-colors duration-500`}
-                 style={{marginTop: '20px'}}>
-                <div className={`${styles.boxWidth} mt-10 sm:mt-20`}>
-                    <div className='flex-col sm:flex-row justify-between items-center w-full'>
-                        <div className='flex-col'>
-
-                        </div>
-
-                        <div className='flex-col text-center sm:text-left sm:pl-4'>
-                            <h1 className='text-2xl sm:text-4xl font-bold'>{doc.author}</h1>
-                            <h2 className='text-base sm:text-lg'>Published on {formatDate(doc.date)}</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div
-                className={`bg-gray-800 text-dimWhite page__link_dark ${styles.flexStart} transition-all duration-500`}>
-                <article className={`${styles.boxWidth}`}>
-                    <div className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6`}>
-                        <div className="flex-row justify-between items-center w-full">
-                            <h1 className="mt-2 inline-block font-heading text-4xl leading-tight lg:text-5xl">
-                                {doc.title}
-                            </h1>
-                            <Mdx code={doc.body.code} />
-                        </div>
-                    </div>
-                </article>
-            </div>
-
-            <div
-                className={`bg-gray-800 ${styles.paddingX} ${styles.flexCenter} transition-colors duration-500`}>
-                <div className={`${styles.boxWidth} mt-60`}>
-                    <Footer/>
-                </div>
-            </div>
-        </div>
-    )
-}*/
