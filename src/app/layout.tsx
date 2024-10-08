@@ -4,7 +4,7 @@ import localFont from "next/font/local"
 import "@/styles/globals.css"
 import {cn} from "@/lib/utils"
 import {TailwindIndicator} from "@/components/taxomony/tailwind-indicator"
-import {ThemeProvider} from "@/components/taxomony/theme-provider"
+import {ThemeProvider} from "@/components/theme-provider"
 import React from "react";
 import {Toaster} from "@/components/ui/toaster"
 import type {Viewport} from 'next'

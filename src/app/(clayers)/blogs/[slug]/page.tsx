@@ -7,10 +7,11 @@ import Link from "next/link";
 import "@/styles/mdx.css"
 import {cn, formatDate} from "@/lib/utils"
 import {buttonVariants} from "@/components/ui/button"
-import {Icons} from "@/components/taxomony/icons"
+
 import {Metadata} from "next";
 import {Badge} from "@/components/ui/badge"
 import {TracingBeam} from "@/components/ui/tracing-beam";
+import {ChevronLeft} from "lucide-react";
 
 interface PostPageProps {
     params: {
@@ -89,7 +90,7 @@ export default async function PostPage({params}: PostPageProps) {
                     "absolute left-[-200px] top-14 hidden xl:inline-flex"
                 )}
             >
-                <Icons.chevronLeft className="mr-2 h-4 w-4"/>
+                <ChevronLeft className="mr-2 h-4 w-4"/>
                 See all posts
             </Link>
             <div>
@@ -160,7 +161,7 @@ export default async function PostPage({params}: PostPageProps) {
             <hr className="mt-12"/>
             <div className="flex justify-center py-6 lg:py-10">
                 <Link href="/blogs" className={cn(buttonVariants({variant: "ghost"}))}>
-                    <Icons.chevronLeft className="mr-2 h-4 w-4"/>
+                    <ChevronLeft className="mr-2 h-4 w-4"/>
                     See all posts
                 </Link>
             </div>

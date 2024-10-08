@@ -4,7 +4,7 @@ import Link from "next/link"
 import { MainNavItem } from "src/types"
 import { cn } from "@/lib/utils"
 import {useLockBody} from "@/hooks/use-lock-body";
-import { Icons } from "@/components/taxomony/icons";
+import {Command} from "lucide-react";
 
 interface MobileNavProps {
   items: MainNavItem[]
@@ -22,7 +22,7 @@ export function MobileNav({ items, children }: MobileNavProps) {
     >
       <div className="relative z-20 grid gap-6 rounded-md bg-popover p-4 text-popover-foreground shadow-md">
         <Link href="/" className="flex items-center space-x-2">
-          <Icons.logo />
+          <Command />
           <span className="font-bold">MikArt</span>
         </Link>
         <nav className="grid grid-flow-row auto-rows-max text-sm">

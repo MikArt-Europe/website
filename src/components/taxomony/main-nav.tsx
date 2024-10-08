@@ -3,12 +3,12 @@
 import * as React from "react"
 import Link from "next/link"
 import {useSelectedLayoutSegment} from "next/navigation"
-import {Icons} from "@/components/taxomony/icons";
 
 import {MainNavItem} from "@/types"
 import {cn} from "@/lib/utils"
 import {MobileNav} from "./mobile-nav";
 import Image from "next/image";
+import {Command, X} from "lucide-react";
 
 interface MainNavProps {
     items?: MainNavItem[]
@@ -51,7 +51,7 @@ export function MainNav({items, children}: MainNavProps) {
                 className="flex items-center space-x-2 md:hidden"
                 onClick={() => setShowMobileMenu(!showMobileMenu)}
             >
-                {showMobileMenu ? <Icons.close/> : <Icons.logo/>}
+                {showMobileMenu ? <X/> : <Command/>}
                 <span className="font-bold">Menu</span>
             </button>
             {showMobileMenu && items && (
