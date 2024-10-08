@@ -1,4 +1,5 @@
 import SearchClient from './client'
+import {Suspense} from "react";
 
 export const metadata = {
     title: "Search",
@@ -11,6 +12,8 @@ export const metadata = {
 
 export default function Page() {
     return (
-        <SearchClient />
+        <Suspense>
+            <SearchClient />
+        </Suspense>
     )
 }
