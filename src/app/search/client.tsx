@@ -32,8 +32,22 @@ export default function SearchClient() {
         let flag = '';
         let queryWithoutFlag: string;
 
-        const recognizedFlags = ['!gi', '!b', '!g'];
-        const flagIndex = tokens.findIndex(token => recognizedFlags.includes(token));
+        const flagMap = new Map<string, string>([
+            ['!gi', 'https://www.google.com/search?tbm=isch&q='],
+            ['!b', 'https://www.bing.com/search?q='],
+            ['!g', 'https://www.google.com/search?q='],
+            ['!yt', 'https://www.youtube.com/results?search_query='],
+            ['!gs', 'https://scholar.google.com/scholar?q='],
+            ['!a', 'https://www.amazon.com/s?k='],
+            ['!w', 'https://en.wikipedia.org/w/index.php?search='],
+            ['!gh', 'https://www.github.com/search?q='],
+            ['!npm', 'https://www.npmjs.com/search?q='],
+            ['!mdn', 'https://developer.mozilla.org/en-US/search?q='],
+            ['!so', 'https://stackoverflow.com/search?q='],
+            ['!nf', 'https://www.netflix.com/search?q=']
+        ]);
+
+        const flagIndex = tokens.findIndex(token => flagMap.has(token));
 
         if (flagIndex !== -1) {
             flag = tokens[flagIndex];
@@ -42,23 +56,14 @@ export default function SearchClient() {
 
         queryWithoutFlag = tokens.join(' ');
 
-        switch (flag) {
-            case '!gi':
-                window.location.href = `https://www.google.com/search?tbm=isch&q=${encodeURIComponent(queryWithoutFlag)}`;
-                break;
-            case '!b':
-                window.location.href = `https://www.bing.com/search?q=${encodeURIComponent(queryWithoutFlag)}`;
-                break;
-            case '!g':
-                window.location.href = `https://www.google.com/search?q=${encodeURIComponent(queryWithoutFlag)}`;
-                break;
-            default:
-                if (trimmedQuery.startsWith('http://') || trimmedQuery.startsWith('https://')) {
-                    window.location.href = trimmedQuery;
-                } else {
-                    window.location.href = `https://www.google.com/search?q=${encodeURIComponent(trimmedQuery)}`;
-                }
-                break;
+        if (flag && flagMap.has(flag)) {
+            window.location.href = `${flagMap.get(flag)}${encodeURIComponent(queryWithoutFlag)}`;
+        } else {
+            if (trimmedQuery.startsWith('http://') || trimmedQuery.startsWith('https://')) {
+                window.location.href = trimmedQuery;
+            } else {
+                window.location.href = `https://www.google.com/search?q=${encodeURIComponent(trimmedQuery)}`;
+            }
         }
     }, [query]);
 
