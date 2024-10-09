@@ -115,6 +115,7 @@ export default function SearchClient() {
                     <Input
                         type="text"
                         value={query}
+                        autoFocus={true}
                         onChange={(e) => setQuery(e.target.value)}
                         placeholder="Enter search query or URL"
                         className={`w-full ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}
