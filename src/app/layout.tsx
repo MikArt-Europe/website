@@ -36,7 +36,7 @@ export const metadata = {
         default: "MikArt Europe",
         template: `%s | MikArt Europe`,
     },
-    description: "MikArt Europe is designed to be a place for all things we do. We are a group of people who are passionate about technology and design.",
+    description: "MikArt Europe is designed to be a place to unite our interesting projects. We are a group of people who are passionate about technology and design.",
     keywords: [
         "MikArt",
         "Software Development",
@@ -52,16 +52,16 @@ export const metadata = {
     openGraph: {
         type: "website",
         locale: "en_US",
-        url: "https://mikart.eu",
-        title: "MikArt",
-        description: "MikArt Europe is designed to be a place for all things we do. We are a group of people who are passionate about technology and design.",
+        url: "https://www.mikart.eu",
+        title: "MikArt Europe",
+        description: "MikArt Europe is designed to be a place to unite our interesting projects. We are a group of people who are passionate about technology and design.",
         siteName: "MikArt Europe",
     },
     twitter: {
         card: "summary_large_image",
         title: "MikArt Europe",
-        description: "MikArt Europe is designed to be a place for all things we do. We are a group of people who are passionate about technology and design.",
-        images: [`https://mikart.eu/og.jpg`],
+        description: "MikArt Europe is designed to be a place to unite our interesting projects. We are a group of people who are passionate about technology and design.",
+        images: [`https://www.mikart.eu/og.jpg`],
         creator: "@ArikSquad",
     },
     icons: {

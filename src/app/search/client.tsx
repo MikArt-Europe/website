@@ -1,17 +1,17 @@
 'use client'
 
 import {useState, useEffect, useCallback} from 'react'
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Moon, Sun, HelpCircle } from 'lucide-react'
-import { useTheme } from "next-themes";
+import {Input} from "@/components/ui/input"
+import {Button} from "@/components/ui/button"
+import {Moon, Sun, HelpCircle} from 'lucide-react'
+import {useTheme} from "next-themes";
 import {useSearchParams} from "next/navigation";
 import {toast} from "@/hooks/use-toast";
 
 export default function SearchClient() {
     const [query, setQuery] = useState('')
     const [showHelp, setShowHelp] = useState(false)
-    const { theme, setTheme } = useTheme()
+    const {theme, setTheme} = useTheme()
     const [mounted, setMounted] = useState(false)
     const searchParams = useSearchParams()
 
@@ -19,7 +19,7 @@ export default function SearchClient() {
         if (!searchQuery.trim()) return;
         if (searchQuery.includes('mikart.eu/search?q=')) {
             toast({
-                title: "Achievement unlocked",
+                title: 'Achievement unlocked',
                 description: (
                     <p className="text-white">Loop huh?</p>
                 ),
@@ -90,14 +90,16 @@ export default function SearchClient() {
     if (!mounted) return null
 
     return (
-        <div className={`min-h-screen flex flex-col items-center justify-center ${theme === 'dark' ? 'text-white' : 'bg-gray-100 text-black'}`}>
+        <div
+            className={`min-h-screen flex flex-col items-center justify-center ${theme === 'dark' ? 'text-white' : 'bg-gray-100 text-black'}`}>
             <div className="w-full max-w-md p-4 flex-grow md:mt-72">
                 <div className="flex justify-between mb-4">
                     <Button variant="ghost" size="icon" onClick={toggleDarkMode}>
-                        {theme === 'dark' ? <Sun className="h-[1.2rem] w-[1.2rem]" /> : <Moon className="h-[1.2rem] w-[1.2rem]" />}
+                        {theme === 'dark' ? <Sun className="h-[1.2rem] w-[1.2rem]"/> :
+                            <Moon className="h-[1.2rem] w-[1.2rem]"/>}
                     </Button>
                     <Button variant="ghost" size="icon" onClick={() => setShowHelp(!showHelp)}>
-                        <HelpCircle className="h-[1.2rem] w-[1.2rem]" />
+                        <HelpCircle className="h-[1.2rem] w-[1.2rem]"/>
                     </Button>
                 </div>
                 {showHelp && (
