@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "dev": "next dev",
     "build": "contentlayer build && next build",
     "start": "next start",
@@ -12,6 +13,7 @@
   "dependencies": {
     "@heroicons/react": "^2.0.18",
     "@hookform/resolvers": "^3.9.0",
+    "@radix-ui/react-avatar": "^1.1.1",
     "@radix-ui/react-hover-card": "^1.0.7",
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-slot": "^1.1.0",
