@@ -1,5 +1,9 @@
 import {BackgroundGradientAnimation} from "@/components/ui/bg-gradient-anim";
 
+export const metadata = {
+    title: "ArikSquad @ MikArt Europe"
+}
+
 export default function Page() {
     return (
         <BackgroundGradientAnimation>

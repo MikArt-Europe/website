@@ -26,7 +26,8 @@ async function getPageFromParams(slug: string) {
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const page = await getPageFromParams(params.slug.join("/"))
+  const { slug } = await params;
+  const page = await getPageFromParams(slug.join("/"));
 
   if (!page) {
     return {}
@@ -70,7 +71,8 @@ export async function generateStaticParams(): Promise<PageProps["params"][]> {
 }
 
 export default async function PagePage({ params }: PageProps) {
-  const page = await getPageFromParams(params.slug.join("/"))
+  const { slug } = await params;
+  const page = await getPageFromParams(slug.join("/"));
 
   if (!page) {
     notFound()

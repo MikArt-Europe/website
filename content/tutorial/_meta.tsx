@@ -3,8 +3,5 @@ export default {
         display: "normal",
         type: "doc",
         title: "Towns",
-        theme: {
-            "typesetting": "article"
-        }
     }
 }

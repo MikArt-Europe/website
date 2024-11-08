@@ -9,6 +9,11 @@ import Link from "next/link";
 
 const messages = ["love", "code", "hax", "dedication", "passion"];
 
+export const metadata = {
+    title: "MikArt Europe"
+}
+
+
 function Home() {
     const currentMessage = messages[Math.floor(Math.random() * messages.length)];
 

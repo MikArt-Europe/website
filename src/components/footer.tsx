@@ -29,8 +29,8 @@ const footer = [
         title: "Community",
         links: [
             {
-                name: "Help Center",
-                link: "/help-center/",
+                name: "Docs",
+                link: "/docs/",
             },
             {
                 name: "Blogs",
