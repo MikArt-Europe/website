@@ -1,95 +1,95 @@
-import { notFound } from "next/navigation"
-import { allPages } from "contentlayer/generated"
+import {notFound} from "next/navigation"
+import {allPages} from "contentlayer2/generated"
 
-import { Mdx } from "@/components/mdx-components"
+import {Mdx} from "@/components/mdx-components"
 
 import "@/styles/mdx.css"
-import { Metadata } from "next"
-import { absoluteUrl } from "@/lib/utils"
+import {Metadata} from "next"
+import {absoluteUrl} from "@/lib/utils"
 
 interface PageProps {
-  params: {
-    slug: string[]
-  }
+    params: {
+        slug: string[]
+    }
 }
 
 async function getPageFromParams(slug: string) {
-  const page = allPages.find((page) => page.slugAsParams === slug)
+    const page = allPages.find((page) => page.slugAsParams === slug)
 
-  if (!page) {
-    null
-  }
+    if (!page) {
+        null
+    }
 
-  return page
+    return page
 }
 
 export async function generateMetadata({
-  params,
-}: PageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const page = await getPageFromParams(slug.join("/"));
+                                           params,
+                                       }: PageProps): Promise<Metadata> {
+    const {slug} = await params;
+    const page = await getPageFromParams(slug.join("/"));
 
-  if (!page) {
-    return {}
-  }
+    if (!page) {
+        return {}
+    }
 
-  const ogUrl = new URL(`https://www.mikart.eu/api/og`)
-  ogUrl.searchParams.set("heading", page.title)
-  ogUrl.searchParams.set("type", "MikArt Europe")
-  ogUrl.searchParams.set("mode", "light")
+    const ogUrl = new URL(`https://www.mikart.eu/api/og`)
+    ogUrl.searchParams.set("heading", page.title)
+    ogUrl.searchParams.set("type", "MikArt Europe")
+    ogUrl.searchParams.set("mode", "light")
 
-  return {
-    title: page.title,
-    description: page.description,
-    openGraph: {
-      title: page.title,
-      description: page.description,
-      type: "article",
-      url: absoluteUrl(page.slug),
-      images: [
-        {
-          url: ogUrl.toString(),
-          width: 1200,
-          height: 630,
-          alt: page.title,
+    return {
+        title: page.title,
+        description: page.description,
+        openGraph: {
+            title: page.title,
+            description: page.description,
+            type: "article",
+            url: absoluteUrl(page.slug),
+            images: [
+                {
+                    url: ogUrl.toString(),
+                    width: 1200,
+                    height: 630,
+                    alt: page.title,
+                },
+            ],
         },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: page.title,
-      description: page.description,
-      images: [ogUrl.toString()],
-    },
-  }
+        twitter: {
+            card: "summary_large_image",
+            title: page.title,
+            description: page.description,
+            images: [ogUrl.toString()],
+        },
+    }
 }
 
 export async function generateStaticParams(): Promise<PageProps["params"][]> {
-  return allPages.map((page) => ({
-    slug: page.slugAsParams.split("/"),
-  }))
+    return allPages.map((page) => ({
+        slug: page.slugAsParams.split("/"),
+    }))
 }
 
-export default async function PagePage({ params }: PageProps) {
-  const { slug } = await params;
-  const page = await getPageFromParams(slug.join("/"));
+export default async function PagePage({params}: PageProps) {
+    const {slug} = await params;
+    const page = await getPageFromParams(slug.join("/"));
 
-  if (!page) {
-    notFound()
-  }
+    if (!page) {
+        notFound()
+    }
 
-  return (
-    <article className="container max-w-3xl py-6 lg:py-12">
-      <div className="space-y-4">
-        <h1 className="inline-block font-heading text-4xl lg:text-5xl">
-          {page.title}
-        </h1>
-        {page.description && (
-          <p className="text-xl text-muted-foreground">{page.description}</p>
-        )}
-      </div>
-      <hr className="my-4" />
-      <Mdx code={page.body.code} />
-    </article>
-  )
+    return (
+        <article className="container max-w-3xl py-6 lg:py-12">
+            <div className="space-y-4">
+                <h1 className="inline-block font-heading text-4xl lg:text-5xl">
+                    {page.title}
+                </h1>
+                {page.description && (
+                    <p className="text-xl text-muted-foreground">{page.description}</p>
+                )}
+            </div>
+            <hr className="my-4"/>
+            <Mdx code={page.body.code}/>
+        </article>
+    )
 }

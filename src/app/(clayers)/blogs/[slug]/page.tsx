@@ -1,4 +1,4 @@
-import {allAuthors, allBlogs} from "contentlayer/generated";
+import {allAuthors, allBlogs} from "contentlayer2/generated";
 import {notFound} from "next/navigation";
 import Image from 'next/image';
 import React from "react";
@@ -30,7 +30,8 @@ async function getDocFromParams(slug: string) {
 export async function generateMetadata({
                                            params,
                                        }: PostPageProps): Promise<Metadata> {
-    const post = await getDocFromParams(params.slug)
+    const {slug} = await params;
+    const post = await getDocFromParams(slug)
 
     if (!post) {
         return {}
@@ -71,7 +72,8 @@ export async function generateMetadata({
 }
 
 export default async function PostPage({params}: PostPageProps) {
-    const post = await getDocFromParams(params.slug)
+    const {slug} = await params;
+    const post = await getDocFromParams(slug)
 
     if (!post) {
         notFound()
@@ -117,29 +119,29 @@ export default async function PostPage({params}: PostPageProps) {
                 {authors?.length ? (
                     <div className="mt-4 flex space-x-4">
                         {authors.map((author) =>
-                                author ? (
-                                    /*<HoverCard>
-                                        <HoverCardTrigger>*/
-                                            <Link
-                                                key={author._id}
-                                                href={`https://twitter.com/${author.twitter}`}
-                                                className="flex items-center space-x-2 text-sm"
-                                            >
-                                                <Image
-                                                    src={author.avatar}
-                                                    alt={author.title}
-                                                    width={42}
-                                                    height={42}
-                                                    className="rounded-full bg-white"
-                                                />
-                                                <div className="flex-1 text-left leading-tight">
-                                                    <p className="font-medium">{author.title}</p>
-                                                    <p className="text-[12px] text-muted-foreground">
-                                                        @{author.twitter}
-                                                    </p>
-                                                </div>
-                                            </Link>
-                                ) : null
+                            author ? (
+                                /*<HoverCard>
+                                    <HoverCardTrigger>*/
+                                <Link
+                                    key={author._id}
+                                    href={`https://twitter.com/${author.twitter}`}
+                                    className="flex items-center space-x-2 text-sm"
+                                >
+                                    <Image
+                                        src={author.avatar}
+                                        alt={author.title}
+                                        width={42}
+                                        height={42}
+                                        className="rounded-full bg-white"
+                                    />
+                                    <div className="flex-1 text-left leading-tight">
+                                        <p className="font-medium">{author.title}</p>
+                                        <p className="text-[12px] text-muted-foreground">
+                                            @{author.twitter}
+                                        </p>
+                                    </div>
+                                </Link>
+                            ) : null
                         )}
                     </div>
                 ) : null}
