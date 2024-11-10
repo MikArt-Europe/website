@@ -6,6 +6,7 @@ const withNextra = nextra({
         codeblocks: false
     },
     contentDirBasePath: '/docs',
+    readingTime: true
 })
 
 export default withNextra({
@@ -19,4 +20,11 @@ export default withNextra({
         ],
     },
     reactStrictMode: true,
+    redirects: async () => [
+        {
+            source: '/help-center/:slug*',
+            destination: '/docs/:slug*',
+            permanent: true,
+        },
+    ],
 });

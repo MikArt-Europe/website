@@ -1,4 +1,9 @@
 export default {
-    "index": "Getting Started",
-    "wars": "Wars"
+    index: {
+        title: "Getting Started"
+    },
+    management: {
+        title: "Managing your town"
+    },
+    wars: "Wars"
 }
