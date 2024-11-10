@@ -1,10 +1,10 @@
-import { defineDocumentType, makeSource } from 'contentlayer/source-files'
+import { defineDocumentType, makeSource } from 'contentlayer2/source-files'
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 
-/** @type {import('contentlayer/source-files').ComputedFields} */
+/** @type {import('contentlayer2/source-files').ComputedFields} */
 const computedFields = {
     slug: {
         type: 'string',
@@ -58,22 +58,6 @@ export const Blog = defineDocumentType(() => ({
     computedFields,
 }))
 
-export const Page = defineDocumentType(() => ({
-    name: "Page",
-    filePathPattern: `pages/**/*.mdx`,
-    contentType: "mdx",
-    fields: {
-        title: {
-            type: "string",
-            required: true,
-        },
-        description: {
-            type: "string",
-        },
-    },
-    computedFields,
-}))
-
 export const Author = defineDocumentType(() => ({
     name: "Author",
     filePathPattern: `authors/**/*.mdx`,
@@ -100,7 +84,7 @@ export const Author = defineDocumentType(() => ({
 
 export default makeSource({
     contentDirPath: 'src/content',
-    documentTypes: [Blog, Author, Page],
+    documentTypes: [Blog, Author],
     mdx: {
         remarkPlugins: [remarkGfm],
         rehypePlugins: [

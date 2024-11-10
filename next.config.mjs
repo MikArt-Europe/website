@@ -1,8 +1,12 @@
 import nextra from 'nextra'
 
 const withNextra = nextra({
-    theme: 'nextra-theme-docs',
-    themeConfig: './theme.config.jsx'
+    latex: true,
+    search: {
+        codeblocks: false
+    },
+    contentDirBasePath: '/docs',
+    readingTime: true
 })
 
 export default withNextra({
@@ -16,4 +20,14 @@ export default withNextra({
         ],
     },
     reactStrictMode: true,
+    redirects: async () => [
+        {
+            source: '/help-center/:slug*',
+            destination: '/docs/:slug*',
+            permanent: true,
+        },
+        {source: '/flow/discord', destination: 'https://discord.gg/VUAHvffhTz', permanent: true},
+        {source: '/flow/earth', destination: 'https://earth.mikart.eu/', permanent: true},
+        {source: '/flow/store', destination: 'https://store.mikart.eu/', permanent: true},
+    ],
 });
