@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { allBlogs } from "contentlayer2/generated";
+import { allBlogs } from "contentlayer/generated";
 import { compareDesc } from "date-fns";
 
 import { formatDate } from "@/lib/utils"

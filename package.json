@@ -7,16 +7,16 @@
     "dev": "next --turbo",
     "build": "contentlayer2 build && next build",
     "start": "next start",
-    "postbuild": "pagefind --site .next/server/app --output-path public/_pagefind",
     "lint": "next lint"
   },
   "homepage": "https://www.mikart.eu",
   "dependencies": {
     "@heroicons/react": "^2.1.5",
-    "@hookform/resolvers": "^3.9.0",
+    "@hookform/resolvers": "^3.9.1",
     "@radix-ui/react-avatar": "^1.1.1",
     "@radix-ui/react-hover-card": "^1.1.2",
     "@radix-ui/react-label": "^2.1.0",
+    "@radix-ui/react-separator": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-toast": "^1.2.2",
     "@tailwindcss/typography": "^0.5.15",
@@ -27,19 +27,19 @@
     "contentlayer2": "^0.5.3",
     "date-fns": "^3.6.0",
     "eslint": "8.57.0",
-    "eslint-config-next": "^14.2.15",
-    "framer-motion": "^11.11.10",
+    "eslint-config-next": "^14.2.17",
+    "framer-motion": "^11.11.11",
     "lucide-react": "^0.453.0",
     "mdast-util-toc": "^7.1.0",
     "mini-svg-data-uri": "^1.4.4",
-    "next": "^15.0.3",
+    "next": "^15.0.2",
     "next-contentlayer2": "^0.5.3",
     "next-themes": "^0.3.0",
     "nextra": "4.0.0-app-router.24",
     "nextra-theme-docs": "4.0.0-app-router.24",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-hook-form": "^7.53.1",
+    "react-hook-form": "^7.53.2",
     "react-markdown": "^9.0.1",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-pretty-code": "^0.14.0",
@@ -52,10 +52,11 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@types/node": "^22.7.5",
+    "@types/node": "^22.9.0",
     "@types/three": "^0.163.0",
-    "autoprefixer": "^10.4.14",
-    "postcss": "^8.4.31",
-    "tailwindcss": "^3.4.13"
+    "autoprefixer": "^10.4.20",
+    "pagefind": "^1.2.0",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14"
   }
 }

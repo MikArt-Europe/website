@@ -1,10 +1,11 @@
-import { useMDXComponent } from "next-contentlayer2/hooks";
+"use client"
 import Image from "next/image";
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
 import { Callout } from "@/components/callout"
 import { MdxCard } from "@/components/mdx-card"
+import {getMDXComponent} from "next-contentlayer2/hooks";
 
 const components = {
     h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
@@ -157,7 +158,7 @@ interface MdxProps {
 }
 
 export function Mdx({ code }: MdxProps) {
-    const Component = useMDXComponent(code)
+    const Component = getMDXComponent(code)
 
     return (
         <div className="mdx">

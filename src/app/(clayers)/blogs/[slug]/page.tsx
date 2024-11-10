@@ -1,4 +1,4 @@
-import {allAuthors, allBlogs} from "contentlayer2/generated";
+import {allAuthors, allBlogs} from "contentlayer/generated";
 import {notFound} from "next/navigation";
 import Image from 'next/image';
 import React from "react";
@@ -7,31 +7,13 @@ import Link from "next/link";
 import "@/styles/mdx.css"
 import {cn, formatDate} from "@/lib/utils"
 import {buttonVariants} from "@/components/ui/button"
-
-import {Metadata} from "next";
 import {Badge} from "@/components/ui/badge"
 import {TracingBeam} from "@/components/ui/tracing-beam";
 import {ChevronLeft} from "lucide-react";
 
-interface PostPageProps {
-    params: {
-        slug: string
-    }
-}
-
-async function getDocFromParams(slug: string) {
-    const doc = allBlogs.find((doc) => doc.slugAsParams === slug);
-
-    if (!doc) notFound()
-
-    return doc
-}
-
-export async function generateMetadata({
-                                           params,
-                                       }: PostPageProps): Promise<Metadata> {
-    const {slug} = await params;
-    const post = await getDocFromParams(slug)
+export const generateMetadata = async ({params}: { params: Promise<{ slug: string }> }) => {
+    const paramsStore = await params;
+    const post = allBlogs.find((post) => post.slugAsParams === paramsStore.slug);
 
     if (!post) {
         return {}
@@ -71,12 +53,12 @@ export async function generateMetadata({
     }
 }
 
-export default async function PostPage({params}: PostPageProps) {
-    const {slug} = await params;
-    const post = await getDocFromParams(slug)
+export default async function PostPage({params}: { params: Promise<{ slug: string }> }) {
+    const blogSlug = (await params).slug;
+    const post = allBlogs.find((post) => post.slugAsParams === blogSlug);
 
     if (!post) {
-        notFound()
+        notFound();
     }
 
     const authors = post.authors.map((author) =>
@@ -120,8 +102,6 @@ export default async function PostPage({params}: PostPageProps) {
                     <div className="mt-4 flex space-x-4">
                         {authors.map((author) =>
                             author ? (
-                                /*<HoverCard>
-                                    <HoverCardTrigger>*/
                                 <Link
                                     key={author._id}
                                     href={`https://twitter.com/${author.twitter}`}
@@ -167,7 +147,6 @@ export default async function PostPage({params}: PostPageProps) {
                     See all posts
                 </Link>
             </div>
-
         </article>
     )
 }
