@@ -1,6 +1,6 @@
 'use client'
 
-import React, {useState, useEffect, useRef, useCallback, ChangeEvent} from 'react';
+import React, {useState, useEffect, useRef, useCallback} from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { motion } from 'framer-motion';
@@ -13,11 +13,6 @@ interface SnakeSegment {
 interface Direction {
     x: number;
     y: number;
-}
-
-interface GameSettingsProps {
-    onSpeedChange: (newSpeed: number) => void;
-    onReset: () => void;
 }
 
 const SnakeGame: React.FC<{ speed: number, setSpeed: (speed: number) => void }> = ({ speed, setSpeed }) => {
