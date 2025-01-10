@@ -26,7 +26,7 @@ export default withNextra({
             destination: '/docs/:slug*',
             permanent: true,
         },
-        {source: '/flow/discord', destination: 'https://discord.gg/VUAHvffhTz', permanent: true},
+        {source: '/flow/discord', destination: 'https://discord.gg/SuXGbq24wA', permanent: true},
         {source: '/flow/earth', destination: 'https://earth.mikart.eu/', permanent: true},
         {source: '/flow/store', destination: 'https://store.mikart.eu/', permanent: true},
     ],
