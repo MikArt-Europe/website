@@ -1,5 +1,5 @@
 export default {
-    "docs": {
+    docs: {
         display: "children"
     },
     "*": {

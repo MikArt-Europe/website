@@ -1,13 +1,14 @@
 import {getPageMap} from 'nextra/page-map'
-import {Layout, Navbar} from "nextra-theme-docs";
+import {Layout, Navbar} from "nextra-theme-docs"
+import Footer from "@/components/footer"
+import styles from "@/style"
+import React from "react"
+import Image from "next/image"
 import 'nextra-theme-docs/style.css'
-import Footer from "@/components/footer";
-import styles from "@/style";
-import React from "react";
-import Image from "next/image";
 
 
 export default async function RootLayout({children}: any) {
+    const pageMap = await getPageMap();
     return (
         <Layout
             editLink="Edit this page on GitHub"
@@ -26,7 +27,7 @@ export default async function RootLayout({children}: any) {
                     <Footer/>
                 </div>
             </div>}
-            pageMap={await getPageMap()}
+            pageMap={pageMap}
         >
             {children}
         </Layout>
