@@ -1,0 +1,19 @@
+# Security Modes
+> Information on how all the security modes work.
+
+These are all the security modes, as in the type of login staff needs to use to access the permissions. This is not the same as the Security Engine.
+
+## Pin
+> [!WARNING]
+>
+> Pin codes aren't as safe as other methods if the database file is exposed, and the pin can be read in plaintext. But if someone has access to the machine, they have full access anyway. All methods in GroupSecurity are ridiculously safe anyway in player standpoint.
+
+A pin consists of 4 digits. It can only be 4 digits, not more or less.  This mode offers really easy and fast logins.
+
+## Password
+A password can be any length wanted, any characters used. It will be securely hashed in the database. This might take a bit longer for people to login.
+
+## 2-Factor Authentication
+The safest mode of securing groups and permissions is 2-factor authentication. To use this mode you need to follow these instructions:
+
+1. Run the command `/gsadd <player>`
