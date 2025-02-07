@@ -4,6 +4,5 @@ export default {
     },
     management: {
         title: "Managing your town"
-    },
-    wars: "Wars"
+    }
 }
