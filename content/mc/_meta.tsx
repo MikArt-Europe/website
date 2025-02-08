@@ -1,6 +1,6 @@
 export default {
     index: '',
-    separator: {
+    networkSeparator: {
         type: "separator",
         title: "Minecraft Network"
     },
@@ -8,7 +8,7 @@ export default {
         title: "Minecraft",
         display: "children"
     },
-    separator1: {
+    tutorialSeparator: {
         type: "separator",
         title: "Tutorial"
     },

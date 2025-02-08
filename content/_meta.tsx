@@ -4,7 +4,7 @@ export default {
         type: "page"
     },
     mc: {
-        title: "mc",
+        title: "Minecraft",
         type: "page"
     },
     gs: {
