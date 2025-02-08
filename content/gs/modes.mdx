@@ -6,14 +6,19 @@ These are all the security modes, as in the type of login staff needs to use to 
 ## Pin
 > [!WARNING]
 >
-> Pin codes aren't as safe as other methods if the database file is exposed, and the pin can be read in plaintext. But if someone has access to the machine, they have full access anyway. All methods in GroupSecurity are ridiculously safe anyway in player standpoint.
+> Pin codes aren't as safe as other methods if the database file is exposed, and the pin can be read in plaintext. But if someone has access to the machine, they have full access anyway.
+All GroupSecurity methods provide adequate protection from a player's perspective.
 
-A pin consists of 4 digits. It can only be 4 digits, not more or less. This mode offers quick and simple logins.
+A pin is a 4-digit code that staff needs to enter before accessing their permissions. This is generally the fastest way to log in.
 
-## Password
-A password can be any length wanted, any characters used. It will be securely hashed in the database. This might take a bit longer for people to log in.
+## Password (Recommended)
+A password can be of any length and include any characters, which is then securely hashed and salted in the database.
 
-## 2-Factor Authentication
-The safest mode of securing groups and permissions is 2-factor authentication. To use this mode you need to follow these instructions:
+## 2-Factor Authentication (Recommended)
+If you're interested in for example streaming your server, and having to log in, this is most likely the most useful mode.
+The 2-factor authentication codes rotate every 30 seconds and work with every authenticator app that supports TOTP.
+This mode requires slightly different commands to set up for a user, here's an example:
 
 1. Run the command `/gsadd <player>`
+2. The player will receive a message with a manual code and a map to scan, they need to scan the map with their authenticator app.
+3. The player will receive a code, which they need to run `/2fa <code>` to finish the setup.
