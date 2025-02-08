@@ -39,7 +39,7 @@ export default function SearchClient() {
             ['!yt', 'https://www.youtube.com/results?search_query='],
             ['!gs', 'https://scholar.google.com/scholar?q='],
             ['!a', 'https://www.amazon.com/s?k='],
-            ['w!', 'https://en.wikipedia.org/w/index.php?search='],
+            ['!w', 'https://en.wikipedia.org/w/index.php?search='],
             ['!gh', 'https://www.github.com/search?q='],
             ['!npm', 'https://www.npmjs.com/search?q='],
             ['!mdn', 'https://developer.mozilla.org/en-US/search?q='],
