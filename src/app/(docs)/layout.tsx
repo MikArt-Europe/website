@@ -11,7 +11,7 @@ export default async function RootLayout({children}: any) {
     const pageMap = await getPageMap();
     return (
         <>
-            <Head faviconGlyph="✦" backgroundColor={{dark: "#03060D"}}/>
+            <Head faviconGlyph="✦" backgroundColor={{dark: "rgb(4, 7, 17)"}}/>
             <Layout
                 editLink="Edit this page on GitHub"
                 docsRepositoryBase="https://github.com/mikart-europe/website/tree/master"

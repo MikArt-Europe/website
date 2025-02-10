@@ -27,8 +27,8 @@ function Home() {
                             href: "/#",
                         },
                         {
-                            title: "Temp",
-                            href: "/#",
+                            title: "Docs",
+                            href: "/docs",
                         },
                         {
                             title: "Blogs",
@@ -37,7 +37,7 @@ function Home() {
                     ]}/>
                     <nav>
                         <Link
-                            href="/"
+                            href="/resources"
                             className={cn(
                                 buttonVariants({variant: "secondary", size: "sm"}),
                                 "px-4"
