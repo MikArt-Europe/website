@@ -6,6 +6,7 @@ export default {
     chooser: {
         title: 'Choose project',
         type: 'menu',
+        display: 'normal',
         items: {
             mc: {
                 title: 'Minecraft',
@@ -18,7 +19,7 @@ export default {
         }
     },
     '*': {
-        title: ' ',
-        type: 'page'
+        type: 'page',
+        display: 'hidden',
     },
 }
