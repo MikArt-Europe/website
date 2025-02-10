@@ -92,7 +92,7 @@ export default function SearchClient() {
     return (
         <div
             className={`min-h-screen flex flex-col items-center justify-center ${theme === 'dark' ? 'text-white' : 'bg-gray-100 text-black'}`}>
-            <div className="w-full max-w-md p-4 flex-grow md:mt-72">
+            <div className="w-full max-w-md p-4 grow md:mt-72">
                 <div className="flex justify-between mb-4">
                     <Button variant="ghost" size="icon" onClick={toggleDarkMode}>
                         {theme === 'dark' ? <Sun className="h-[1.2rem] w-[1.2rem]"/> :

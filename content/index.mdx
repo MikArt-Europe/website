@@ -1,12 +1,18 @@
----
-title: Introduction
-description: Welcome to the help center!
----
+import { Cards } from 'nextra/components'
+import {Moon, Sun} from 'lucide-react'
 
-# Help Center
+# MikArt Europe Documentation
+Welcome to the documentation, please choose a project which docs' you want to view.
 
-Welcome to the Help Center. This was mostly made just for the Minecraft Server rules, but in the future it will be used for more.
-
-## Rules
-
-Visit "Server Rules" in the left sidebar to view the rules of the MikArt Europe Network.
+<Cards>
+    <Cards.Card
+        icon={<Moon />}
+        title="Minecraft Server"
+        href="/docs/minecraft"
+    />
+    <Cards.Card
+        icon={<Sun />}
+        title="GroupSecurity"
+        href="/docs/gs"
+    />
+</Cards>
