@@ -3,7 +3,7 @@ export default {
         title: "index",
         type: "page"
     },
-    mc: {
+    minecraft: {
         title: "Minecraft",
         type: "page"
     },

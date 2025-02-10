@@ -10,7 +10,7 @@ export default {
         items: {
             mc: {
                 title: 'Minecraft',
-                href: '/docs/mc'
+                href: '/docs/minecraft'
             },
             gs: {
                 title: 'GroupSecurity',
