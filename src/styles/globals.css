@@ -30,8 +30,6 @@
   --color-card: hsl(var(--card));
   --color-card-foreground: hsl(var(--card-foreground));
 
-  --color-mprimary: #00040f;
-  --color-msecondary: #00f6ff;
   --color-dim-white: rgba(255, 255, 255, 0.7);
   --color-dim-blue: rgba(9, 151, 124, 0.1);
 
