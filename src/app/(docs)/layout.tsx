@@ -1,18 +1,17 @@
 import {getPageMap} from 'nextra/page-map'
 import {Layout, Navbar} from "nextra-theme-docs"
-import { Head } from 'nextra/components'
+import {Head} from 'nextra/components'
 import Footer from "@/components/footer"
 import styles from "@/style"
 import React from "react"
 import Image from "next/image"
 import 'nextra-theme-docs/style.css'
 
-
 export default async function RootLayout({children}: any) {
     const pageMap = await getPageMap();
     return (
         <>
-            <Head faviconGlyph="✦" />
+            <Head faviconGlyph="✦" backgroundColor={{dark: "#03060D"}}/>
             <Layout
                 editLink="Edit this page on GitHub"
                 docsRepositoryBase="https://github.com/mikart-europe/website/tree/master"
