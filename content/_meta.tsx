@@ -10,5 +10,9 @@ export default {
     gs: {
         title: "GroupSecurity",
         type: "page"
-    }
+    },
+    animvanish: {
+    	title: "AnimVanish",
+    	type: "page",
+    },
 }
