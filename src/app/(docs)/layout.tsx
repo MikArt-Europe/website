@@ -6,12 +6,14 @@ import styles from "@/style"
 import React from "react"
 import Image from "next/image"
 import 'nextra-theme-docs/style.css'
+import '@/styles/globals.css'
 
 export default async function RootLayout({children}: any) {
     const pageMap = await getPageMap();
     return (
-        <>
+        <html lang="en" suppressHydrationWarning>
             <Head faviconGlyph="✦" backgroundColor={{dark: "rgb(4, 7, 17)"}}/>
+            <body>
             <Layout
                 editLink="Edit this page on GitHub"
                 docsRepositoryBase="https://github.com/mikart-europe/website/tree/master"
@@ -33,6 +35,7 @@ export default async function RootLayout({children}: any) {
             >
                 {children}
             </Layout>
-        </>
+            </body>
+        </html>
     );
 }
