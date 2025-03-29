@@ -6,7 +6,7 @@ import {Button} from "@/components/ui/button"
 import {Moon, Sun, HelpCircle} from 'lucide-react'
 import {useTheme} from "next-themes";
 import {useSearchParams} from "next/navigation";
-import {toast} from "@/hooks/use-toast";
+import {toast} from "@/components/hooks/use-toast";
 
 export default function SearchClient() {
     const [query, setQuery] = useState('')

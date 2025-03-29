@@ -3,7 +3,7 @@ import Link from "next/link"
 
 import { MainNavItem } from "src/types"
 import { cn } from "@/lib/utils"
-import {useLockBody} from "@/hooks/use-lock-body";
+import {useLockBody} from "@/components/hooks/use-lock-body";
 import {Command} from "lucide-react";
 
 interface MobileNavProps {
