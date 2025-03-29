@@ -1,8 +1,25 @@
 export default {
-    "docs": {
-        display: "children"
+    docs: {
+        type: 'doc',
+        display: 'children'
     },
-    "*": {
-        display: "hidden"
-    }
+    chooser: {
+        title: 'Choose project',
+        type: 'menu',
+        display: 'normal',
+        items: {
+            mc: {
+                title: 'Minecraft',
+                href: '/docs/minecraft'
+            },
+            gs: {
+                title: 'GroupSecurity',
+                href: '/docs/gs'
+            }
+        }
+    },
+    '*': {
+        type: 'page',
+        display: 'hidden',
+    },
 }

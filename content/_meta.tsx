@@ -1,19 +1,18 @@
 export default {
-    index: '',
-    separator: {
-        type: "separator",
-        title: "Minecraft Network"
+    index: {
+        title: "index",
+        type: "page"
     },
     minecraft: {
         title: "Minecraft",
-        display: "children"
+        type: "page"
     },
-    separator1: {
-        type: "separator",
-        title: "Tutorial"
+    gs: {
+        title: "GroupSecurity",
+        type: "page"
     },
-    tutorial: {
-        title: "Tutorial",
-        display: "children"
-    }
+    animvanish: {
+    	title: "AnimVanish",
+    	type: "page",
+    },
 }

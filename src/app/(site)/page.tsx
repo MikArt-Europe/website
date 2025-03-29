@@ -27,8 +27,8 @@ function Home() {
                             href: "/#",
                         },
                         {
-                            title: "Temp",
-                            href: "/#",
+                            title: "Docs",
+                            href: "/docs",
                         },
                         {
                             title: "Blogs",
@@ -37,7 +37,7 @@ function Home() {
                     ]}/>
                     <nav>
                         <Link
-                            href="/"
+                            href="/resources"
                             className={cn(
                                 buttonVariants({variant: "secondary", size: "sm"}),
                                 "px-4"
@@ -88,7 +88,7 @@ function Home() {
 
                             <Link href="/blogs">
                                 <button type="button"
-                                        className={`py-4 px-6 font-poppins font-medium text-[18px] text-mprimary bg-purple-gradient rounded-[10px] outline-none mt-10`}>
+                                        className={`py-4 px-6 font-poppins font-medium text-[18px] text-secondary bg-purple-gradient rounded-[10px] outline-hidden mt-10`}>
                                     Blogs
                                 </button>
                             </Link>
@@ -113,7 +113,7 @@ function Home() {
                             </p>
                             <Link href="https://www.spigotmc.org/resources/animvanish-1-19-animated-vanishing.102183/">
                                 <button type="button"
-                                        className={`py-4 px-6 font-poppins font-medium text-[18px] text-mprimary bg-blue-gradient rounded-[10px] outline-none mt-10`}>
+                                        className={`py-4 px-6 font-poppins font-medium text-[18px] text-secondary bg-blue-gradient rounded-[10px] outline-hidden mt-10`}>
                                     Try it out!
                                 </button>
                             </Link>
