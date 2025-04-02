@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { createClient } from '@/lib/supabase/client'
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import {Platform, Version, Resource, ResourcePlatforms} from '@/types'
 
 export function ResourceBrowser({ resources }: { resources: Resource[] }) {
