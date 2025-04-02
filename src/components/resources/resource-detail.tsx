@@ -279,9 +279,9 @@ export default function ResourceDetail({ resource }: ResourceDetailProps) {
                 </div>
 
                 {/* Sidebar - 1/3 width on desktop */}
-                <div className="space-y-6">
+                <div className="space-y-6 sticky top-6 self-start max-h-screen overflow-y-auto pb-6">
                     {/* Download card */}
-                    <Card className="border-primary/20 bg-gradient-to-b from-primary/5 to-transparent sticky top-6">
+                    <Card className="border-primary/20 bg-gradient-to-b from-primary/5 to-transparent">
                         <CardHeader>
                             <CardTitle className="text-xl">Download</CardTitle>
                             <CardDescription>Select a version to download</CardDescription>
