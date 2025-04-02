@@ -1,7 +1,7 @@
 import * as React from "react"
 import Link from "next/link"
 
-import { MainNavItem } from "src/types"
+import { MainNavItem } from "@/types"
 import { cn } from "@/lib/utils"
 import {useLockBody} from "@/components/hooks/use-lock-body";
 import {Command} from "lucide-react";

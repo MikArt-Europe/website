@@ -1,20 +1,37 @@
-import React from 'react';
-import styles from "@/style";
-import Footer from "@/components/footer";
+import {createClient} from '@/lib/supabase/server'
+import {ResourceBrowser} from '@/components/resources/resource-browser'
+import {Metadata} from 'next'
+import {Resource, Version} from '@/types'
 
-export default function Page() {
-    return (
-        <div className='bg-background w-full overflow-hidden'>
-            <section className="flex flex-col items-center justify-center flex-grow py-50">
-                <p className="text-5xl text-center text-primary">
-                    Check back later for exciting resources!
-                </p>
-            </section>
-            <div className={`${styles.paddingX} ${styles.flexCenter}`}>
-                <div className={`${styles.boxWidth}`}>
-                    <Footer/>
-                </div>
-            </div>
-        </div>
-    );
+export const metadata: Metadata = {
+    title: 'Minecraft Plugins - Resource Browser',
+    description: 'Browse and download Minecraft plugins',
+}
+
+export default async function ResourceBrowserPage() {
+    const supabase = await createClient()
+
+    const {data: resources} = await supabase
+        .from('resources')
+        .select(`
+      *,
+      versions(id, version_number, downloads)
+    `)
+        .order('updated_at', {ascending: false})
+
+    const enhancedResources = resources?.map((resource) => {
+        const latestVersion = resource.versions.sort((a: Version, b: Version) => {
+            return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+        })[0];
+
+        const totalDownloads = resource.versions.reduce((sum: number, version: Version ) => sum + version.downloads, 0);
+
+        return {
+            ...resource,
+            latestVersion: latestVersion?.version_number || 'N/A',
+            totalDownloads
+        };
+    }) || [];
+
+    return <ResourceBrowser resources={enhancedResources as Resource[]}/>
 }

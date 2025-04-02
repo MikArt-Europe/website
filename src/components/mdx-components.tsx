@@ -7,7 +7,7 @@ import { Callout } from "@/components/callout"
 import { MdxCard } from "@/components/mdx-card"
 import {getMDXComponent} from "next-contentlayer2/hooks";
 
-const components = {
+export const components = {
     h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
         <h1
             className={cn(
