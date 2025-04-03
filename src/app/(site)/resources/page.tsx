@@ -15,10 +15,9 @@ export default async function ResourceBrowserPage() {
         .from('resources')
         .select(`
       *,
-      versions(id, version_number, downloads)
+      versions(id, version_number, downloads, created_at)
     `)
         .order('updated_at', {ascending: false})
-
     const enhancedResources = resources?.map((resource) => {
         const latestVersion = resource.versions.sort((a: Version, b: Version) => {
             return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
