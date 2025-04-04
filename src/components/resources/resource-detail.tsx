@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import {useState, useEffect, useMemo} from 'react'
 import { useToast } from '@/components/hooks/use-toast'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
@@ -32,13 +32,15 @@ export default function ResourceDetail({ resource }: ResourceDetailProps) {
     const { toast } = useToast()
     const supabase = createClient()
 
-    // Sort versions by creation date (newest first)
-    const sortedVersions = [...resource.versions].sort((a: Version, b: Version) =>
-        new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
-    )
+    // Memoize sorted versions and total downloads
+    const sortedVersions = useMemo(() =>
+        [...resource.versions].sort((a, b) =>
+            new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+        ), [resource.versions]);
 
-    // Calculate total downloads
-    const totalDownloads = resource.versions.reduce((sum: number, version: Version) => sum + version.downloads, 0)
+    const totalDownloads = useMemo(() =>
+            resource.versions.reduce((sum, version) => sum + version.downloads, 0),
+        [resource.versions]);
 
     useEffect(() => {
         // Set initially selected version to the newest one
@@ -70,7 +72,7 @@ export default function ResourceDetail({ resource }: ResourceDetailProps) {
         }
 
         fetchPlatforms()
-    }, [resource.versions, supabase, sortedVersions, selectedVersion])
+    }, [resource.versions, supabase, sortedVersions])
 
     const handleDownload = async () => {
         if (!selectedVersion) {
@@ -92,8 +94,15 @@ export default function ResourceDetail({ resource }: ResourceDetailProps) {
                 .update({ downloads: version!.downloads + 1 })
                 .eq('id', selectedVersion)
 
-            // Redirect to file URL
-            window.location.href = version!.file_url
+            if (version?.file_url) {
+                   window.location.href = version.file_url
+            } else {
+                   toast({
+                         title: "Download failed",
+                         description: "Invalid file URL",
+                         variant: "destructive",
+                       })
+                }
 
             toast({
                 title: "Download started",
