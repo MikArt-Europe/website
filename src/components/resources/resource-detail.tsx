@@ -98,21 +98,17 @@ export default function ResourceDetail({ resource }: ResourceDetailProps) {
             setIsLoading(false)
             return
         }
-        await supabase
-            .from('versions')
-            .update({ downloads: version.downloads + 1 })
-    }
+
         setIsLoading(true)
-        const version = resource.versions.find((v: Version) => v.id === selectedVersion)
 
         try {
             // Increment download count
             await supabase
                 .from('versions')
-                .update({ downloads: version!.downloads + 1 })
+                .update({ downloads: version.downloads + 1 })
                 .eq('id', selectedVersion)
 
-            if (version?.file_url) {
+            if (version.file_url) {
                 window.location.href = version.file_url
             } else {
                 toast({
@@ -124,7 +120,7 @@ export default function ResourceDetail({ resource }: ResourceDetailProps) {
 
             toast({
                 title: 'Download started',
-                description: `Downloading ${resource.title} v${version!.version_number}`
+                description: `Downloading ${resource.title} v${version.version_number}`
             })
         } catch (error) {
             toast({
