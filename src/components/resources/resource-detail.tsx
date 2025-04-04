@@ -88,6 +88,20 @@ export default function ResourceDetail({ resource }: ResourceDetailProps) {
             return
         }
 
+        const version = resource.versions.find((v) => v.id === selectedVersion)
+        if (!version) {
+            toast({
+                title: 'Invalid version',
+                description: 'No matching version found for download.',
+                variant: 'destructive'
+            })
+            setIsLoading(false)
+            return
+        }
+        await supabase
+            .from('versions')
+            .update({ downloads: version.downloads + 1 })
+    }
         setIsLoading(true)
         const version = resource.versions.find((v: Version) => v.id === selectedVersion)
 
