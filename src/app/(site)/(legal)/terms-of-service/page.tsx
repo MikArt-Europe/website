@@ -1,8 +1,8 @@
-import React from 'react';
-import {Separator} from "@/components/ui/separator";
+import React from 'react'
+import { Separator } from '@/components/ui/separator'
 
 export const metadata = {
-    title: "Terms of Service"
+    title: 'Terms of Service'
 }
 
 export default function TermsPage() {
@@ -18,7 +18,7 @@ export default function TermsPage() {
             </p>
 
             <h2 className="text-2xl font-semibold mb-4 mt-8">Use License</h2>
-            <Separator className="mb-6"/>
+            <Separator className="mb-6" />
             <p className="text-lg leading-relaxed mb-4">
                 1. Permission is granted to temporarily download one copy of the Bot for personal, non-commercial
                 transitory viewing only. This is the grant of a license, not a transfer of title, and under this
@@ -33,5 +33,5 @@ export default function TermsPage() {
                 <p className="text-lg leading-relaxed">placeholder</p>
             </section>
         </div>
-    );
+    )
 }
