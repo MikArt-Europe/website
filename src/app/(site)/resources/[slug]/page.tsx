@@ -2,8 +2,8 @@ import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import { createClient } from '@/lib/supabase/server'
 import ResourceDetail from '@/components/resources/resource-detail'
-import {Alert, AlertDescription} from '@/components/ui/alert'
-import {LucideInfo} from 'lucide-react'
+import { Alert, AlertDescription } from '@/components/ui/alert'
+import { LucideInfo } from 'lucide-react'
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const paramsStore = await params
@@ -49,7 +49,7 @@ export default async function ResourcePage({ params }: { params: Promise<{ slug:
                     This is an experimental resource system. Features and functionality may not work.
                 </AlertDescription>
             </Alert>
-            <ResourceDetail resource={resource}/>
+            <ResourceDetail resource={resource} />
         </div>
     )
 }

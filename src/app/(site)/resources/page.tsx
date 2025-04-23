@@ -1,9 +1,9 @@
-import {createClient} from '@/lib/supabase/server'
-import {ResourceBrowser} from '@/components/resources/resource-browser'
-import {Metadata} from 'next'
-import {Resource, Version} from '@/types'
-import {Alert, AlertDescription} from '@/components/ui/alert'
-import {LucideInfo} from 'lucide-react'
+import { createClient } from '@/lib/supabase/server'
+import { ResourceBrowser } from '@/components/resources/resource-browser'
+import { Metadata } from 'next'
+import { Resource, Version } from '@/types'
+import { Alert, AlertDescription } from '@/components/ui/alert'
+import { LucideInfo } from 'lucide-react'
 
 export const metadata: Metadata = {
     title: 'Minecraft Plugins - Resource Browser',
@@ -48,7 +48,7 @@ export default async function ResourceBrowserPage() {
                     This is an experimental resource system. Features and functionality may not work.
                 </AlertDescription>
             </Alert>
-            <ResourceBrowser resources={enhancedResources as Resource[]}/>
+            <ResourceBrowser resources={enhancedResources as Resource[]} />
         </div>
     )
 }
