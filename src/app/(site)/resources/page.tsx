@@ -24,6 +24,15 @@ export default async function ResourceBrowserPage() {
         .order('updated_at', { ascending: false })
     const enhancedResources =
         resources?.map((resource) => {
+            // Check if versions exists and has items
+            if (!resource.versions || resource.versions.length === 0) {
+                return {
+                    ...resource,
+                    latestVersion: 'N/A',
+                    totalDownloads: 0
+                };
+            }
+
             const latestVersion = resource.versions.sort((a: Version, b: Version) => {
                 return new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
             })[0]
