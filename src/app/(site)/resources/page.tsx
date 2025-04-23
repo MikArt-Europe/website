@@ -2,6 +2,8 @@ import {createClient} from '@/lib/supabase/server'
 import {ResourceBrowser} from '@/components/resources/resource-browser'
 import {Metadata} from 'next'
 import {Resource, Version} from '@/types'
+import {Alert, AlertDescription} from '@/components/ui/alert'
+import {LucideInfo} from 'lucide-react'
 
 export const metadata: Metadata = {
     title: 'Minecraft Plugins - Resource Browser',
@@ -33,5 +35,15 @@ export default async function ResourceBrowserPage() {
         };
     }) || [];
 
-    return <ResourceBrowser resources={enhancedResources as Resource[]}/>
+    return (
+        <div className="space-y-4">
+            <Alert variant="default" className="border-blue-500 bg-blue-50 dark:bg-blue-950/50">
+                <LucideInfo className="h-4 w-4 text-blue-500" />
+                <AlertDescription className="text-blue-700 dark:text-blue-300">
+                    This is an experimental resource system. Features and functionality may not work.
+                </AlertDescription>
+            </Alert>
+            <ResourceBrowser resources={enhancedResources as Resource[]}/>
+        </div>
+    )
 }
