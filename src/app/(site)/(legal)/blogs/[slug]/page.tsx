@@ -1,98 +1,91 @@
-import {allAuthors, allBlogs} from "contentlayer/generated";
-import {notFound} from "next/navigation";
-import Image from 'next/image';
-import React from "react";
-import {Mdx} from "@/components/mdx-components";
-import Link from "next/link";
-import "@/styles/mdx.css"
-import {cn, formatDate} from "@/lib/utils"
-import {buttonVariants} from "@/components/ui/button"
-import {Badge} from "@/components/ui/badge"
-import {TracingBeam} from "@/components/ui/tracing-beam";
-import {ChevronLeft} from "lucide-react";
+import { allAuthors, allBlogs } from 'contentlayer/generated'
+import { notFound } from 'next/navigation'
+import Image from 'next/image'
+import React from 'react'
+import { Mdx } from '@/components/mdx-components'
+import Link from 'next/link'
+import '@/styles/mdx.css'
+import { cn, formatDate } from '@/lib/utils'
+import { buttonVariants } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
+import { TracingBeam } from '@/components/ui/tracing-beam'
+import { ChevronLeft } from 'lucide-react'
 
-export const generateMetadata = async ({params}: { params: Promise<{ slug: string }> }) => {
-    const paramsStore = await params;
-    const post = allBlogs.find((post) => post.slugAsParams === paramsStore.slug);
+export const generateMetadata = async ({ params }: { params: Promise<{ slug: string }> }) => {
+    const paramsStore = await params
+    const post = allBlogs.find((post) => post.slugAsParams === paramsStore.slug)
 
     if (!post) {
         return {}
     }
 
     const ogUrl = new URL(`https://mikart.eu/api/og`)
-    ogUrl.searchParams.set("heading", post.title)
-    ogUrl.searchParams.set("type", "Blog Post")
-    ogUrl.searchParams.set("mode", "dark")
+    ogUrl.searchParams.set('heading', post.title)
+    ogUrl.searchParams.set('type', 'Blog Post')
+    ogUrl.searchParams.set('mode', 'dark')
 
     return {
         title: post.title,
         description: post.description,
         authors: post.authors.map((author) => ({
-            name: author,
+            name: author
         })),
         openGraph: {
             title: post.title,
             description: post.description,
-            type: "article",
+            type: 'article',
             url: post.slug,
             images: [
                 {
                     url: ogUrl.toString(),
                     width: 1200,
                     height: 630,
-                    alt: post.title,
-                },
-            ],
+                    alt: post.title
+                }
+            ]
         },
         twitter: {
-            card: "summary_large_image",
+            card: 'summary_large_image',
             title: post.title,
             description: post.description,
-            images: [ogUrl.toString()],
-        },
+            images: [ogUrl.toString()]
+        }
     }
 }
 
-export default async function PostPage({params}: { params: Promise<{ slug: string }> }) {
-    const blogSlug = (await params).slug;
-    const post = allBlogs.find((post) => post.slugAsParams === blogSlug);
+export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
+    const blogSlug = (await params).slug
+    const post = allBlogs.find((post) => post.slugAsParams === blogSlug)
 
     if (!post) {
-        notFound();
+        notFound()
     }
 
-    const authors = post.authors.map((author) =>
-        allAuthors.find(({slug}) => slug === "/authors/" + author)
-    )
+    const authors = post.authors.map((author) => allAuthors.find(({ slug }) => slug === '/authors/' + author))
 
     return (
         <article className="container relative max-w-3xl py-6 lg:py-10">
             <Link
                 href="/blogs"
                 className={cn(
-                    buttonVariants({variant: "ghost"}),
-                    "absolute left-[-200px] top-14 hidden xl:inline-flex"
+                    buttonVariants({ variant: 'ghost' }),
+                    'absolute left-[-200px] top-14 hidden xl:inline-flex'
                 )}
             >
-                <ChevronLeft className="mr-2 h-4 w-4"/>
+                <ChevronLeft className="mr-2 h-4 w-4" />
                 See all posts
             </Link>
             <div>
                 {post.date && (
-                    <time
-                        dateTime={post.date}
-                        className="block text-sm text-muted-foreground"
-                    >
+                    <time dateTime={post.date} className="block text-sm text-muted-foreground">
                         Published on {formatDate(post.date)}
                     </time>
                 )}
-                <h1 className="mt-2 inline-block font-heading text-4xl leading-tight lg:text-5xl">
-                    {post.title}
-                </h1>
+                <h1 className="mt-2 inline-block font-heading text-4xl leading-tight lg:text-5xl">{post.title}</h1>
                 {post.tags?.length ? (
                     <div>
                         {post.tags?.map((tag, index) => (
-                            <Badge key={tag} className="mr-2 mt-2" variant={index === 0 ? "default" : "outline"}>
+                            <Badge key={tag} className="mr-2 mt-2" variant={index === 0 ? 'default' : 'outline'}>
                                 {tag}
                             </Badge>
                         ))}
@@ -116,9 +109,7 @@ export default async function PostPage({params}: { params: Promise<{ slug: strin
                                     />
                                     <div className="flex-1 text-left leading-tight">
                                         <p className="font-medium">{author.title}</p>
-                                        <p className="text-[12px] text-muted-foreground">
-                                            @{author.twitter}
-                                        </p>
+                                        <p className="text-[12px] text-muted-foreground">@{author.twitter}</p>
                                     </div>
                                 </Link>
                             ) : null
@@ -135,15 +126,14 @@ export default async function PostPage({params}: { params: Promise<{ slug: strin
                     className="my-8 rounded-md border bg-muted transition-colors"
                     priority
                 />
-            )
-            }
+            )}
             <TracingBeam className="px-6">
-                <Mdx code={post.body.code}/>
+                <Mdx code={post.body.code} />
             </TracingBeam>
-            <hr className="mt-12"/>
+            <hr className="mt-12" />
             <div className="flex justify-center py-6 lg:py-10">
-                <Link href="/blogs" className={cn(buttonVariants({variant: "ghost"}))}>
-                    <ChevronLeft className="mr-2 h-4 w-4"/>
+                <Link href="/blogs" className={cn(buttonVariants({ variant: 'ghost' }))}>
+                    <ChevronLeft className="mr-2 h-4 w-4" />
                     See all posts
                 </Link>
             </div>

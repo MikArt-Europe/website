@@ -20,6 +20,6 @@ export default {
     },
     '*': {
         type: 'page',
-        display: 'hidden',
-    },
+        display: 'hidden'
+    }
 }

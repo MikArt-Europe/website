@@ -7,33 +7,38 @@ import {LucideInfo} from 'lucide-react'
 
 export const metadata: Metadata = {
     title: 'Minecraft Plugins - Resource Browser',
-    description: 'Browse and download Minecraft plugins',
+    description: 'Browse and download Minecraft plugins'
 }
 
 export default async function ResourceBrowserPage() {
     const supabase = await createClient()
 
-    const {data: resources} = await supabase
+    const { data: resources } = await supabase
         .from('resources')
-        .select(`
+        .select(
+            `
       *,
-      versions(id, version_number, downloads)
-    `)
-        .order('updated_at', {ascending: false})
+      versions(id, version_number, downloads, created_at)
+    `
+        )
+        .order('updated_at', { ascending: false })
+    const enhancedResources =
+        resources?.map((resource) => {
+            const latestVersion = resource.versions.sort((a: Version, b: Version) => {
+                return new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+            })[0]
 
-    const enhancedResources = resources?.map((resource) => {
-        const latestVersion = resource.versions.sort((a: Version, b: Version) => {
-            return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
-        })[0];
+            const totalDownloads = resource.versions.reduce(
+                (sum: number, version: Version) => sum + version.downloads,
+                0
+            )
 
-        const totalDownloads = resource.versions.reduce((sum: number, version: Version ) => sum + version.downloads, 0);
-
-        return {
-            ...resource,
-            latestVersion: latestVersion?.version_number || 'N/A',
-            totalDownloads
-        };
-    }) || [];
+            return {
+                ...resource,
+                latestVersion: latestVersion?.version_number || 'N/A',
+                totalDownloads
+            }
+        }) || []
 
     return (
         <div className="space-y-4">

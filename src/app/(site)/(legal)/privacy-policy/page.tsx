@@ -1,8 +1,8 @@
-import React from 'react';
-import {Separator} from "@/components/ui/separator";
+import React from 'react'
+import { Separator } from '@/components/ui/separator'
 
 export const metadata = {
-    title: "Privacy Policy"
+    title: 'Privacy Policy'
 }
 
 export default function PrivacyPage() {
@@ -18,12 +18,12 @@ export default function PrivacyPage() {
             <p className="text-lg leading-relaxed mb-4">
                 We use Your Personal data to provide and improve the Service. By using the Service, You agree to the
                 collection and use of information in accordance with this Privacy Policy. This Privacy Policy has been
-                created with the help of the <a href="https://www.termsfeed.com/privacy-policy-generator/">Privacy
-                Policy Generator</a>.
+                created with the help of the{' '}
+                <a href="https://www.termsfeed.com/privacy-policy-generator/">Privacy Policy Generator</a>.
             </p>
 
             <h2 className="text-2xl font-semibold mb-4 mt-8">Interpretation and Definitions</h2>
-            <Separator className="mb-6"/>
+            <Separator className="mb-6" />
             <h3 className="text-xl font-semibold mb-2">Interpretation</h3>
             <p className="text-lg leading-relaxed mb-4">
                 The words of which the initial letter is capitalized have meanings defined under the following
@@ -39,5 +39,5 @@ export default function PrivacyPage() {
                 <p className="text-lg leading-relaxed">placeholder</p>
             </section>
         </div>
-    );
+    )
 }
