@@ -16,7 +16,7 @@
     width: 1rem;
     margin-right: 1rem;
     text-align: right;
-    color: gray
+    color: gray;
 }
 
 [data-rehype-pretty-code-fragment] .line--highlighted {
