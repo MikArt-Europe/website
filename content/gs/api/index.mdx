@@ -26,7 +26,7 @@ through the process of using the API.
         ```
     </Tabs.Tab>
     <Tabs.Tab>
-        ```gradle
+        ```groovy
         allprojects {
             repositories {
                 ...
@@ -64,9 +64,24 @@ through the process of using the API.
 Mark GroupSecurity as a dependency in your main Velocity class like this:
 ```java
 @Plugin(id = "your-plugin", name = "Your Plugin", version = "1.0", dependencies = {
-    @Dependency(id = "groupsecurity")
+    @Dependency(id = "groupsecurityvelocity")
 })
 ```
 
-## What can I do with this API?
+## Getting the GroupSecurity API reference
+
+Inside your project, you can get the GroupSecurityAPI reference with
+```java
+GroupSecurityAPI api = GroupSecurityAPI.getInstance();
+```
+
+or if you want to use specific platform methods, you can use the platform-specific API, like this:
+```java
+GroupSecurityVelocityAPI api = GroupSecurityVelocityAPI.getInstance();
+```
+
+## Next Steps
+Now that you have everything ready, you are able to continue implementing some integrations with the GroupSecurity API.
 Follow to the next page to learn how to use the API.
+
+* [Adding Engines](/adding-engines)
