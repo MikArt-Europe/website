@@ -30,7 +30,7 @@ export default async function ResourceBrowserPage() {
                     ...resource,
                     latestVersion: 'N/A',
                     totalDownloads: 0
-                };
+                }
             }
 
             const latestVersion = resource.versions.sort((a: Version, b: Version) => {
