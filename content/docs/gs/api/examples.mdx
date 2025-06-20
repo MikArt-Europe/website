@@ -1,0 +1,31 @@
+---
+title: Examples
+---
+
+# Examples
+
+## Adding a new engine
+
+We're going to recreate a similar engine to the vanilla pin engine, but within the API.
+
+```java
+public class PinCode extends PasswordEngine {
+	public PinCode(IGroupSecurity plugin) {
+		super(plugin, "pin");
+	}
+
+	@Override
+	public void createPassword(OnlineUser player, String password) {
+		if (registered(plugin, player)) return;
+
+		plugin.getDatabase().setPassword(player.getUuid(), password);
+		player.sendMessage(plugin.getLocales().getOrFallback("pin_registered"));
+		plugin.getDatabase().setRegistered(player.getUuid(), true);
+	}
+
+	@Override
+	public boolean validatePassword(OnlineUser player, String password) {
+		return plugin.getDatabase().getPassword(player.getUuid()).equals(password);
+	}
+}
+```

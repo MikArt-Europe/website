@@ -1,0 +1,99 @@
+---
+title: How to use the API
+---
+
+# How to use the API
+
+## Introduction
+
+GroupSecurity API can be used to create custom security engines, or
+to integrate GroupSecurity with other plugins. This page will guide you
+through the process of using the API.
+
+## Adding the API to your project
+
+<Tabs items={['maven', 'gradle']}>
+    <Tab>
+        ```xml
+        <repositories>
+            <repository>
+                <id>mikart</id>
+                <url></url>
+            </repository>
+        </repositories>
+        <dependencies>
+            <dependency>
+                <groupId>eu.mikart.groupsecurity</groupId>
+                <artifactId>GroupSecurity-PLATFORM</artifactId>
+                <version>VERSION</version>
+            </dependency>
+        </dependencies>
+        ```
+    </Tab>
+    <Tab>
+        ```groovy
+        allprojects {
+            repositories {
+                ...
+                maven { url '' }
+            }
+        }
+        dependencies {
+            implementation 'eu.mikart.groupsecurity:GroupSecurity-PLATFORM:VERSION'
+        }
+        ```
+    </Tab>
+</Tabs>
+
+## Spigot & Paper
+
+<Tabs items={['paper', 'spigot']}>
+    <Tab>
+        Make GroupSecurity load before your plugin inside the `paper-plugin.yml` like this:
+        ```yaml
+        dependencies:
+            server:
+                GroupSecurity:
+                    load: BEFORE
+        ```
+    </Tab>
+    <Tab>
+        Make GroupSecurity load before your plugin inside the `plugin.yml` like this:
+
+        ```yaml
+        softdepend: [GroupSecurity]
+        ```
+    </Tab>
+
+</Tabs>
+
+## Velocity
+
+Mark GroupSecurity as a dependency in your main Velocity class like this:
+
+```java
+@Plugin(id = "your-plugin", name = "Your Plugin", version = "1.0", dependencies = {
+    @Dependency(id = "groupsecurityvelocity")
+})
+```
+
+## Getting the GroupSecurity API reference
+
+Inside your project, you can get the GroupSecurityAPI reference with
+
+```java
+GroupSecurityAPI api = GroupSecurityAPI.getInstance();
+```
+
+or if you want to use specific platform methods, you can use the platform-specific API, like this:
+
+```java
+GroupSecurityVelocityAPI api = GroupSecurityVelocityAPI.getInstance();
+```
+
+## Next Steps
+
+Now that you have everything ready, you are able to continue implementing some integrations with the GroupSecurity API.
+Follow to the next page to learn how to use the API.
+
+- [Adding Engines](/adding-engines)

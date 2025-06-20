@@ -1,0 +1,71 @@
+---
+title: Actions
+---
+
+Actions are used to perform various tasks in Panoptic, such as sending messages, executing commands, or cancelling the event.
+
+## Usage
+```yaml
+actions:
+    - type: <action_type>
+      value: <value> # only on types that require a value, otherwise including this field will cause an error
+```
+
+## Action Context
+In most cases, actions will have access to the player who triggered the event. This allows you to use Panoptic's own placeholders in the action's value, which will be replaced with the player's information.
+The placeholders available in the action's value are:
+- `%player%`: The name of the player.
+- `%player_uuid%`: The UUID of the player.
+- `%block_type%`: The type of block the player is interacting with (only available in block-related events).
+- `%block_location%`: The location of the block the player is interacting with (only available in block-related events).
+- `%event_name%`: The name of the event that triggered the action (e.g., `player_join`, `player_quit`, etc.).
+
+## Available Actions
+### send_message
+Sends a message to the player. The message can contain placeholders, which will be replaced with the player's information.
+```yaml
+- type: send_message
+  value: <message>
+```
+Where `<message>` is the message to be sent to the player.
+
+### run_command_as_player & run_command_as_console
+Runs a command as the player or as the console. The command can contain placeholders, which will be replaced with the player's information.
+```yaml
+- type: run_command_as_player
+  value: <command>
+```
+```yaml
+- type: run_command_as_console
+  value: <command>
+```
+Where `<command>` is the command to be executed. If you want to run a command as the player, use `run_command_as_player`, and if you want to run a command as the console, use `run_command_as_console`.
+
+### cancel
+Cancels the event. This will prevent the event from being executed, such as preventing a player from joining, quitting, or interacting with a block.
+```yaml
+- type: cancel
+```
+<Callout type="info">
+    This action does not require a value, as it simply cancels the event.
+</Callout>
+
+### placeholder_message
+Sends a message to the player using a placeholder. This requires PlaceholderAPI.
+```yaml
+- type: placeholder_message
+  value: <placeholder_name>
+```
+Where `<placeholder_name>` is the name of the placeholder to be used. The placeholder will be replaced with the player's information.
+
+### miniplaceholder_message
+Sends a message to the player using a mini placeholder. This requires MiniPlaceholders.
+```yaml
+- type: miniplaceholder_message
+  value: <placeholder_name>
+```
+Where `<placeholder_name>` is the name of the mini placeholder to be used. The mini placeholder will be replaced with the player's information.
+
+<Callout type="info">
+    placeholder_message and miniplaceholder_message might be merged in the future, as they could be used interchangeably in most cases.
+</Callout>

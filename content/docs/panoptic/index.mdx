@@ -1,0 +1,21 @@
+---
+title: Introduction
+---
+
+Panoptic is a modern and simple tool to run certain actions on events with certain conditions.
+It is designed to be easy to use and flexible, allowing you to create actions and events without needing to write code.
+
+## Building
+To get started with Panoptic, you need to build the project. You can do this by first cloning the [repository](https://github.com/ArikSquad/panoptic)
+and then running the following command in the root directory of the project:
+```bash
+mvn clean install
+```
+This will build the project and create a JAR file in the `target` directory.
+
+## Get started
+After having the JAR file place it in the `plugins` directory of your server instance. The plugin will create a `panoptic` directory in the `plugins` directory.
+
+In this directory, you will find another directory called "events" which will contain all the events that are available in Panoptic.
+
+To see what conditions and actions are available,

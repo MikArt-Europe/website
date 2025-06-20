@@ -1,27 +1,25 @@
 {
-  "$schema": "https://json.schemastore.org/eslintrc",
-  "root": true,
-  "extends": [
-    "next/core-web-vitals"
-  ],
-  "plugins": [],
-  "rules": {
-    "@next/next/no-html-link-for-pages": "off",
-    "react/jsx-key": "off"
-  },
-  "settings": {
-    "tailwindcss": {
-      "callees": ["cn"],
-      "config": "tailwind.config.js"
+    "$schema": "https://json.schemastore.org/eslintrc",
+    "root": true,
+    "extends": ["next/core-web-vitals"],
+    "plugins": [],
+    "rules": {
+        "@next/next/no-html-link-for-pages": "off",
+        "react/jsx-key": "off"
     },
-    "next": {
-      "rootDir": true
-    }
-  },
-  "overrides": [
-    {
-      "files": ["*.ts", "*.tsx"],
-      "parser": "@typescript-eslint/parser"
-    }
-  ]
+    "settings": {
+        "tailwindcss": {
+            "callees": ["cn"],
+            "config": "tailwind.config.js"
+        },
+        "next": {
+            "rootDir": true
+        }
+    },
+    "overrides": [
+        {
+            "files": ["*.ts", "*.tsx"],
+            "parser": "@typescript-eslint/parser"
+        }
+    ]
 }

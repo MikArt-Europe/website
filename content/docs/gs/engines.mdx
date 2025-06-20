@@ -1,0 +1,35 @@
+---
+title: Security Engines
+---
+
+# Security Engines
+
+Here's all Security Engines and what they mean. You may use type 1 for the quickest setup, but it might not be as secure.
+
+## Add a permission group after login (recommended)
+
+This is the most secure way to add a permission group after login. This is the recommended way to use GroupSecurity, since the administration will only have permissions
+after they have logged in, and won't be able to bypass it for example by some plugins working in unintented ways, or bypassing your proxy.
+
+```yaml
+# What security engine to use. Possible values are listed and explained in the documentation.
+type: 2
+```
+
+> [!IMPORTANT]
+>
+> A permission plugin must be installed in the same location as the GroupSecurity plugin.
+
+## Block Commands Before Login
+
+This mode is most suitable for all servers since it makes the player have the group before login so the other players can see the prefix the player has.
+But this may come with the cost of security.
+
+```yaml
+# What security engine to use. Possible values are listed and explained in the documentation.
+type: 1
+```
+
+## Custom engines
+
+You are able to create your own engines with the API

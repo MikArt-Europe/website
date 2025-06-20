@@ -1,0 +1,50 @@
+---
+title: Making an additional engine
+---
+
+# Making an additional engine
+
+You are able to create your own engines with the API
+
+## Creating a new engine
+
+To create a new engine, you need to extend the `PasswordEngine` class. This will require you to override these two methods:
+
+- `void createPassword(OnlineUser player, String password)`: This method is called when a player creates a new password. You can use this method to create a new password for the player.
+- `boolean validatePassword(OnlineUser player, String password)`: This method is called when a player tries to log in. You can use this method to check if the password is correct.
+
+Example:
+
+```java
+public class PinCode extends PasswordEngine {
+	public PinCode(IGroupSecurity plugin) {
+		super(plugin, "pin");
+	}
+
+	@Override
+	public void createPassword(OnlineUser player, String password) {
+		if (registered(plugin, player)) return;
+
+		plugin.getDatabase().setPassword(player.getUuid(), password);
+		player.sendMessage(plugin.getLocales().getOrFallback("pin_registered"));
+		plugin.getDatabase().setRegistered(player.getUuid(), true);
+	}
+
+	@Override
+	public boolean validatePassword(OnlineUser player, String password) {
+		return plugin.getDatabase().getPassword(player.getUuid()).equals(password);
+	}
+}
+```
+
+## Registering the engine
+
+With the engine created, you can now register it with the API. You can do this in your `onEnable` (or any equivalent) method:
+
+```java
+@Override
+public void onEnable() {
+    GroupSecurityAPI api = GroupSecurityAPI.getInstance();
+    api.registerEngine((plugin) -> new PinCode(plugin));
+}
+```

@@ -1,0 +1,59 @@
+---
+title: Conditions
+---
+
+Conditions are used to check if a player has certain information attached to them, such as checking a placeholder, entity types, or other conditions.
+They are used in various places, such as in the `if` action, to determine if a certain action should be executed.
+
+## Usage
+```yaml
+- type: <condition_type>
+  value: <value> # only on types that require a value, otherwise including this field will cause an error
+```
+
+## Available Conditions
+
+### sneaking
+Checks if the player is sneaking.
+<Callout type="info">
+    You should not add the "value" field to this condition, as it does not require one.
+</Callout>
+
+
+### placeholder
+Checks if a placeholder is set to a certain value. This requires PlaceholderAPI. The format is as follows:
+```yaml
+- type: placeholder
+  value: <placeholder_name>=<value>
+```
+
+Following expressions are valid:
+- `>=` greater than or equal to
+- `<=` less than or equal to
+- `>` greater than
+- `<` less than
+- `=` equal to
+- `!=` not equal to
+
+### mini_placeholder
+Checks if a mini placeholder is set to a certain value. This requires MiniPlaceholders. The format is as follows:
+```yaml
+- type: mini_placeholder
+  value: <placeholder_name>=<value>
+```
+
+Following expressions are valid:
+- `>=` greater than or equal to
+- `<=` less than or equal to
+- `>` greater than
+- `<` less than
+- `=` equal to
+- `!=` not equal to
+
+### entity_type
+Checks if the entity type of the player matches a certain type. This will only available for the damage event and the death event. The format is as follows:
+```yaml
+- type: entity_type
+  value: <entity_type>
+```
+Where `<entity_type>` is the name of the entity type, such as `CREEPER`, `ZOMBIE`, etc.
