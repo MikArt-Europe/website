@@ -8,10 +8,11 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
     const page = source.getPage(params.slug)
     if (!page) notFound()
 
-    const MDX = page.data.body
+    // Ari - some any types here
+    const MDX: any = (page.data as any).body
 
     return (
-        <DocsPage toc={page.data.toc} full={page.data.full}>
+        <DocsPage toc={(page.data as any).toc} full={(page.data as any).full}>
             <DocsTitle>{page.data.title}</DocsTitle>
             <DocsDescription>{page.data.description}</DocsDescription>
             <DocsBody>

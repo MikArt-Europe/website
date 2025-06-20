@@ -10,6 +10,11 @@ const config = {
                 protocol: 'https',
                 hostname: '"www.mikart.eu',
                 pathname: '**'
+            },
+            {
+                protocol: 'https',
+                hostname: 'raw.githubusercontent.com',
+                pathname: '**'
             }
         ]
     },

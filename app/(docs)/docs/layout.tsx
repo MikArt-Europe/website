@@ -2,6 +2,8 @@ import { source } from '@/lib/source'
 import { DocsLayout } from 'fumadocs-ui/layouts/docs'
 import type { ReactNode } from 'react'
 import { baseOptions } from '@/app/layout.config'
+import {BlocksIcon, HouseIcon, ShieldIcon, SwordIcon} from "lucide-react";
+import Image from "next/image";
 
 export default function Layout({ children }: { children: ReactNode }) {
     return (
@@ -12,17 +14,26 @@ export default function Layout({ children }: { children: ReactNode }) {
                     {
                         title: 'GroupSecurity',
                         description: 'Minecraft Plugin',
-                        url: '/docs/gs'
+                        url: '/docs/gs',
+                        icon: <ShieldIcon />
                     },
                     {
                         title: 'AnimVanish',
                         description: 'Vanish animation Minecraft plugin',
-                        url: '/docs/animvanish'
+                        url: '/docs/animvanish',
+                        icon: <HouseIcon />
+                    },
+                    {
+                        title: 'Panoptic',
+                        description: 'Minecraft Plugin',
+                        url: '/docs/panoptic',
+                        icon: <SwordIcon />
                     },
                     {
                         title: "Minecraft Server",
                         description: "MikArt Europe MC",
-                        url: '/docs/minecraft'
+                        url: '/docs/minecraft',
+                        icon: <BlocksIcon />
                     }
                 ]
             }}
