@@ -37,7 +37,7 @@
         "fumadocs-mdx": "^11.6.9",
         "fumadocs-ui": "^15.5.3",
         "input-otp": "^1.4.2",
-        "lucide-react": "^0.503.0",
+        "lucide-react": "^0.522.0",
         "mdast-util-toc": "^7.1.0",
         "mini-svg-data-uri": "^1.4.4",
         "next": "^15.3.4",
