@@ -1,9 +1,4 @@
-import { type ClassValue, clsx } from 'clsx'
-import { twMerge } from 'tailwind-merge'
-
-export function cn(...inputs: ClassValue[]) {
-    return twMerge(clsx(inputs))
-}
+export { twMerge as cn } from 'tailwind-merge';
 
 export function formatDate(input: string | number): string {
     const date = new Date(input)
@@ -12,8 +7,4 @@ export function formatDate(input: string | number): string {
         day: 'numeric',
         year: 'numeric'
     })
-}
-
-export function absoluteUrl(path: string) {
-    return `https://www.mikart.eu/${path}`
 }

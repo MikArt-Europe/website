@@ -1,7 +1,7 @@
 import Footer from '@/components/footer'
 import { MainNav } from '@/components/taxomony/main-nav'
-import styles from '@/style'
 import React from 'react'
+import { mainNavItems } from '@/lib/navigation'
 
 interface MarketingLayoutProps {
     children: React.ReactNode
@@ -12,40 +12,12 @@ export default async function MarketingLayout({ children }: MarketingLayoutProps
         <div className="flex min-h-screen flex-col">
             <header className="container z-40 bg-background">
                 <div className="flex h-20 items-center justify-between py-6">
-                    <MainNav
-                        items={[
-                            {
-                                title: 'Home',
-                                href: '/#'
-                            },
-                            {
-                                title: 'Temp',
-                                href: '/#'
-                            },
-                            {
-                                title: 'Blogs',
-                                href: '/blogs'
-                            }
-                        ]}
-                    />
-                    {/*<nav>
-                        <Link
-                            href="/"
-                            className={cn(
-                                buttonVariants({ variant: "secondary", size: "sm" }),
-                                "px-4"
-                            )}
-                        >
-                            Home
-                        </Link>
-                    </nav>*/}
+                    <MainNav items={mainNavItems}/>
                 </div>
             </header>
             <main className="flex-1">{children}</main>
-            <div className={`bg-background ${styles.paddingX} ${styles.flexCenter}`}>
-                <div className={`${styles.boxWidth}`}>
-                    <Footer />
-                </div>
+            <div className="mt-48">
+                <Footer />
             </div>
         </div>
     )

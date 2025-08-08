@@ -1,3 +1,4 @@
+import { withPayload } from "@payloadcms/next/withPayload";
 import { createMDX } from 'fumadocs-mdx/next'
 
 const withMDX = createMDX()
@@ -15,6 +16,11 @@ const config = {
                 protocol: 'https',
                 hostname: 'raw.githubusercontent.com',
                 pathname: '**'
+            },
+            {
+                protocol: 'https',
+                hostname: 'cdn.sanity.io',
+                pathname: '**'
             }
         ]
     },
@@ -31,4 +37,4 @@ const config = {
     ]
 }
 
-export default withMDX(config)
+export default withPayload(withMDX(config))
