@@ -5,7 +5,6 @@ import * as React from 'react'
 import { cn } from '@/lib/utils'
 import { Callout } from '@/components/callout'
 import { MdxCard } from '@/components/mdx-card'
-import { getMDXComponent } from 'next-contentlayer2/hooks'
 
 export const components = {
     h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
@@ -93,18 +92,4 @@ export const components = {
     Image,
     Callout,
     Card: MdxCard
-}
-
-interface MdxProps {
-    code: string
-}
-
-export function Mdx({ code }: MdxProps) {
-    const Component = getMDXComponent(code)
-
-    return (
-        <div className="mdx">
-            <Component components={components} />
-        </div>
-    )
 }
