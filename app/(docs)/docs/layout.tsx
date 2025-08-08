@@ -3,12 +3,26 @@ import { DocsLayout } from 'fumadocs-ui/layouts/docs'
 import type { ReactNode } from 'react'
 import { baseOptions } from '@/app/layout.config'
 import {BlocksIcon, HouseIcon, ShieldIcon, SwordIcon} from "lucide-react";
-import Image from "next/image";
+import { env } from '@/env.mjs'
 
-export default function Layout({ children }: { children: ReactNode }) {
+async function getDocsTree() {
+    const res = await fetch(`${env.NEXT_PUBLIC_URL}/api/r-doc`, {
+        cache: 'no-store'
+    });
+    if (!res.ok) return [];
+    return res.json();
+}
+
+export default async function Layout({ children }: { children: ReactNode }) {
+    const remoteTree = await getDocsTree();
+    const mergedTree = {
+        ...source.pageTree,
+        children: [...remoteTree, ...source.pageTree.children],
+    };
+
     return (
         <DocsLayout
-            tree={source.pageTree}
+            tree={mergedTree}
             sidebar={{
                 tabs: [
                     {

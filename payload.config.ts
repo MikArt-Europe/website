@@ -10,6 +10,7 @@ import sharp from 'sharp'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
+import { Docs } from './collections/docs'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -46,7 +47,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media],
+  collections: [Users, Media, Docs],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET ?
     process.env.PAYLOAD_SECRET :
@@ -54,7 +55,7 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
-  serverURL: process.env.NODE_ENV === "development" ? 'http://localhost:3000' : process.env.BASE_URL,
+  serverURL: process.env.NODE_ENV === "development" ? 'http://localhost:3000' : process.env.NEXT_PUBLIC_URL,
   cors: process.env.CORS_WHITELIST_ORIGINS
     ? process.env.CORS_WHITELIST_ORIGINS.split(",")
     : ["http://localhost:3000"],

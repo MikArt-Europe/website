@@ -1,4 +1,5 @@
 import {type CollectionConfig, Payload, PayloadRequest} from "payload";
+import { env } from '@/env.mjs'
 export const Users: CollectionConfig = {
   slug: 'users',
   auth: true,
@@ -7,13 +8,12 @@ export const Users: CollectionConfig = {
       url:
         process.env.NODE_ENV === "development"
           ? "http://localhost:3000/docs"
-          : "https://fumadocs-payloadcms.vercel.app",
+          : env.NEXT_PUBLIC_URL + "/docs",
       breakpoints: [{label: "Mobile", name: "mobile", width: 320, height: 568}],
     },
     useAsTitle: 'email',
   },
   fields: [
-    // Email added by default
       {
         name: "roles",
         type: "select",
@@ -87,47 +87,4 @@ export async function getOrUploadMedia(
     );
     return null;
   }
-}
-
-export async function seedUsers(payload: Payload, req: PayloadRequest) {
-  payload.logger.info("👤 Uploading user avatars & inserting users...");
-
-  await Promise.all(
-    [
-      {
-        name: "Test User",
-        email: "test@gmail.com",
-        mediaUrl: "https://raw.githubusercontent.com/payloadcms/payload/main/packages/ui/src/assets/payload-favicon.svg",
-        roles: ["admin", "user"],
-      },
-      {
-        name: "Demo User",
-        email: "demo@gmail.com",
-        mediaUrl: "https://raw.githubusercontent.com/payloadcms/payload/main/packages/ui/src/assets/payload-favicon.svg",
-        roles: ["user"],
-      },
-    ].map(async (user) => {
-      const fileExtension = user.mediaUrl.split('.').pop();
-      const media = await getOrUploadMedia(
-        payload,
-        req,
-        user.mediaUrl,
-        `${user.name.replace(/ /g, "-").toLowerCase()}-avatar.${fileExtension}`,
-        `${user.name}'s Avatar`
-      );
-
-      await payload.create({
-        collection: "users",
-        data: {
-          name: user.name,
-          email: user.email,
-          password: user.name.split(" ")[0].toLowerCase() || "test",
-          avatar: media?.id || null,
-          roles: user.roles || ["user"],
-        },
-      });
-
-      payload.logger.info(`✅ Inserted user: ${user.name}`);
-    })
-  );
 }
