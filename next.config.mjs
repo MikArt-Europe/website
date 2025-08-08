@@ -16,6 +16,11 @@ const config = {
                 protocol: 'https',
                 hostname: 'raw.githubusercontent.com',
                 pathname: '**'
+            },
+            {
+                protocol: 'https',
+                hostname: 'cdn.sanity.io',
+                pathname: '**'
             }
         ]
     },
