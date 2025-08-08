@@ -18,6 +18,7 @@ interface ShareButtonProps {
 
 export function ShareButton({ post, className }: ShareButtonProps) {
   const [copied, setCopied] = useState(false)
+  const isWebShareSupported = typeof navigator !== 'undefined' && 'share' in navigator
 
   const handleShare = async () => {
     const url = `${window.location.origin}/blog/${post.slug.current}`
@@ -29,8 +30,7 @@ export function ShareButton({ post, className }: ShareButtonProps) {
       url,
     }
 
-    // Check if Web Share API is supported
-    if (navigator.share) {
+    if (isWebShareSupported) {
       try {
         await navigator.share(shareData)
         toast.success('Article shared successfully!')
@@ -67,7 +67,7 @@ export function ShareButton({ post, className }: ShareButtonProps) {
     >
       {copied ? (
         <Check className="h-4 w-4 mr-2" />
-      ) : navigator.share ? (
+      ) : isWebShareSupported ? (
         <Share2 className="h-4 w-4 mr-2" />
       ) : (
         <Copy className="h-4 w-4 mr-2" />
