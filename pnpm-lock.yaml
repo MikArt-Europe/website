@@ -153,8 +153,8 @@ importers:
         specifier: ^10.1.0
         version: 10.1.0(@types/react@19.1.9)(react@19.1.1)
       react-resizable-panels:
-        specifier: ^2.1.9
-        version: 2.1.9(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+        specifier: ^3.0.4
+        version: 3.0.4(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       recharts:
         specifier: ^2.15.4
         version: 2.15.4(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -203,6 +203,19 @@ importers:
       zod:
         specifier: ^3.25.76
         version: 3.25.76
+    optionalDependencies:
+      '@libsql/darwin-arm64':
+        specifier: 0.5.16
+        version: 0.5.16
+      '@libsql/linux-arm64-gnu':
+        specifier: 0.5.16
+        version: 0.5.16
+      '@libsql/linux-x64-gnu':
+        specifier: 0.5.16
+        version: 0.5.16
+      '@libsql/win32-x64-msvc':
+        specifier: 0.5.16
+        version: 0.5.16
     devDependencies:
       '@tailwindcss/postcss':
         specifier: ^4.1.11
@@ -225,19 +238,6 @@ importers:
       tailwindcss:
         specifier: ^4.1.11
         version: 4.1.11
-    optionalDependencies:
-      '@libsql/darwin-arm64':
-        specifier: 0.5.16
-        version: 0.5.16
-      '@libsql/linux-arm64-gnu':
-        specifier: 0.5.16
-        version: 0.5.16
-      '@libsql/linux-x64-gnu':
-        specifier: 0.5.16
-        version: 0.5.16
-      '@libsql/win32-x64-msvc':
-        specifier: 0.5.16
-        version: 0.5.16
 
 packages:
 
@@ -7967,8 +7967,8 @@ packages:
       '@types/react':
         optional: true
 
-  react-resizable-panels@2.1.9:
-    resolution: {integrity: sha512-z77+X08YDIrgAes4jl8xhnUu1LNIRp4+E7cv4xHmLOxxUPO/ML7PSrE813b90vj7xvQ1lcf7g2uA9GeMZonjhQ==}
+  react-resizable-panels@3.0.4:
+    resolution: {integrity: sha512-8Y4KNgV94XhUvI2LeByyPIjoUJb71M/0hyhtzkHaqpVHs+ZQs8b627HmzyhmVYi3C9YP6R+XD1KmG7hHjEZXFQ==}
     peerDependencies:
       react: ^16.14.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^19.0.0-rc
       react-dom: ^16.14.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^19.0.0-rc
@@ -18568,7 +18568,7 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.1.9
 
-  react-resizable-panels@2.1.9(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
+  react-resizable-panels@3.0.4(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
     dependencies:
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)
