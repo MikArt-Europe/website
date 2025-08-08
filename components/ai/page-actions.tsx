@@ -7,7 +7,7 @@ import {
   ExternalLinkIcon,
   MessageCircleIcon,
 } from 'lucide-react';
-import { cn } from '../../lib/cn';
+import { twMerge as cn } from 'tailwind-merge';
 import { useCopyButton } from 'fumadocs-ui/utils/use-copy-button';
 import { buttonVariants } from 'fumadocs-ui/components/ui/button';
 import {
