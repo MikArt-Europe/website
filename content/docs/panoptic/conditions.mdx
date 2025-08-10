@@ -147,7 +147,7 @@ events:
         value: "DIAMOND_ORE"
     actions:
       - type: send_message
-        value: "&dSecret bonus for sneaky miners!"
+        value: "<light_purple>Secret bonus for sneaky miners!"
       - type: run_command_as_console
         value: "give %player% diamond 2"
 ```
@@ -170,7 +170,7 @@ events:
         value: "world_nether"
     actions:
       - type: send_message
-        value: "&cWelcome to the Nether! &6Be careful of the lava!"
+        value: "<red>Welcome to the Nether! <gold>Be careful of the lava!"
 ```
 
 ### random
@@ -191,7 +191,7 @@ events:
         value: "0.05"  # 5% chance
     actions:
       - type: send_message
-        value: "&b&l🐟 RARE CATCH! &r&eYou caught something special!"
+        value: "<aqua><bold>🐟 RARE CATCH! <reset><yellow>You caught something special!"
       - type: run_command_as_console
         value: "give %player% enchanted_golden_apple 1"
 ```
@@ -222,7 +222,7 @@ events:
         value: "%vault_eco_balance%>=50000"
     actions:
       - type: send_message
-        value: "&6&lVIP &r&eWelcome back, wealthy player!"
+        value: "<gold><bold>VIP <reset><yellow>Welcome back, wealthy player!"
       - type: run_command_as_console
         value: "give %player% golden_apple 5"
 ```
@@ -253,7 +253,7 @@ events:
         value: "CREEPER"
     actions:
       - type: send_message
-        value: "&a&l💥 BOOM! &r&7That's what you get for hugging creepers!"
+        value: "<green><bold>💥 BOOM! <reset><gray>That's what you get for hugging creepers!"
 ```
 
 ### block_location
@@ -274,7 +274,7 @@ events:
         value: "spawn,0,65,0"
     actions:
       - type: send_message
-        value: "&cYou cannot break the spawn monument!"
+        value: "<red>You cannot break the spawn monument!"
       - type: cancel
 ```
 
@@ -296,7 +296,7 @@ events:
         value: "WATER"
     actions:
       - type: send_message
-        value: "&bYou're swimming! Don't forget to breathe!"
+        value: "<aqua>You're swimming! Don't forget to breathe!"
 ```
 
 ## Advanced Examples
@@ -318,7 +318,7 @@ events:
     conditionEvaluationMode: "REQUIRE_ANY"
     actions:
       - type: send_message
-        value: "&aWelcome to one of our main worlds!"
+        value: "<green>Welcome to one of our main worlds!"
 ```
 
 ### Exclusive Rewards
@@ -337,7 +337,7 @@ events:
     perPlayerCooldown: 86400000  # 24 hours
     actions:
       - type: send_message
-        value: "&6Special reward for either new players OR rich players!"
+        value: "<gold>Special reward for either new players OR rich players!"
       - type: run_command_as_console
         value: "give %player% diamond 5"
 ```
@@ -358,7 +358,7 @@ events:
     globalCooldown: 10000      # 10 seconds globally
     actions:
       - type: send_message
-        value: "&6Mining bonus! &7(Available again in 2 minutes)"
+        value: "<gold>Mining bonus! <gray>(Available again in 2 minutes)"
       - type: run_command_as_console
         value: "give %player% emerald 3"
 ```
@@ -379,7 +379,7 @@ events:
     perPlayerCooldown: 86400000  # 24 hours
     actions:
       - type: send_message
-        value: "&eGood morning! Here's your daily reward!"
+        value: "<yellow>Good morning! Here's your daily reward!"
       - type: run_command_as_console
         value: "give %player% bread 32"
 ```

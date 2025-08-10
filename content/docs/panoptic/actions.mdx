@@ -1,8 +1,7 @@
 ---
 title: Actions
+description: Actions are the heart of Panoptic—they're what actually happens when your events trigger. Whether you want to send a message, run a command, or even cancel an event entirely, actions make it possible.
 ---
-
-Actions are the heart of Panoptic—they're what actually happens when your events trigger. Whether you want to send a message, run a command, or even cancel an event entirely, actions make it possible.
 
 ## Basic Usage
 Actions are defined as a list under the `actions` key in your event configuration:
@@ -37,7 +36,7 @@ events:
         value: "DIAMOND_ORE"
     actions:
       - type: send_message
-        value: "&6Lucky find! You mined %block_type% at %block_location%"
+        value: "<gold>Lucky find! You mined %block_type% at %block_location%"
       - type: run_command_as_console
         value: "give %player% emerald 5"
 ```
@@ -45,11 +44,11 @@ events:
 ## Available Actions
 
 ### send_message
-Sends a message directly to the player who triggered the event. Supports color codes and formatting.
+Sends a message directly to the player who triggered the event. Supports MiniMessage formatting for colors and styles.
 
 ```yaml
 - type: send_message
-  value: "&aWelcome back, %player%! &7You're in world: &e%world%"
+  value: "<green>Welcome back, %player%! <gray>You're in world: <yellow>%world%"
 ```
 
 ### run_command_as_player
@@ -70,7 +69,7 @@ events:
         value: "VOID"
     actions:
       - type: send_message
-        value: "&cOops! Teleporting you to safety..."
+        value: "<red>Oops! Teleporting you to safety..."
       - type: run_command_as_player
         value: "spawn"
 ```
@@ -93,7 +92,7 @@ events:
         value: "%luckperms_has_permission_panoptic.newplayer%=false"
     actions:
       - type: send_message
-        value: "&6Welcome to our server! Here's a starter kit!"
+        value: "<gold>Welcome to our server! Here's a starter kit!"
       - type: run_command_as_console
         value: "give %player% bread 10"
       - type: run_command_as_console
@@ -121,26 +120,8 @@ events:
         value: "survival"
     actions:
       - type: send_message
-        value: "&cYou cannot break spawners in the survival world!"
+        value: "<red>You cannot break spawners in the survival world!"
       - type: cancel
-```
-
-### placeholder_message
-Sends a message using PlaceholderAPI placeholders. Requires PlaceholderAPI to be installed.
-*Developer note: It's not completely clear why it was chosen to be it's own action instead of using the `send_message` action with placeholders directly.*
-
-```yaml
-- type: placeholder_message
-  value: "&7Your balance: &a$%vault_eco_balance%"
-```
-
-### miniplaceholder_message
-Similar to placeholder_message but uses MiniPlaceholders instead. Requires MiniPlaceholders to be installed.
-*Developer note: It's not completely clear why it was chosen to be it's own action instead of using the `send_message` action with placeholders directly.*
-
-```yaml
-- type: miniplaceholder_message
-  value: "&7Server TPS: &e%server_tps%"
 ```
 
 ## Advanced Examples
@@ -159,7 +140,7 @@ events:
         value: "0.001"  # 0.1% chance
     actions:
       - type: send_message
-        value: "&6&l✦ RARE DROP! &r&eYou found a hidden treasure!"
+        value: "<gold><bold>✦ RARE DROP! <reset><yellow>You found a hidden treasure!"
       - type: run_command_as_console
         value: "give %player% diamond 3"
 ```
@@ -178,7 +159,7 @@ events:
         value: "%server_time_H%<12"
     actions:
       - type: send_message
-        value: "&eGood morning, %player%! ☀️"
+        value: "<yellow>Good morning, %player%! ☀️"
   - conditions:
       - type: placeholder
         value: "%server_time_H%>=12"
@@ -186,20 +167,18 @@ events:
         value: "%server_time_H%<18"
     actions:
       - type: send_message
-        value: "&6Good afternoon, %player%! 🌤️"
+        value: "<gold>Good afternoon, %player%! 🌤️"
   - conditions:
       - type: placeholder
         value: "%server_time_H%>=18"
     actions:
       - type: send_message
-        value: "&9Good evening, %player%! 🌙"
+        value: "<blue>Good evening, %player%! 🌙"
 ```
 
 ## Tips and Tricks
 
-- **Color Codes**: Use `&` followed by a color/format code (like `&a` for green or `&l` for bold)
+- **MiniMessage Format**: Use `<color>` tags like `<red>`, `<green>`, `<bold>`, `<italic>` for formatting
 - **Multiple Actions**: You can have as many actions as you want in a single event
 - **Order Matters**: Actions execute in the order you list them
 - **Testing**: Use the `/panoptic reload` command to test your changes without restarting the server
-
-**Note**: The `placeholder_message` and `miniplaceholder_message` actions might be merged in a future update since they serve similar purposes.

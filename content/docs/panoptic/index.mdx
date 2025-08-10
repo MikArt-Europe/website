@@ -51,8 +51,8 @@ All events follow the same basic structure:
 Each event can have:
 - **conditions**: Requirements that must be met for the actions to run
 - **actions**: What should happen when the conditions are satisfied
-- **conditionEvaluationMode**: How multiple conditions should work together (REQUIRE_ALL, REQUIRE_ANY, REQUIRE_SINGLE)
-- **perPlayerCooldown**: Minimum time between triggers for each player (in milliseconds)
+- **conditionEvaluationMode**: How multiple conditions should work together (AND, OR, XOR)
+- **perPlayerCooldown**: Minimum time between triggers for each individual player (in milliseconds)
 - **globalCooldown**: Minimum time between triggers across all players (in milliseconds)
 
 ### Advanced Event Example
