@@ -40,7 +40,8 @@ function Home() {
                         <div className="flex flex-col items-center text-center space-y-8 max-w-4xl mx-auto">
                             <Badge variant="outline" className="px-4 py-2 text-sm bg-background/50 backdrop-blur-sm">
                                 <Zap className="h-4 w-4 mr-2" />
-                                Made with <span className="text-primary font-semibold mx-1">{currentMessage}</span> by ArikSquad
+                                Made with <span className="text-primary font-semibold mx-1">{currentMessage}</span> by
+                                ArikSquad
                             </Badge>
 
                             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight">
@@ -52,16 +53,16 @@ function Home() {
                             </h1>
 
                             <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
-                                Discover innovative Minecraft modifications, powerful Discord bots, and cutting-edge security solutions
-                                designed to enhance your gaming experience.
+                                Discover innovative Minecraft modifications, powerful Discord bots, and cutting-edge
+                                security solutions designed to enhance your gaming experience.
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-4 mt-8">
-                                <Link href="/docs" className={cn(buttonVariants({ size: "lg" }), "group")}>
+                                <Link href="/docs" className={cn(buttonVariants({ size: 'lg' }), 'group')}>
                                     Get Started
                                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                                 </Link>
-                                <Link href="/blog" className={cn(buttonVariants({ variant: "outline", size: "lg" }))}>
+                                <Link href="/blog" className={cn(buttonVariants({ variant: 'outline', size: 'lg' }))}>
                                     Read Our Blog
                                 </Link>
                             </div>
@@ -74,12 +75,13 @@ function Home() {
                 <section className="py-24 bg-muted/30">
                     <div className="container">
                         <div className="text-center mb-16">
-                            <Badge variant="outline" className="mb-4">Our Products</Badge>
-                            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-                                Powerful Tools for Modern Gaming
-                            </h2>
+                            <Badge variant="outline" className="mb-4">
+                                Our Products
+                            </Badge>
+                            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Powerful Tools for Modern Gaming</h2>
                             <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-                                From Minecraft plugins to Discord bots, we create solutions that enhance your gaming community.
+                                From Minecraft plugins to Discord bots, we create solutions that enhance your gaming
+                                community.
                             </p>
                         </div>
 
@@ -101,13 +103,14 @@ function Home() {
                                         <h3 className="text-xl font-semibold">AnimVanish</h3>
                                     </div>
                                     <p className="text-muted-foreground mb-4">
-                                        Advanced animated vanishing effects for Minecraft servers. Make your staff vanish in style with stunning visual effects.
+                                        Advanced animated vanishing effects for Minecraft servers. Make your staff
+                                        vanish in style with stunning visual effects.
                                     </p>
                                     <div className="flex items-center justify-between">
                                         <Badge variant="secondary">Minecraft Plugin</Badge>
                                         <Link
                                             href="https://www.spigotmc.org/resources/animvanish-1-19-animated-vanishing.102183/"
-                                            className={cn(buttonVariants({ size: "sm" }), "group")}
+                                            className={cn(buttonVariants({ size: 'sm' }), 'group')}
                                         >
                                             Download
                                             <ExternalLink className="ml-2 h-3 w-3 group-hover:scale-110 transition-transform" />
@@ -126,15 +129,22 @@ function Home() {
                                         <h3 className="text-xl font-semibold">EnSave</h3>
                                     </div>
                                     <p className="text-muted-foreground mb-4">
-                                        Modern Discord bot with advanced features for server management, moderation, and community engagement. Built for the future.
+                                        Modern Discord bot with advanced features for server management, moderation, and
+                                        community engagement. Built for the future.
                                     </p>
                                     <div className="flex items-center justify-between">
-                                        <Badge variant="secondary" className="bg-green-500/10 text-green-600 border-green-500/20">
+                                        <Badge
+                                            variant="secondary"
+                                            className="bg-green-500/10 text-green-600 border-green-500/20"
+                                        >
                                             Discord Bot
                                         </Badge>
                                         <Link
                                             href="https://ensave.mikart.eu/"
-                                            className={cn(buttonVariants({ size: "sm", variant: "outline" }), "group border-green-500/20 hover:bg-green-500/10")}
+                                            className={cn(
+                                                buttonVariants({ size: 'sm', variant: 'outline' }),
+                                                'group border-green-500/20 hover:bg-green-500/10'
+                                            )}
                                         >
                                             Explore
                                             <ExternalLink className="ml-2 h-3 w-3 group-hover:scale-110 transition-transform" />
@@ -151,18 +161,27 @@ function Home() {
                                     <div className="flex items-center gap-2 mb-3">
                                         <Shield className="h-5 w-5 text-red-500" />
                                         <h3 className="text-xl font-semibold">GroupSecurity</h3>
-                                        <Badge variant="outline" className="text-xs text-cyan">SOON</Badge>
+                                        <Badge variant="outline" className="text-xs text-cyan">
+                                            SOON
+                                        </Badge>
                                     </div>
                                     <p className="text-muted-foreground mb-4">
-                                        Comprehensive security solutions for gaming communities. Protect your servers with advanced monitoring and threat detection.
+                                        Comprehensive security solutions for gaming communities. Protect your servers
+                                        with advanced monitoring and threat detection.
                                     </p>
                                     <div className="flex items-center justify-between">
-                                        <Badge variant="secondary" className="bg-red-500/10 text-red-600 border-red-500/20">
+                                        <Badge
+                                            variant="secondary"
+                                            className="bg-red-500/10 text-red-600 border-red-500/20"
+                                        >
                                             Security Suite
                                         </Badge>
                                         <Link
                                             href="/docs/gs"
-                                            className={cn(buttonVariants({ size: "sm", variant: "outline" }), "group border-red-500/20 hover:bg-red-500/10")}
+                                            className={cn(
+                                                buttonVariants({ size: 'sm', variant: 'outline' }),
+                                                'group border-red-500/20 hover:bg-red-500/10'
+                                            )}
                                         >
                                             Learn More
                                             <ExternalLink className="ml-2 h-3 w-3 group-hover:scale-110 transition-transform" />
@@ -177,15 +196,17 @@ function Home() {
                 <section className="py-24">
                     <div className="container">
                         <div className="max-w-4xl mx-auto text-center">
-                            <Badge variant="outline" className="mb-4">Latest Updates</Badge>
+                            <Badge variant="outline" className="mb-4">
+                                Latest Updates
+                            </Badge>
                             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
                                 Stay Updated with Our <span className="text-primary">Blog</span>
                             </h2>
                             <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
-                                Get the latest insights, tutorials, and updates from our development team.
-                                Learn about new features, best practices, and upcoming projects.
+                                Get the latest insights, tutorials, and updates from our development team. Learn about
+                                new features, best practices, and upcoming projects.
                             </p>
-                            <Link href="/blog" className={cn(buttonVariants({ size: "lg" }), "group")}>
+                            <Link href="/blog" className={cn(buttonVariants({ size: 'lg' }), 'group')}>
                                 Read Our Blog
                                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                             </Link>
@@ -197,7 +218,9 @@ function Home() {
                     <div className="container">
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                             <div>
-                                <Badge variant="outline" className="mb-4">Join Our Community</Badge>
+                                <Badge variant="outline" className="mb-4">
+                                    Join Our Community
+                                </Badge>
                                 <h2 className="text-3xl sm:text-4xl font-bold mb-6">
                                     Built by Developers,
                                     <br />
@@ -211,7 +234,7 @@ function Home() {
                                     <Link href="/docs" className={cn(buttonVariants())}>
                                         Get Started
                                     </Link>
-                                    <Link href="/flow/discord" className={cn(buttonVariants({ variant: "outline" }))}>
+                                    <Link href="/flow/discord" className={cn(buttonVariants({ variant: 'outline' }))}>
                                         Join Discord
                                     </Link>
                                 </div>

@@ -27,7 +27,7 @@ export function MainNav({ items, children, showLogo = true, className }: MainNav
     }
 
     return (
-        <div className={cn("flex items-center justify-between w-full", className)}>
+        <div className={cn('flex items-center justify-between w-full', className)}>
             {showLogo && (
                 <Link href="/" className="flex items-center space-x-3 group">
                     <div className="relative">
@@ -49,9 +49,7 @@ export function MainNav({ items, children, showLogo = true, className }: MainNav
             {items?.length ? (
                 <nav className="hidden md:flex items-center space-x-1">
                     {items.map((item, index) => {
-                        const isActive = item.href === '/'
-                            ? segment === null
-                            : item.href.startsWith(`/${segment}`)
+                        const isActive = item.href === '/' ? segment === null : item.href.startsWith(`/${segment}`)
 
                         return (
                             <Link
@@ -61,9 +59,7 @@ export function MainNav({ items, children, showLogo = true, className }: MainNav
                                     'relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200',
                                     'hover:bg-muted/50 hover:text-foreground',
                                     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
-                                    isActive
-                                        ? 'text-foreground bg-muted/80'
-                                        : 'text-muted-foreground',
+                                    isActive ? 'text-foreground bg-muted/80' : 'text-muted-foreground',
                                     item.disabled && 'cursor-not-allowed opacity-50 hover:bg-transparent'
                                 )}
                             >
@@ -77,18 +73,8 @@ export function MainNav({ items, children, showLogo = true, className }: MainNav
                 </nav>
             ) : null}
 
-            <Button
-                variant="ghost"
-                size="sm"
-                className="md:hidden"
-                onClick={toggleMobileMenu}
-                aria-label="Toggle menu"
-            >
-                {showMobileMenu ? (
-                    <X className="h-5 w-5" />
-                ) : (
-                    <Menu className="h-5 w-5" />
-                )}
+            <Button variant="ghost" size="sm" className="md:hidden" onClick={toggleMobileMenu} aria-label="Toggle menu">
+                {showMobileMenu ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
 
             {showMobileMenu && items && (

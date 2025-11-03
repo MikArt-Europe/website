@@ -2,7 +2,7 @@ import { source } from '@/lib/source'
 import { DocsLayout } from 'fumadocs-ui/layouts/docs'
 import type { ReactNode } from 'react'
 import { baseOptions } from '@/app/layout.config'
-import {BlocksIcon, HouseIcon, ShieldIcon, SwordIcon} from "lucide-react";
+import { BlocksIcon, HouseIcon, ShieldIcon, SwordIcon } from 'lucide-react'
 
 export default async function Layout({ children }: { children: ReactNode }) {
     return (
@@ -29,14 +29,15 @@ export default async function Layout({ children }: { children: ReactNode }) {
                         icon: <SwordIcon />
                     },
                     {
-                        title: "Minecraft Server",
-                        description: "MikArt Europe MC",
+                        title: 'Minecraft Server',
+                        description: 'MikArt Europe MC',
                         url: '/docs/minecraft',
                         icon: <BlocksIcon />
                     }
                 ]
             }}
-            {...baseOptions}>
+            {...baseOptions}
+        >
             {children}
         </DocsLayout>
     )

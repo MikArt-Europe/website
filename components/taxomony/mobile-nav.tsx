@@ -20,10 +20,7 @@ export function MobileNav({ items, children, onClose }: MobileNavProps) {
 
     return (
         <div className="fixed inset-0 top-0 z-50 md:hidden">
-            <div
-                className="absolute inset-0 bg-background/80 backdrop-blur-sm"
-                onClick={onClose}
-            />
+            <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" onClick={onClose} />
 
             <div className="relative z-50 bg-background border-r shadow-xl h-full w-72 p-6 animate-in slide-in-from-left-80 duration-300">
                 <div className="flex items-center space-x-3 mb-8">
@@ -43,9 +40,7 @@ export function MobileNav({ items, children, onClose }: MobileNavProps) {
 
                 <nav className="space-y-2">
                     {items.map((item, index) => {
-                        const isActive = item.href === '/'
-                            ? segment === null
-                            : item.href.startsWith(`/${segment}`)
+                        const isActive = item.href === '/' ? segment === null : item.href.startsWith(`/${segment}`)
 
                         return (
                             <Link
@@ -71,17 +66,13 @@ export function MobileNav({ items, children, onClose }: MobileNavProps) {
                 {children && (
                     <>
                         <Separator className="my-6" />
-                        <div className="space-y-4">
-                            {children}
-                        </div>
+                        <div className="space-y-4">{children}</div>
                     </>
                 )}
 
                 <div className="absolute bottom-6 left-6 right-6">
                     <Separator className="mb-4" />
-                    <div className="text-xs text-muted-foreground">
-                        © {new Date().getFullYear()} MikArt Europe
-                    </div>
+                    <div className="text-xs text-muted-foreground">© {new Date().getFullYear()} MikArt Europe</div>
                 </div>
             </div>
         </div>

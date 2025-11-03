@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
-import { SiX, SiYoutube, SiDiscord, SiGithub } from "@icons-pack/react-simple-icons"
-import { Mail, MapPin, Clock } from "lucide-react"
+import { SiX, SiYoutube, SiDiscord, SiGithub } from '@icons-pack/react-simple-icons'
+import { Mail, MapPin, Clock } from 'lucide-react'
 import { Separator } from '@/components/ui/separator'
 
 const footerSections = [
@@ -123,8 +123,8 @@ export default function Footer() {
                             </Link>
 
                             <p className="text-muted-foreground leading-relaxed mb-6 max-w-sm">
-                                MikArt Europe is your premier destination for innovative Minecraft modifications,
-                                tools, and security solutions. Building the future of gaming experiences.
+                                MikArt Europe is your premier destination for innovative Minecraft modifications, tools,
+                                and security solutions. Building the future of gaming experiences.
                             </p>
 
                             <div className="space-y-3">
@@ -147,16 +147,11 @@ export default function Footer() {
                             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
                                 {footerSections.map((section) => (
                                     <div key={section.title}>
-                                        <h3 className="font-semibold text-foreground mb-4">
-                                            {section.title}
-                                        </h3>
+                                        <h3 className="font-semibold text-foreground mb-4">{section.title}</h3>
                                         <ul className="space-y-3">
                                             {section.links.map((link) => (
                                                 <li key={link.name}>
-                                                    <Link
-                                                        href={link.link}
-                                                        className="group block"
-                                                    >
+                                                    <Link href={link.link} className="group block">
                                                         <div className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">
                                                             {link.name}
                                                         </div>
@@ -173,25 +168,21 @@ export default function Footer() {
                         </div>
 
                         <div className="lg:col-span-2">
-                            <h3 className="font-semibold text-foreground mb-4">
-                                Follow Us
-                            </h3>
+                            <h3 className="font-semibold text-foreground mb-4">Follow Us</h3>
                             <div className="flex flex-col gap-3">
                                 {socialLinks.map((social) => (
                                     <Link
                                         key={social.name}
                                         href={social.link}
                                         className={cn(
-                                            "flex items-center gap-3 text-sm text-muted-foreground transition-colors group",
+                                            'flex items-center gap-3 text-sm text-muted-foreground transition-colors group',
                                             social.color
                                         )}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
                                         <social.icon className="h-4 w-4 group-hover:scale-110 transition-transform" />
-                                        <span className="group-hover:text-foreground">
-                                            {social.name}
-                                        </span>
+                                        <span className="group-hover:text-foreground">{social.name}</span>
                                     </Link>
                                 ))}
                             </div>

@@ -16,8 +16,8 @@ They're used to set up the GroupSecurity instance and customize its behavior.
 
 <Files>
     <Folder name="GroupSecurity" defaultOpen>
-        <File name="config.yml"/>
-        <File name="messages-xx-xx.yml"/>
+        <File name="config.yml" />
+        <File name="messages-xx-xx.yml" />
     </Folder>
 </Files>
 
@@ -123,31 +123,35 @@ Settings that apply for the password mode. These are pretty straight forward.
 Here's a table what you can use and their differences:
 
 | Property      | BCRYPT      | Argon2         | Scrypt      |
-|---------------|-------------|----------------|-------------|
+| ------------- | ----------- | -------------- | ----------- |
 | Strength      | 🟢 Strong   | 🔵 Very Strong | 🟢 Strong   |
 | Speed         | 🟠 Slow     | 🟠 Slow        | 🟠 Slow     |
 | Memory Usage  | 🟢 Low      | 🔴 High        | 🔴 High     |
 | CPU Usage     | 🟢 Low      | 🔴 High        | 🔴 High     |
-| GPU Resistant | ✅ Yes       | ✅ Yes          | ✅ Yes       |
+| GPU Resistant | ✅ Yes      | ✅ Yes         | ✅ Yes      |
 | Hashing Type  | 🔄 Adaptive | 🔄 Adaptive    | 🔄 Adaptive |
 | Notes         | 👍 Good     | 🏆 Best        | 👍 Good     |
 
 ##### argon2
+
 - `memory`: The amount of memory to use in KB. Default is 65,536 (64MB).
 - `iterations`: The number of iterations to use. Default is 3.
 - `parallelism`: The parallelism to use. Default is 1.
 
 ##### scrypt
-* `memory`: The amount of memory to use in KB. Default is 65,536 (64MB).
-* `iterations`: The number of iterations to use. Default is 16,384
-* `parallelism`: The parallelism to use. Default is 1.
+
+- `memory`: The amount of memory to use in KB. Default is 65,536 (64MB).
+- `iterations`: The number of iterations to use. Default is 16,384
+- `parallelism`: The parallelism to use. Default is 1.
 
 #### pin
+
 Settings that apply for the pin mode. These are pretty straight forward.
-* `length`: Set to -1 to disable, or to set bounds, set this to -1 and set min_length and max_length
-* `min_length`: The minimum length of the pin. Set to -1 to disable.
-* `max_length`: The maximum length of the pin. Set to -1 to disable.
-* `can_be_straight`: Set's if the pin can be the numbers next to each other. Only works in the length is less than 9
+
+- `length`: Set to -1 to disable, or to set bounds, set this to -1 and set min_length and max_length
+- `min_length`: The minimum length of the pin. Set to -1 to disable.
+- `max_length`: The maximum length of the pin. Set to -1 to disable.
+- `can_be_straight`: Set's if the pin can be the numbers next to each other. Only works in the length is less than 9
 
 ### webhook
 
@@ -245,172 +249,228 @@ The format is `<action>;<message>`, where `<action>` is the action to take and `
 # ┗╸ Documentation: https://groupsecurity.mikart.eu/
 
 # Locale of the default language file to use. Docs: https://groupsecurity.mikart.eu/configuration/language-files
+
 language: en-us
+
 # Whether to enable developer debug mode. This will print additional information to the console which are not useful for most people. I don't recommend enabling this if you don't know what you're doing.
+
 debug: false
+
 # Whether to enable the plugin's update checker.
+
 update_checker: true
+
 # Database settings
+
 database:
-  # Type of database to use (SQLITE, MYSQL, MARIADB)
-  type: SQLITE
-  # Specify credentials here for your MYSQL or MARIADB database
-  credentials:
-    host: localhost
-    port: 3306
-    database: GroupSecurity
-    username: root
-    password: pa55w0rd
-    parameters: ?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8
-  # MYSQL / MARIADB database Hikari connection pool properties. Don't modify this unless you know what you're doing!
-  connection_pool:
-    size: 10
-    idle: 10
-    lifetime: 1800000
-    keepalive: 0
-    timeout: 5000
-  # Names of tables to use on your database. Don't modify this unless you know what you're doing!
-  table_names:
-    meta_data: groupsecurity_metadata
-    user_data: groupsecurity_users
+
+# Type of database to use (SQLITE, MYSQL, MARIADB)
+
+type: SQLITE
+
+# Specify credentials here for your MYSQL or MARIADB database
+
+credentials:
+host: localhost
+port: 3306
+database: GroupSecurity
+username: root
+password: pa55w0rd
+parameters: ?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+
+# MYSQL / MARIADB database Hikari connection pool properties. Don't modify this unless you know what you're doing!
+
+connection_pool:
+size: 10
+idle: 10
+lifetime: 1800000
+keepalive: 0
+timeout: 5000
+
+# Names of tables to use on your database. Don't modify this unless you know what you're doing!
+
+table_names:
+meta_data: groupsecurity_metadata
+user_data: groupsecurity_users
+
 # What permission handler to use. If you want to use this plugin in combination with proxy,
+
 # you must use LuckPerms and MySQL database IN LUCKPERMS. Possible values here: AUTO, LUCKPERMS, VAULT.
+
 # Automatic will choose Vault in spigot, and force LuckPerms in proxy.
+
 permission_handler: AUTO
+
 # Use permissions to show autocompletions and other stuff, use this if you want to restrict normal players from seeing GroupSecurity commands
+
 use_permissions: false
+
 # Secure settings
+
 secure:
-  # What security engine to use. Possible values are listed in the documentation.
-  type: NO_COMMANDS
-  # Allow moving and using commands without logging in.
-  allow_moving: true
-  # If set to true, players will be logined in automatically if ip matches the last ip they logged in with before.
-  ip_check: false
-  # Time in seconds before a player is automatically logged out after disconnecting. Can be combined with ip check. Set to 0 to disable.
-  auto_logout_time: 120
-  # Whether to kick unknown ips. ipCheck must be enabled for this to work.
-  kick_unknown_ips: true
-  # Maximum number of tries a player has to login before being kicked.
-  max_tries: 10
-  # Actions to take when a player reaches the maximum number of login attempts. Search the documentation for more information.
-  actions_on_max_tries:
-  - KICK;<red>You have reached the maximum number of login attempts. Please try again
-    later.
-  # Actions to run when a player fails to login. Search the documentation for more information.
-  actions_on_failed_login: []
-  # Command to run when a player logs in. Search the documentation for more information.
-  actions_on_login: []
-  # Settings that apply for the password mode.
-  password:
-    min_length: -1
-    max_length: -1
-    require_uppercase: false
-    require_lowercase: false
-    require_number: false
-    require_special: false
-    # Hashing solution, check documentation for their differences.
-    hashing: BCRYPT
-    # Hashing settings for Argon2
-    argon2:
-      # The amount of memory to use in KB. Default is 65536 (64MB).
-      memory: 65536
-      # The number of iterations to use. Default is 3.
-      iterations: 3
-      # The parallelism to use. Default is 1.
-      parallelism: 1
-    # Hashing settings for Scrypt
-    scrypt:
-      # The amount of memory to use in KB. Default is 65536 (64MB).
-      memory: 65536
-      # The number of iterations to use. Default is 16384.
-      iterations: 16384
-      # The parallelism to use. Default is 1.
-      parallelism: 1
-  # Settings that apply for the pin mode.
-  pin:
-    # Set to -1 to disable, or to set bounds, set this to -1 and set min_length and max_length
-    length: 4
-    min_length: 4
-    max_length: 6
-    # Set's if the pin can be the numbers next to each other. Only works in the length is less than 9
-    can_be_straight: true
+
+# What security engine to use. Possible values are listed in the documentation.
+
+type: NO_COMMANDS
+
+# Allow moving and using commands without logging in.
+
+allow_moving: true
+
+# If set to true, players will be logined in automatically if ip matches the last ip they logged in with before.
+
+ip_check: false
+
+# Time in seconds before a player is automatically logged out after disconnecting. Can be combined with ip check. Set to 0 to disable.
+
+auto_logout_time: 120
+
+# Whether to kick unknown ips. ipCheck must be enabled for this to work.
+
+kick_unknown_ips: true
+
+# Maximum number of tries a player has to login before being kicked.
+
+max_tries: 10
+
+# Actions to take when a player reaches the maximum number of login attempts. Search the documentation for more information.
+
+actions_on_max_tries:
+
+- KICK;<red>You have reached the maximum number of login attempts. Please try again
+  later.
+
+# Actions to run when a player fails to login. Search the documentation for more information.
+
+actions_on_failed_login: []
+
+# Command to run when a player logs in. Search the documentation for more information.
+
+actions_on_login: []
+
+# Settings that apply for the password mode.
+
+password:
+min_length: -1
+max_length: -1
+require_uppercase: false
+require_lowercase: false
+require_number: false
+require_special: false # Hashing solution, check documentation for their differences.
+hashing: BCRYPT # Hashing settings for Argon2
+argon2: # The amount of memory to use in KB. Default is 65536 (64MB).
+memory: 65536 # The number of iterations to use. Default is 3.
+iterations: 3 # The parallelism to use. Default is 1.
+parallelism: 1 # Hashing settings for Scrypt
+scrypt: # The amount of memory to use in KB. Default is 65536 (64MB).
+memory: 65536 # The number of iterations to use. Default is 16384.
+iterations: 16384 # The parallelism to use. Default is 1.
+parallelism: 1
+
+# Settings that apply for the pin mode.
+
+pin: # Set to -1 to disable, or to set bounds, set this to -1 and set min_length and max_length
+length: 4
+min_length: 4
+max_length: 6 # Set's if the pin can be the numbers next to each other. Only works in the length is less than 9
+can_be_straight: true
+
 # Webhook settings
+
 webhook:
-  # Whether to enable the webhook. This will send messages to a discord channel.
-  enabled: false
-  # The URL of the webhook.
-  url: ''
-  # If true, the webhook will send a message when a player fails to login.
-  send_failed_login: true
-  # If true, the webhook will send a message when a player logs in.
-  send_login: true
-  # If true, the webhook will send a message when a player logs in automatically through IP.
-  send_auto_login: true
-  # Webhook sent on login
-  login_message:
-    tts: false
-    embeds:
-    - title: Login Success
-      description: Player `<name>` has been authenticated with GroupSecurity
-      color: '#00ff00'
-      footer:
-        text: 'UUID: <uuid> | GroupSecurity by AriDev'
-        icon_url: https://minotar.net/avatar/<name>/100.png
-      fields: []
-  # Webhook sent on a singular fail
-  fail_message:
-    tts: false
-    embeds:
-    - title: Login Failed
-      description: Player `<name>` has failed to authenticate with GroupSecurity
-      color: '#ffff00'
-      footer:
-        text: 'UUID: <uuid> | GroupSecurity by AriDev'
-        icon_url: https://minotar.net/avatar/<name>/100.png
-      fields: []
-  # Webhook sent on an unknown ip connection
-  ip_failure_message:
-    tts: false
-    embeds:
-    - title: Login Failed
-      description: Player `<name>` tried to join auto-authenticated from an unknown
-        IP-address.
-      color: '#ff0000'
-      footer:
-        text: 'UUID: <uuid> | GroupSecurity by AriDev'
-        icon_url: https://minotar.net/avatar/<name>/100.png
-      fields: []
-  # Webhook sent on a max tries fail
-  max_tries_message:
-    tts: false
-    embeds:
-    - title: Login Failed
-      description: Player `<name>` has reached the maximum number of login attempts.
-      color: '#ff0000'
-      footer:
-        text: 'UUID: <uuid> | GroupSecurity by AriDev'
-        icon_url: https://minotar.net/avatar/<name>/100.png
-      fields: []
-  # Webhook sent on auto login
-  auto_login_message:
-    tts: false
-    embeds:
-    - title: Login Success
-      description: Player `<name>` has been auto-authenticated with GroupSecurity
-      color: '#00ff00'
-      footer:
-        text: 'UUID: <uuid> | GroupSecurity by AriDev'
-        icon_url: https://minotar.net/avatar/<name>/100.png
-      fields: []
+
+# Whether to enable the webhook. This will send messages to a discord channel.
+
+enabled: false
+
+# The URL of the webhook.
+
+url: ''
+
+# If true, the webhook will send a message when a player fails to login.
+
+send_failed_login: true
+
+# If true, the webhook will send a message when a player logs in.
+
+send_login: true
+
+# If true, the webhook will send a message when a player logs in automatically through IP.
+
+send_auto_login: true
+
+# Webhook sent on login
+
+login_message:
+tts: false
+embeds: - title: Login Success
+description: Player `<name>` has been authenticated with GroupSecurity
+color: '#00ff00'
+footer:
+text: 'UUID: <uuid> | GroupSecurity by AriDev'
+icon_url: https://minotar.net/avatar/<name>/100.png
+fields: []
+
+# Webhook sent on a singular fail
+
+fail_message:
+tts: false
+embeds: - title: Login Failed
+description: Player `<name>` has failed to authenticate with GroupSecurity
+color: '#ffff00'
+footer:
+text: 'UUID: <uuid> | GroupSecurity by AriDev'
+icon_url: https://minotar.net/avatar/<name>/100.png
+fields: []
+
+# Webhook sent on an unknown ip connection
+
+ip_failure_message:
+tts: false
+embeds: - title: Login Failed
+description: Player `<name>` tried to join auto-authenticated from an unknown
+IP-address.
+color: '#ff0000'
+footer:
+text: 'UUID: <uuid> | GroupSecurity by AriDev'
+icon_url: https://minotar.net/avatar/<name>/100.png
+fields: []
+
+# Webhook sent on a max tries fail
+
+max_tries_message:
+tts: false
+embeds: - title: Login Failed
+description: Player `<name>` has reached the maximum number of login attempts.
+color: '#ff0000'
+footer:
+text: 'UUID: <uuid> | GroupSecurity by AriDev'
+icon_url: https://minotar.net/avatar/<name>/100.png
+fields: []
+
+# Webhook sent on auto login
+
+auto_login_message:
+tts: false
+embeds: - title: Login Success
+description: Player `<name>` has been auto-authenticated with GroupSecurity
+color: '#00ff00'
+footer:
+text: 'UUID: <uuid> | GroupSecurity by AriDev'
+icon_url: https://minotar.net/avatar/<name>/100.png
+fields: []
+
 # Platform settings
+
 platform:
-  bungee:
-    # Whether to enable experimental brigadier emulation. This is experimental, and may not work as expected. We recommend you to use Velocity.
-    bungee_brigadier_emulation_experiment: false
+bungee: # Whether to enable experimental brigadier emulation. This is experimental, and may not work as expected. We recommend you to use Velocity.
+bungee_brigadier_emulation_experiment: false
+
 # Add GroupSecurity commands to this list to prevent them from being registered (e.g. ['resetpassword'])
+
 disabled_commands: []
-```
+
+````
 </details>
 
 <details>
@@ -465,5 +525,6 @@ locales:
   manual_2fa: <green>Manual 2-factor authentication code:</green> <white>%1%</white>.
     Do <yellow>/register <code></yellow> to register your 2FA.
   database_added: Added %1% to the database!
-```
+````
+
 </details>

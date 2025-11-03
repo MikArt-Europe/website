@@ -26,9 +26,7 @@ export default async function BlogPage() {
         <div className="container max-w-6xl py-6 lg:py-10">
             <div className="flex flex-col items-start gap-4 md:flex-row md:justify-between md:gap-8">
                 <div className="flex-1 space-y-4">
-                    <h1 className="inline-block font-heading text-4xl tracking-tight lg:text-5xl">
-                        Latest Blog Posts
-                    </h1>
+                    <h1 className="inline-block font-heading text-4xl tracking-tight lg:text-5xl">Latest Blog Posts</h1>
                     <p className="text-xl text-muted-foreground">
                         Insights, tutorials, and thoughts on development, design, and technology.
                     </p>
@@ -39,7 +37,10 @@ export default async function BlogPage() {
             {posts?.length ? (
                 <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                     {posts.map((post, index) => (
-                        <Card key={post._id} className="group overflow-hidden border-0 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                        <Card
+                            key={post._id}
+                            className="group overflow-hidden border-0 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                        >
                             <div className="relative">
                                 {post.mainImage && (
                                     <div className="relative aspect-[16/9] overflow-hidden">
@@ -58,7 +59,11 @@ export default async function BlogPage() {
                                 {post.categories && post.categories.length > 0 && (
                                     <div className="absolute top-4 left-4 flex flex-wrap gap-2">
                                         {post.categories.slice(0, 2).map((category) => (
-                                            <Badge key={category._id} variant="secondary" className="bg-white/90 text-black">
+                                            <Badge
+                                                key={category._id}
+                                                variant="secondary"
+                                                className="bg-white/90 text-black"
+                                            >
                                                 {category.title}
                                             </Badge>
                                         ))}
@@ -94,9 +99,7 @@ export default async function BlogPage() {
                                         {post.publishedAt && (
                                             <div className="flex items-center gap-1">
                                                 <CalendarDays className="h-4 w-4" />
-                                                <time dateTime={post.publishedAt}>
-                                                    {formatDate(post.publishedAt)}
-                                                </time>
+                                                <time dateTime={post.publishedAt}>{formatDate(post.publishedAt)}</time>
                                             </div>
                                         )}
                                     </div>

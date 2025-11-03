@@ -1,16 +1,34 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { ExternalLink, Mail } from 'lucide-react'
-import { SiGithub } from '@icons-pack/react-simple-icons'
+import { SiGithub, SiBluesky } from '@icons-pack/react-simple-icons'
+import { Fragment } from 'react'
 import { Badge } from '@/components/ui/badge'
-import { Card, CardContent } from '@/components/ui/card'
-import { BackgroundGradientAnimation } from '@/components/ui/bg-gradient-anim'
+import {
+    Item,
+    ItemActions,
+    ItemContent,
+    ItemDescription,
+    ItemFooter,
+    ItemGroup,
+    ItemHeader,
+    ItemMedia,
+    ItemSeparator,
+    ItemTitle
+} from '@/components/ui/item'
 
 export const metadata = {
     title: 'ArikSquad | Portfolio'
 }
 
 const projects = [
+    {
+        title: 'Salattu',
+        description: 'A full-stack password manager with a mobile, a desktop, and a web application',
+        image: '/assets/ariksquad/salattu.png',
+        link: 'https://salattu.mikart.eu',
+        technologies: ['Next.js', 'Rust', 'Postgres', 'Java']
+    },
     {
         title: 'GroupSecurity',
         description: 'A staff security management system',
@@ -20,87 +38,99 @@ const projects = [
     },
     {
         title: 'EnSave',
-        description: 'An all-in-one Discord bot solution, with a website to manage it',
+        description: 'An all-in-one Discord bot solution, with a dashboard',
         image: '/assets/ariksquad/ensave.png',
         link: 'https://ensave.mikart.eu',
         technologies: ['Next.js', 'TypeScript', 'Postgres', 'Python']
     },
     {
-        title: 'MikArt Resources',
-        description: 'A marketplace for my resources',
+        title: 'And much more in my GitHub',
+        description: 'Check out my GitHub for more projects and contributions',
         image: '',
-        link: 'https://github.com/MikArt-Europe/website',
-        technologies: ['Next.js', 'Postgres', 'Typescript', 'Stripe'],
-        comingSoon: true
+        link: 'https://github.com/ariksquad',
+        technologies: []
     }
 ]
 
 const stack = [
-    { name: 'TypeScript', color: 'border-blue-600' },
-    { name: 'React', color: 'border-cyan-500' },
-    { name: 'Next.js', color: 'border-black' },
-    { name: 'TailwindCSS', color: 'border-sky-400' },
-    { name: 'Node.js', color: 'border-green-600' },
-    { name: 'Python', color: 'border-yellow-500' },
-    { name: 'Java', color: 'border-orange-300' },
-    { name: 'Flutter', color: 'border-blue-500' },
-    { name: 'Git', color: 'border-red-500' }
+    { name: 'Java' },
+    { name: 'TypeScript' },
+    { name: 'React' },
+    { name: 'Next.js' },
+    { name: 'Python' },
+    { name: 'Git' },
+    { name: 'Docker' },
+    { name: 'SQL' },
+    { name: 'Kubernetes' }
 ]
 
 export default function Page() {
     return (
-        <BackgroundGradientAnimation>
-            <div className="min-h-screen relative z-50 flex flex-col justify-between">
-                <main className="container mx-auto px-4 py-10 md:py-20">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div className="min-h-screen bg-gradient-to-b from-background to-muted/40">
+            <div className="relative z-10 flex min-h-screen flex-col justify-between">
+                <main className="container mx-auto px-4 py-12 md:py-20">
+                    <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
                         <div className="lg:col-span-5 lg:sticky lg:top-10 lg:self-start">
                             <div className="space-y-8">
                                 <div>
-                                    <h1 className="text-5xl md:text-7xl font-bold tracking-tighter">
-                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-500">
+                                    <h1 className="text-4xl font-bold tracking-tight md:text-6xl ">
+                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-foreground/80 via-primary/90 to-slate-700">
                                             ArikSquad
                                         </span>
                                     </h1>
-                                    <p className="mt-4 text-xl text-gray-400">Full-stack developer</p>
-                                </div>
-
-                                <div className="backdrop-blur-sm bg-white/5 border border-white/10 rounded-lg p-6">
-                                    <p className="text-gray-300 leading-relaxed">
-                                        I specialize in creating modern web applications with modern tech stack. I have
-                                        experience in building web applications with React, Next.js, Node.js, and more.
-                                        I am also interested in backend development with Java and C++.
+                                    <p className="mt-3 text-base text-muted-foreground md:text-lg">
+                                        Full‑stack developer
                                     </p>
-
-                                    <div className="mt-6 flex flex-wrap gap-2">
-                                        {stack.map((tech) => (
-                                            <Badge
-                                                key={tech.name}
-                                                className={`bg-transparent ${tech.color} border px-3 py-1 text-xs text-gray-300 rounded-full`}
-                                            >
-                                                {tech.name}
-                                            </Badge>
-                                        ))}
-                                    </div>
                                 </div>
+
+                                <Item variant="muted" className="p-6">
+                                    <ItemContent>
+                                        <ItemTitle className="text-base">About</ItemTitle>
+                                        <ItemDescription className="line-clamp-none">
+                                            I build modern web apps and backend services. Mostly Java for backend; I
+                                            also work with multiple web technologies powered by React. I focus on
+                                            shipping clean, reliable systems.
+                                        </ItemDescription>
+                                        <div className={`mt-4 flex flex-wrap gap-2`}>
+                                            {stack.map((tech) => (
+                                                <Badge key={tech.name} variant="secondary" className="text-xs">
+                                                    {tech.name}
+                                                </Badge>
+                                            ))}
+                                        </div>
+                                    </ItemContent>
+                                </Item>
 
                                 <div className="flex gap-4">
                                     <Link
                                         href="https://github.com/ariksquad"
-                                        className="group flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+                                        className="group flex items-center gap-2 text-muted-foreground transition-colors hover:text-foreground"
                                     >
                                         <SiGithub size={20} />
-                                        <span className="border-b border-dotted border-transparent group-hover:border-white/50">
+                                        <span className="border-b border-dotted border-transparent group-hover:border-foreground/50">
                                             GitHub
                                         </span>
                                     </Link>
 
                                     <Link
+                                        href="https://bsky.app/profile/ariksquad.mikart.eu"
+                                        className="group flex items-center gap-2 text-muted-foreground transition-colors hover:text-foreground"
+                                        target="_blank"
+                                        rel="noreferrer"
+                                    >
+                                        <SiBluesky size={20} />
+                                        <span className="border-b border-dotted border-transparent group-hover:border-foreground/50">
+                                            Bluesky
+                                        </span>
+                                    </Link>
+
+                                    <Link
                                         href="mailto:ariksquad@mikart.eu"
-                                        className="group flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+                                        className="group flex items-center gap-2 text-muted-foreground transition-colors hover:text-foreground"
                                     >
                                         <Mail size={20} />
-                                        <span className="border-b border-dotted border-transparent group-hover:border-white/50">
-                                            Contact
+                                        <span className="border-b border-dotted border-transparent group-hover:border-foreground/50">
+                                            Email
                                         </span>
                                     </Link>
                                 </div>
@@ -108,79 +138,68 @@ export default function Page() {
                         </div>
 
                         <div className="lg:col-span-7">
-                            <h2 className="text-2xl font-medium text-white mb-6 pb-2 border-b border-white/10">
-                                Selected Work
-                            </h2>
-
-                            <div className="space-y-4">
-                                {projects.map((project) => (
-                                    <Card
-                                        key={project.title}
-                                        className="bg-transparent border-white/10 hover:border-white/30 transition-colors overflow-hidden"
-                                    >
-                                        <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-                                            <div className="md:col-span-2 h-38 md:h-full relative ml-5 rounded-lg">
-                                                <div className="w-full h-full overflow-hidden">
-                                                    {project.comingSoon ? (
-                                                        <div className="w-full h-full flex items-center justify-center bg-black/40 backdrop-blur">
-                                                            <p className="text-lg font-medium text-white/90 rotate-[-5deg] border border-white/30 px-5 py-2 rounded bg-black/20 shadow-lg">
-                                                                Coming Soon
-                                                            </p>
-                                                        </div>
-                                                    ) : (
+                            <h2 className="mb-4 text-2xl font-medium">Selected Work</h2>
+                            <ItemGroup>
+                                {projects.map((project, idx) => (
+                                    <Fragment key={project.title}>
+                                        <Item variant="muted" asChild className="hover:bg-accent/30">
+                                            <Link href={project.link} target="_blank" rel="noreferrer">
+                                                <ItemMedia
+                                                    variant={project.image ? 'image' : 'icon'}
+                                                    className={
+                                                        project.image
+                                                            ? 'relative h-36 w-56 overflow-hidden rounded-md md:h-44 md:w-72'
+                                                            : 'size-10'
+                                                    }
+                                                >
+                                                    {project.image ? (
                                                         <Image
                                                             src={project.image}
                                                             alt={project.title}
                                                             fill
-                                                            sizes="(max-width: 768px) 100vw, 50vw"
-                                                            quality={95}
-                                                            priority={true}
-                                                            className="object-cover transition-transform hover:scale-105 duration-500 rounded-lg shadow-lg"
-                                                            placeholder="blur"
-                                                            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNcvmrVfwAG8wLYY3Y7sQAAAABJRU5ErkJggg=="
+                                                            className="object-cover"
                                                         />
+                                                    ) : (
+                                                        <ExternalLink className="size-6 text-muted-foreground" />
                                                     )}
-                                                </div>
-                                            </div>
-
-                                            <CardContent className="md:col-span-3 p-4 flex flex-col justify-between">
-                                                <div>
-                                                    <h3 className="text-lg font-medium text-white">{project.title}</h3>
-                                                    <p className="text-sm text-gray-400 mt-1">{project.description}</p>
-
-                                                    <div className="flex flex-wrap gap-2 mt-3">
-                                                        {project.technologies.map((tech) => (
-                                                            <Badge
-                                                                key={tech}
-                                                                variant="secondary"
-                                                                className="bg-white/5 text-xs"
-                                                            >
-                                                                {tech}
-                                                            </Badge>
-                                                        ))}
-                                                    </div>
-                                                </div>
-
-                                                <Link
-                                                    href={project.link}
-                                                    className="mt-4 flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300 self-start"
-                                                >
-                                                    <ExternalLink size={14} />
-                                                    <span>View Project</span>
-                                                </Link>
-                                            </CardContent>
-                                        </div>
-                                    </Card>
+                                                </ItemMedia>
+                                                <ItemContent>
+                                                    <ItemHeader>
+                                                        <ItemTitle className="text-base">{project.title}</ItemTitle>
+                                                        <ItemActions className="text-muted-foreground">
+                                                            <ExternalLink className="size-4" />
+                                                        </ItemActions>
+                                                    </ItemHeader>
+                                                    <ItemDescription>{project.description}</ItemDescription>
+                                                    {project.technologies.length > 0 && (
+                                                        <div className="mt-2 flex flex-wrap gap-2">
+                                                            {project.technologies.map((tech) => (
+                                                                <Badge
+                                                                    key={tech}
+                                                                    variant="secondary"
+                                                                    className="text-xs"
+                                                                >
+                                                                    {tech}
+                                                                </Badge>
+                                                            ))}
+                                                        </div>
+                                                    )}
+                                                    <ItemFooter />
+                                                </ItemContent>
+                                            </Link>
+                                        </Item>
+                                        {idx < projects.length - 1 && <ItemSeparator />}
+                                    </Fragment>
                                 ))}
-                            </div>
+                            </ItemGroup>
                         </div>
                     </div>
                 </main>
 
-                <footer className="border-t border-white/10 py-4 text-center text-gray-300 text-sm">
+                <footer className="border-t py-4 text-center text-sm text-muted-foreground">
                     &copy; {new Date().getFullYear()} ArikSquad. All rights reserved.
                 </footer>
             </div>
-        </BackgroundGradientAnimation>
+        </div>
     )
 }

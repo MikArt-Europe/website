@@ -16,10 +16,10 @@ import { Separator } from '@/components/ui/separator'
 import { ShareButton } from '@/components/ui/share-button'
 
 export async function generateStaticParams() {
-  const slugs = await getAllPostSlugs()
-  return slugs.map((slug) => ({
-    slug,
-  }))
+    const slugs = await getAllPostSlugs()
+    return slugs.map((slug) => ({
+        slug
+    }))
 }
 
 export const generateMetadata = async ({ params }: { params: Promise<{ slug: string }> }) => {
@@ -44,14 +44,16 @@ export const generateMetadata = async ({ params }: { params: Promise<{ slug: str
             description: post.body?.[0]?.children?.[0]?.text?.slice(0, 160) || '',
             type: 'article',
             url: `/blog/${post.slug.current}`,
-            images: post.mainImage ? [
-                {
-                    url: urlFor(post.mainImage).width(1200).height(630).url(),
-                    width: 1200,
-                    height: 630,
-                    alt: post.mainImage.alt || post.title
-                }
-            ] : []
+            images: post.mainImage
+                ? [
+                      {
+                          url: urlFor(post.mainImage).width(1200).height(630).url(),
+                          width: 1200,
+                          height: 630,
+                          alt: post.mainImage.alt || post.title
+                      }
+                  ]
+                : []
         },
         twitter: {
             card: 'summary_large_image',
@@ -71,15 +73,19 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
     }
 
     // Calculate estimated reading time (rough estimate: 200 words per minute)
-    const wordCount = post.body ?
-        post.body.reduce((count, block) => {
-            if (block._type === 'block' && block.children) {
-                return count + block.children.reduce((childCount: any, child: { text: any }) => {
-                    return childCount + (child.text || '').split(' ').length
-                }, 0)
-            }
-            return count
-        }, 0) : 0
+    const wordCount = post.body
+        ? post.body.reduce((count, block) => {
+              if (block._type === 'block' && block.children) {
+                  return (
+                      count +
+                      block.children.reduce((childCount: any, child: { text: any }) => {
+                          return childCount + (child.text || '').split(' ').length
+                      }, 0)
+                  )
+              }
+              return count
+          }, 0)
+        : 0
 
     const readingTime = Math.ceil(wordCount / 200)
 
@@ -112,14 +118,13 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
             </div>
 
             <div className="container max-w-4xl">
-                <div className={cn(
-                    "relative mx-auto px-6",
-                    post.mainImage ? "-mt-32 mb-12" : "pt-12 pb-4"
-                )}>
-                    <Card className={cn(
-                        "overflow-hidden",
-                        post.mainImage ? "bg-background/95 backdrop-blur-sm shadow-xl" : "border-0 shadow-none"
-                    )}>
+                <div className={cn('relative mx-auto px-6', post.mainImage ? '-mt-32 mb-12' : 'pt-12 pb-4')}>
+                    <Card
+                        className={cn(
+                            'overflow-hidden',
+                            post.mainImage ? 'bg-background/95 backdrop-blur-sm shadow-xl' : 'border-0 shadow-none'
+                        )}
+                    >
                         <CardContent className="p-8">
                             {post.categories?.length ? (
                                 <div className="mb-6">
@@ -137,9 +142,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                                 </div>
                             ) : null}
 
-                            <h1 className="font-heading text-3xl leading-tight lg:text-5xl mb-6">
-                                {post.title}
-                            </h1>
+                            <h1 className="font-heading text-3xl leading-tight lg:text-5xl mb-6">{post.title}</h1>
 
                             {post.author && (
                                 <div className="border-l-4 border-primary pl-6 mb-6">
@@ -170,9 +173,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                                 {post.publishedAt && (
                                     <div className="flex items-center gap-2">
                                         <CalendarDays className="h-4 w-4" />
-                                        <time dateTime={post.publishedAt}>
-                                            {formatDate(post.publishedAt)}
-                                        </time>
+                                        <time dateTime={post.publishedAt}>{formatDate(post.publishedAt)}</time>
                                     </div>
                                 )}
 
@@ -188,9 +189,9 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                 </div>
 
                 <div className="mx-auto max-w-3xl px-6 pb-12">
-                        <div className="prose prose-gray dark:prose-invert max-w-none">
-                            {post.body && <PortableTextRenderer content={post.body} />}
-                        </div>
+                    <div className="prose prose-gray dark:prose-invert max-w-none">
+                        {post.body && <PortableTextRenderer content={post.body} />}
+                    </div>
 
                     <div className="mt-16 pt-8 border-t">
                         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
