@@ -12,10 +12,6 @@ export const mainNavItems: MainNavItem[] = [
     {
         title: 'Blog',
         href: '/blog'
-    },
-    {
-        title: 'Resources',
-        href: '/resources'
     }
 ]
 
